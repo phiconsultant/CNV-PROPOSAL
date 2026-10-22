@@ -161,6 +161,18 @@
     .feature-row p { margin: 2px 0 0; color: var(--muted); font-size: .91rem; }
     .device-stage { display: flex; justify-content: center; padding: 20px; border-radius: var(--radius-xl); background: radial-gradient(circle at 50% 40%,white 0 25%,transparent 68%),var(--cream); }
 
+
+    .miniapp-gallery { margin-top: 58px; }
+    .miniapp-gallery-head { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 20px; }
+    .miniapp-gallery-head h3 { margin: 0; color: var(--coffee); font-size: clamp(1.25rem,2.2vw,1.8rem); letter-spacing: -.035em; }
+    .miniapp-gallery-head p { max-width: 470px; margin: 0; color: var(--muted); font-size: .88rem; }
+    .miniapp-screen-grid { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 14px; }
+    .miniapp-screen-card { overflow: hidden; border: 1px solid var(--line); border-radius: 20px; background: white; box-shadow: 0 12px 32px rgba(63,35,24,.07); }
+    .miniapp-screen-card a { display: block; background: #f8f4ef; }
+    .miniapp-screen-card img { display: block; width: 100%; height: auto; }
+    .miniapp-screen-card figcaption { display: flex; gap: 9px; align-items: center; padding: 13px 12px; color: var(--coffee); font-size: .82rem; font-weight: 800; }
+    .miniapp-screen-card figcaption span { display: grid; width: 24px; height: 24px; flex: 0 0 24px; place-items: center; border-radius: 50%; background: var(--brand-wash); color: var(--brand); font-size: .68rem; }
+
     /* Section 2 */
     .tier-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(35px,7vw,96px); align-items: center; }
     .tier-explainer { padding: clamp(24px,4vw,42px); border-radius: var(--radius-xl); background: var(--cream); }
@@ -238,6 +250,12 @@
     .game-detail div { display: flex; gap: 12px; align-items: start; color: rgba(255,255,255,.85); font-size: .9rem; }
     .game-detail span { display: grid; width: 27px; height: 27px; flex: 0 0 27px; place-items: center; border-radius: 50%; background: rgba(245,212,147,.18); color: #f5d493; font-size: .72rem; font-weight: 900; }
 
+
+    .game-flow-figure { margin: 0 0 40px; overflow: hidden; border: 1px solid rgba(255,255,255,.18); border-radius: var(--radius-xl); background: #fff8ee; box-shadow: 0 24px 60px rgba(0,0,0,.22); }
+    .game-flow-figure a { display: block; }
+    .game-flow-figure img { display: block; width: 100%; height: auto; }
+    .game-flow-figure figcaption { padding: 12px 18px; background: #fff8ee; color: #6d3326; font-size: .78rem; font-weight: 750; text-align: center; }
+
     /* Messages */
     .message-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; }
     .message-card { padding: clamp(20px,3vw,30px); border: 1px solid var(--line); border-radius: var(--radius-lg); background: white; }
@@ -288,6 +306,7 @@
       .hero-grid { grid-template-columns: 1fr .8fr; padding: 48px; }
       .hero-visual { transform: scale(.88); }
       .miniapp-layout,.tier-layout { gap: 38px; }
+      .miniapp-screen-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
       .system-connection { grid-template-columns: 1fr; }
     }
     @media (max-width: 720px) {
@@ -305,6 +324,11 @@
       .hero-bubble.two { left: -6%; }
       .section { padding: 76px 0; }
       .miniapp-layout,.tier-layout,.game-grid { grid-template-columns: 1fr; }
+      .miniapp-gallery-head { display: block; }
+      .miniapp-gallery-head p { margin-top: 8px; }
+      .miniapp-screen-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+      .miniapp-screen-card { border-radius: 15px; }
+      .miniapp-screen-card figcaption { padding: 10px 8px; font-size: .72rem; }
       .miniapp-layout .device-stage { grid-row: 1; }
       .process-band { grid-template-columns: 1fr 1fr; }
       .process-step:not(:last-child)::after { display: none; }
@@ -422,6 +446,16 @@
           </div>
         </div>
       </div>
+      <div class="container miniapp-gallery">
+        <div class="miniapp-gallery-head"><h3>Năm màn hình tiêu biểu</h3><p>Minh họa các điểm chạm chính trong Zalo Mini App Metrang Coffee. Chọn ảnh để xem kích thước đầy đủ.</p></div>
+        <div class="miniapp-screen-grid">
+          <figure class="miniapp-screen-card"><a href="assets/miniapp-home.webp" target="_blank" rel="noreferrer" aria-label="Mở ảnh màn hình Trang chủ kích thước đầy đủ"><img src="assets/miniapp-home.webp" alt="Giao diện Zalo Mini App Metrang Coffee: Trang chủ" loading="lazy"></a><figcaption><span>01</span>Trang chủ</figcaption></figure>
+          <figure class="miniapp-screen-card"><a href="assets/miniapp-products.webp" target="_blank" rel="noreferrer" aria-label="Mở ảnh màn hình Danh sách sản phẩm kích thước đầy đủ"><img src="assets/miniapp-products.webp" alt="Giao diện Zalo Mini App Metrang Coffee: Danh sách sản phẩm" loading="lazy"></a><figcaption><span>02</span>Danh sách sản phẩm</figcaption></figure>
+          <figure class="miniapp-screen-card"><a href="assets/miniapp-product-detail.webp" target="_blank" rel="noreferrer" aria-label="Mở ảnh màn hình Chi tiết sản phẩm kích thước đầy đủ"><img src="assets/miniapp-product-detail.webp" alt="Giao diện Zalo Mini App Metrang Coffee: Chi tiết sản phẩm" loading="lazy"></a><figcaption><span>03</span>Chi tiết sản phẩm</figcaption></figure>
+          <figure class="miniapp-screen-card"><a href="assets/miniapp-customer-profile.webp" target="_blank" rel="noreferrer" aria-label="Mở ảnh màn hình Thông tin khách hàng kích thước đầy đủ"><img src="assets/miniapp-customer-profile.webp" alt="Giao diện Zalo Mini App Metrang Coffee: Thông tin khách hàng" loading="lazy"></a><figcaption><span>04</span>Thông tin khách hàng</figcaption></figure>
+          <figure class="miniapp-screen-card"><a href="assets/miniapp-membership.webp" target="_blank" rel="noreferrer" aria-label="Mở ảnh màn hình Hạng thành viên kích thước đầy đủ"><img src="assets/miniapp-membership.webp" alt="Giao diện Zalo Mini App Metrang Coffee: Hạng thành viên" loading="lazy"></a><figcaption><span>05</span>Hạng thành viên</figcaption></figure>
+        </div>
+      </div>
     </section>
 
     <section class="section soft-section" id="member">
@@ -517,6 +551,12 @@
           <h2>Chơi game nhận voucher</h2>
           <p>Một hoạt động tương tác trong Mini App giúp khách có lý do quay lại, tham gia chương trình và nhận ưu đãi theo điều kiện Metrang thiết lập.</p>
         </div>
+        <figure class="game-flow-figure">
+          <a href="assets/game-voucher-flow.webp" target="_blank" rel="noreferrer" aria-label="Mở ảnh minh họa luồng chơi game nhận voucher kích thước đầy đủ">
+            <img src="assets/game-voucher-flow.webp" alt="Luồng chơi game nhận voucher trên Zalo Mini App Metrang: vào Mini App, cho phép truy cập, quay vòng quay và nhận voucher lưu vào Ưu đãi của tôi" loading="lazy">
+          </a>
+          <figcaption>Luồng minh họa: vào Mini App → cho phép truy cập → quay vòng quay → nhận voucher trong mục Ưu đãi của tôi</figcaption>
+        </figure>
         <div class="game-grid">
           <div class="game-visual">
             <div class="game-card"><div class="game-screen"><div class="game-brand">METRANG COFFEE</div><div class="game-cup">☕</div><h3>Vòng quay<br>thân quen</h3><p>Thử vận may và khám phá ưu đãi dành cho bạn</p><span class="btn game-button">QUAY NGAY</span></div></div>
