@@ -182,6 +182,28 @@
     .tier-bullets li { display: flex; gap: 10px; align-items: start; }
     .check { color: var(--success); font-weight: 900; }
 
+
+    .voucher-offline { margin-top: 58px; }
+    .voucher-offline-head { max-width: 760px; margin: 0 auto 24px; text-align: center; }
+    .voucher-offline-head .tag { color: var(--brand); }
+    .voucher-offline-head h3 { margin: 10px 0 8px; color: var(--coffee); font-size: clamp(1.45rem,3vw,2.1rem); letter-spacing: -.04em; }
+    .voucher-offline-head p { margin: 0; color: var(--muted); font-size: .9rem; }
+    .voucher-offline-flow { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 15px; }
+    .voucher-offline-step { overflow: hidden; border: 1px solid var(--line); border-radius: 22px; background: white; box-shadow: 0 12px 32px rgba(63,35,24,.06); }
+    .voucher-step-art { display: flex; min-height: 500px; justify-content: center; align-items: center; padding: 14px; background: #f8f4ef; }
+    .voucher-step-art a { display: flex; max-width: 100%; max-height: 472px; justify-content: center; align-items: center; }
+    .voucher-step-art img { display: block; max-width: 100%; max-height: 472px; width: auto; height: auto; object-fit: contain; }
+    .voucher-step-copy { padding: 17px 19px 20px; }
+    .voucher-step-label { display: flex; gap: 9px; align-items: center; margin-bottom: 9px; color: var(--brand); font-size: .67rem; font-weight: 900; letter-spacing: .09em; }
+    .voucher-step-label span { display: grid; width: 29px; height: 29px; flex: 0 0 29px; place-items: center; border-radius: 50%; background: var(--brand-wash); font-size: .68rem; }
+    .voucher-step-copy h4 { margin: 0 0 5px; color: var(--coffee); font-size: 1.03rem; }
+    .voucher-step-copy p { margin: 0; color: var(--muted); font-size: .81rem; }
+    .voucher-offline-step.wide { display: grid; grid-column: 1/-1; grid-template-columns: 1.35fr .9fr; align-items: center; }
+    .voucher-offline-step.wide .voucher-step-art { min-height: 0; padding: 14px; }
+    .voucher-offline-step.wide .voucher-step-art a { max-height: none; width: 100%; }
+    .voucher-offline-step.wide .voucher-step-art img { max-height: none; width: 100%; height: auto; border-radius: 13px; }
+    .voucher-offline-step.wide .voucher-step-copy { padding: 28px; }
+
     /* Process and connection */
     .process-band { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin: 0 0 50px; }
     .process-step { position: relative; min-height: 150px; padding: 20px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: white; }
@@ -269,6 +291,20 @@
     .trigger i { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
     .message-footnote { margin-top: 20px; color: var(--muted); font-size: .8rem; }
 
+
+    .automation-visuals { margin: 38px 0 28px; }
+    .automation-visuals-head { display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 17px; }
+    .automation-visuals-head h3 { margin: 0; color: var(--coffee); font-size: clamp(1.2rem,2.3vw,1.7rem); letter-spacing: -.035em; }
+    .automation-visuals-head p { max-width: 440px; margin: 0; color: var(--muted); font-size: .84rem; }
+    .automation-visual-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
+    .automation-visual-card { overflow: hidden; margin: 0; border: 1px solid var(--line); border-radius: 21px; background: white; box-shadow: 0 12px 32px rgba(63,35,24,.06); }
+    .automation-visual-card a { display: block; background: #fbf7f1; }
+    .automation-visual-card img { display: block; width: 100%; height: auto; }
+    .automation-visual-card figcaption { display: flex; gap: 12px; align-items: center; padding: 14px 17px; color: var(--coffee); }
+    .automation-visual-card figcaption span { display: grid; width: 31px; height: 31px; flex: 0 0 31px; place-items: center; border-radius: 50%; background: var(--brand-wash); color: var(--brand); font-size: .7rem; font-weight: 900; }
+    .automation-visual-card figcaption b { display: block; font-size: .88rem; }
+    .automation-visual-card figcaption small { display: block; margin-top: 2px; color: var(--muted); font-size: .73rem; }
+
     /* Pricing */
     .pricing-section { background: var(--cream); }
     .quote-banner { display: grid; grid-template-columns: 1fr auto; gap: 25px; align-items: center; margin: 0 0 24px; padding: clamp(24px,4vw,42px); border-radius: var(--radius-xl); background: linear-gradient(125deg,var(--brand-deep),var(--brand)); color: white; }
@@ -335,12 +371,21 @@
       .connection-flow { grid-template-columns: 1fr; }
       .flow-arrow { transform: rotate(90deg); }
       .voucher-builder { grid-template-columns: 1fr; }
+      .voucher-offline-flow { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .voucher-offline-step.wide { grid-template-columns: 1fr; }
+      .voucher-offline-step.wide .voucher-step-copy { padding: 18px; }
+      .voucher-step-art { min-height: 360px; }
+      .voucher-step-art a,.voucher-step-art img { max-height: 332px; }
       .builder-side { padding: 26px 12px; }
       .game-visual { min-height: 420px; }
       .game-card { width: 205px; }
       .game-screen { min-height: 410px; }
       .game-wheel { right: 0; width: 82px; height: 82px; }
       .message-grid { grid-template-columns: 1fr; }
+      .automation-visuals-head { display: block; }
+      .automation-visuals-head p { margin-top: 7px; }
+      .automation-visual-grid { grid-template-columns: 1fr; gap: 13px; }
+      .automation-visual-card { border-radius: 16px; }
       .quote-banner { grid-template-columns: 1fr; }
       .quote-total { text-align: left; }
       .quote-table-head,.quote-row { grid-template-columns: 1.2fr .9fr .75fr; gap: 9px; padding-inline: 13px; }
@@ -540,6 +585,27 @@
             <p class="small-note note-centered">Trang chủ → Ưu đãi → Danh sách voucher → Mở voucher có mã QR</p>
           </div>
         </div>
+        <div class="voucher-offline">
+          <div class="voucher-offline-head"><span class="tag">TRẢI NGHIỆM TẠI CỬA HÀNG OFFLINE</span><h3>Khách mở voucher, nhân viên quét mã tại quầy</h3><p>Minh họa lần lượt các thao tác của khách trên Zalo Mini App và bước xác nhận ưu đãi tại điểm bán.</p></div>
+          <div class="voucher-offline-flow">
+          <article class="voucher-offline-step">
+            <div class="voucher-step-art"><a href="assets/voucher-step-1-check.webp" target="_blank" rel="noreferrer" aria-label="Mở màn hình kiểm tra ưu đãi kích thước đầy đủ"><img src="assets/voucher-step-1-check.webp" alt="Trang chủ Zalo Mini App Metrang, khách chọn mục Ưu đãi để xem voucher có thể dùng tại cửa hàng" loading="lazy"></a></div>
+            <div class="voucher-step-copy"><div class="voucher-step-label"><span>01</span>KHÁCH THAO TÁC</div><h4>Kiểm tra ưu đãi</h4><p>Khách mở mục Ưu đãi trên Trang chủ Mini App để tìm các voucher đang có hiệu lực.</p></div>
+          </article>
+          <article class="voucher-offline-step">
+            <div class="voucher-step-art"><a href="assets/voucher-step-2-list.webp" target="_blank" rel="noreferrer" aria-label="Mở danh sách ưu đãi kích thước đầy đủ"><img src="assets/voucher-step-2-list.webp" alt="Danh sách Ưu đãi của tôi với voucher áp dụng tại cửa hàng và nút Sử dụng" loading="lazy"></a></div>
+            <div class="voucher-step-copy"><div class="voucher-step-label"><span>02</span>KHÁCH THAO TÁC</div><h4>Mở Ưu đãi của tôi</h4><p>Khách chọn voucher có nhãn áp dụng tại cửa hàng và bấm Sử dụng.</p></div>
+          </article>
+          <article class="voucher-offline-step">
+            <div class="voucher-step-art"><a href="assets/voucher-step-3-code.webp" target="_blank" rel="noreferrer" aria-label="Mở mã voucher kích thước đầy đủ"><img src="assets/voucher-step-3-code.webp" alt="Màn hình mã barcode và QR của voucher Metrang để khách xuất trình tại quầy" loading="lazy"></a></div>
+            <div class="voucher-step-copy"><div class="voucher-step-label"><span>03</span>KHÁCH THAO TÁC</div><h4>Xuất trình mã ưu đãi</h4><p>Mini App hiển thị barcode/QR để khách đưa nhân viên tại quầy kiểm tra.</p></div>
+          </article>
+          <article class="voucher-offline-step wide">
+            <div class="voucher-step-art"><a href="assets/voucher-step-4-scan.webp" target="_blank" rel="noreferrer" aria-label="Mở ảnh nhân viên quét mã voucher tại quầy kích thước đầy đủ"><img src="assets/voucher-step-4-scan.webp" alt="Nhân viên Metrang dùng máy quét tại quầy để quét mã voucher trên điện thoại của khách" loading="lazy"></a></div>
+            <div class="voucher-step-copy"><div class="voucher-step-label"><span>04</span>NHÂN VIÊN TẠI QUẦY</div><h4>Quét mã và áp dụng voucher</h4><p>Nhân viên quét mã trên điện thoại khách để kiểm tra điều kiện, xác nhận ưu đãi và áp dụng vào hóa đơn offline.</p></div>
+          </article>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -584,6 +650,15 @@
           <article class="message-card"><div class="message-meta"><b>Thông báo lên hạng</b><span class="message-channel">Zalo OA / ZNS / Mini App</span></div><div class="chat-bubble">Chúc mừng <strong>Nguyễn Phi</strong> đã trở thành thành viên <strong>hạng Vàng</strong> của Metrang! ✨<br><br>Quyền lợi mới đã được cập nhật trong hồ sơ thành viên. Ghé Mini App để xem điểm và ưu đãi dành riêng cho bạn.<br><a class="chat-cta" href="#member">Xem quyền lợi thành viên</a></div><div class="trigger"><i></i>Kích hoạt khi điểm/hạng thay đổi</div></article>
           <article class="message-card"><div class="message-meta"><b>Chào mừng thành viên mới</b><span class="message-channel">Zalo OA / Mini App</span></div><div class="chat-bubble">Chào mừng <strong>Nguyễn Phi</strong> đến với cộng đồng Metrang Coffee! ☕<br><br>Thông tin thành viên, điểm tích lũy và các ưu đãi của bạn đã sẵn sàng. Khám phá Mini App để bắt đầu hành trình cùng Metrang.<br><a class="chat-cta" href="#miniapp">Mở Mini App</a></div><div class="trigger"><i></i>Kích hoạt sau khi khách đăng ký thành viên</div></article>
           <article class="message-card"><div class="message-meta"><b>Mời khách quay lại</b><span class="message-channel">Zalo OA / ZNS</span></div><div class="chat-bubble">Metrang nhớ bạn, <strong>Nguyễn Phi</strong>! ☕<br><br>Lâu rồi mình chưa gặp nhau. Ghé Metrang thưởng thức ly cà phê yêu thích và xem ưu đãi hiện có dành cho bạn nhé.<br><a class="chat-cta" href="#voucher">Xem ưu đãi</a></div><div class="trigger"><i></i>Kích hoạt khi khách không phát sinh giao dịch trong khoảng thời gian đã chọn</div></article>
+        </div>
+        <div class="automation-visuals">
+          <div class="automation-visuals-head"><h3>Bốn kịch bản chăm sóc tự động</h3><p>Minh họa điều kiện nhận diện khách hàng, nội dung tin nhắn và mục tiêu của từng kịch bản.</p></div>
+          <div class="automation-visual-grid">
+          <figure class="automation-visual-card"><a href="assets/automation-new-member.webp" target="_blank" rel="noreferrer" aria-label="Mở ảnh Chào mừng thành viên mới kích thước đầy đủ"><img src="assets/automation-new-member.webp" alt="Minh họa tự động hóa CNV CDP cho Metrang Coffee: Chào mừng thành viên mới. Kích hoạt khi khách đăng ký thành viên trên Mini App." loading="lazy"></a><figcaption><span>01</span><div><b>Chào mừng thành viên mới</b><small>Kích hoạt khi khách đăng ký thành viên trên Mini App.</small></div></figcaption></figure>
+          <figure class="automation-visual-card"><a href="assets/automation-birthday.webp" target="_blank" rel="noreferrer" aria-label="Mở ảnh Chúc mừng sinh nhật kích thước đầy đủ"><img src="assets/automation-birthday.webp" alt="Minh họa tự động hóa CNV CDP cho Metrang Coffee: Chúc mừng sinh nhật. Gửi lời chúc và voucher ưu đãi trong tháng sinh nhật." loading="lazy"></a><figcaption><span>02</span><div><b>Chúc mừng sinh nhật</b><small>Gửi lời chúc và voucher ưu đãi trong tháng sinh nhật.</small></div></figcaption></figure>
+          <figure class="automation-visual-card"><a href="assets/automation-tier-upgrade.webp" target="_blank" rel="noreferrer" aria-label="Mở ảnh Thông báo lên hạng Vàng kích thước đầy đủ"><img src="assets/automation-tier-upgrade.webp" alt="Minh họa tự động hóa CNV CDP cho Metrang Coffee: Thông báo lên hạng Vàng. Gửi tự động khi khách đạt mốc chi tiêu và lên hạng." loading="lazy"></a><figcaption><span>03</span><div><b>Thông báo lên hạng Vàng</b><small>Gửi tự động khi khách đạt mốc chi tiêu và lên hạng.</small></div></figcaption></figure>
+          <figure class="automation-visual-card"><a href="assets/automation-winback-60d.webp" target="_blank" rel="noreferrer" aria-label="Mở ảnh Mời khách quay lại sau 60 ngày kích thước đầy đủ"><img src="assets/automation-winback-60d.webp" alt="Minh họa tự động hóa CNV CDP cho Metrang Coffee: Mời khách quay lại sau 60 ngày. Gợi nhắc khách quay lại với voucher cá nhân hóa." loading="lazy"></a><figcaption><span>04</span><div><b>Mời khách quay lại sau 60 ngày</b><small>Gợi nhắc khách quay lại với voucher cá nhân hóa.</small></div></figcaption></figure>
+          </div>
         </div>
         <p class="message-footnote">Kênh gửi, mẫu tin, voucher đi kèm và ngưỡng thời gian sẽ được cấu hình theo quyền sử dụng Zalo, dữ liệu iPOS và mục tiêu chiến dịch của Metrang.</p>
       </div>
