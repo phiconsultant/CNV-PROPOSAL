@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#8d1d19">
+  <title>Metrang Coffee × CNV — Loyalty & CDP Proposal</title>
+  <meta name="description" content="Đề xuất kết nối iPOS CRM, CNV CDP và Zalo Mini App cho Metrang Coffee.">
+  <style>
+    /* =========================================================
+       METRANG COFFEE × CNV — DESIGN SYSTEM
+       Brand-first controls. Adjust colors, typography and spacing here.
+    ========================================================== */
+    :root {
+      --brand: #8d1d19;
+      --brand-deep: #64110f;
+      --brand-bright: #cf2826;
+      --brand-wash: #f7e9e5;
+      --coffee: #321f1a;
+      --cream: #fbf7f1;
+      --paper: #fffdfb;
+      --sand: #eadbc9;
+      --gold: #c59a55;
+      --ink: #241b18;
+      --muted: #786d67;
+      --line: #eadfd7;
+      --success: #39725d;
+      --container: 1200px;
+      --pad: clamp(20px, 4vw, 58px);
+      --section-y: clamp(76px, 9vw, 132px);
+      --radius-xl: 32px;
+      --radius-lg: 22px;
+      --radius-md: 15px;
+      --shadow: 0 24px 70px rgba(69, 31, 20, .12);
+      --font: Inter, "Segoe UI", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font: 400 16px/1.65 var(--font); }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(calc(100% - 2 * var(--pad)), var(--container)); margin-inline: auto; }
+    .eyebrow { color: var(--brand-bright); font-size: .76rem; letter-spacing: .16em; font-weight: 850; text-transform: uppercase; }
+    .section { padding: var(--section-y) 0; border-top: 1px solid var(--line); }
+    .section-head { max-width: 790px; margin-bottom: clamp(34px, 5vw, 62px); }
+    .section-head h2 { margin: 12px 0 17px; font-size: clamp(2.1rem, 5vw, 4.25rem); line-height: .99; letter-spacing: -.055em; }
+    .section-head p { margin: 0; color: var(--muted); font-size: clamp(1rem, 1.4vw, 1.14rem); }
+    .section-number { display: inline-grid; place-items: center; min-width: 42px; height: 42px; padding: 0 12px; border: 1px solid #d8b5a7; border-radius: 999px; color: var(--brand); font-size: .8rem; font-weight: 850; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 20px; border: 0; border-radius: 999px; background: var(--brand); color: white; font-weight: 800; }
+    .btn.light { background: white; color: var(--brand); }
+    .tag { display: inline-flex; align-items: center; gap: 7px; padding: 6px 11px; border-radius: 999px; background: var(--brand-wash); color: var(--brand); font-size: .74rem; font-weight: 800; }
+    .small-note { color: var(--muted); font-size: .82rem; }
+    .section-subhead { margin-top: 18px; }
+    .section-subhead.tight { margin-bottom: 0; }
+    .section-subhead.space-below { margin-bottom: 24px; }
+    .note-spaced { margin-top: 22px; }
+    .note-centered { margin-top: 22px; text-align: center; }
+    .note-game { margin-top: 22px; color: rgba(255,255,255,.58); }
+    .note-pricing { margin-top: 16px; }
+    .soft-section { background: #fffaf5; }
+    .category-links { grid-template-columns: repeat(4,1fr); margin-bottom: 12px; }
+    .two-col-products { grid-template-columns: repeat(2,1fr); }
+    .points-next-note { display: block; margin-top: 7px; }
+    .tier-heading { padding-top: 5px; }
+    .activity-row { margin: 0 13px; padding: 12px; border-radius: 13px; background: white; color: #6e5d53; font-size: .64rem; }
+    .activity-row b { float: right; color: var(--success); }
+    .system-icon-zalo { color: #147a54; font-size: 2rem; }
+    .qr-instruction { display: block; margin-top: 9px; text-align: center; }
+    .game-number { border-color: rgba(255,255,255,.3); color: #f2cf99; }
+    .game-button { min-height: 38px; padding-inline: 16px; font-size: .68rem; }
+
+    /* Header */
+    .header { position: sticky; z-index: 20; top: 0; height: 76px; background: rgba(255,253,251,.94); border-bottom: 1px solid rgba(141,29,25,.12); backdrop-filter: blur(14px); }
+    .header-inner { display: flex; height: 100%; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand-lockup { display: flex; align-items: center; gap: 11px; min-width: 190px; }
+    .brand-mark { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 2px solid white; box-shadow: 0 0 0 1px rgba(141,29,25,.2); }
+    .brand-word { color: var(--brand); font-size: .82rem; font-weight: 900; letter-spacing: .11em; line-height: 1.1; }
+    .brand-word small { display: block; margin-top: 4px; color: var(--coffee); font-size: .55rem; letter-spacing: .25em; }
+    .nav { display: flex; align-items: center; gap: clamp(13px, 2vw, 25px); color: #594b45; font-size: .76rem; font-weight: 750; }
+    .nav a:hover { color: var(--brand-bright); }
+    .nav-cta { padding: 9px 15px; border-radius: 999px; background: var(--brand); color: white !important; }
+
+    /* Hero */
+    .hero { padding: 22px var(--pad) 0; }
+    .hero-panel { position: relative; isolation: isolate; overflow: hidden; min-height: min(730px, calc(100svh - 100px)); border-radius: var(--radius-xl); background: var(--brand-deep); color: white; }
+    .hero-panel::before { position: absolute; z-index: -2; inset: 0; content: ""; background: radial-gradient(ellipse at 83% 30%, rgba(220,80,53,.55), transparent 31%), radial-gradient(ellipse at 15% 100%, rgba(196,154,85,.24), transparent 30%), linear-gradient(130deg,#4e100e 0%,#8d1d19 50%,#a62a23 100%); }
+    .hero-panel::after { position: absolute; z-index: -1; right: -130px; bottom: -280px; width: 660px; height: 660px; border: 1px solid rgba(255,255,255,.12); border-radius: 50%; content: ""; box-shadow: 0 0 0 42px rgba(255,255,255,.025),0 0 0 96px rgba(255,255,255,.02); }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 34px; align-items: center; min-height: inherit; padding: clamp(34px, 7vw, 88px); }
+    .hero-copy { max-width: 670px; }
+    .hero-kicker { display: inline-flex; align-items: center; gap: 9px; color: #f1d8b1; font-size: .75rem; font-weight: 850; letter-spacing: .15em; text-transform: uppercase; }
+    .hero-kicker::before { width: 28px; height: 1px; background: var(--gold); content: ""; }
+    .hero h1 { margin: 20px 0; font-size: clamp(3rem, 7.4vw, 6.9rem); line-height: .88; letter-spacing: -.075em; }
+    .hero h1 span { display: block; color: #f5d59e; }
+    .hero-copy > p { max-width: 560px; color: rgba(255,255,255,.8); font-size: clamp(1rem, 1.4vw, 1.2rem); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .hero-foot { margin-top: 32px; color: rgba(255,255,255,.6); font-size: .8rem; }
+    .hero-visual { position: relative; display: grid; min-height: 490px; place-items: center; }
+    .hero-orbit { position: absolute; width: min(100%, 470px); aspect-ratio: 1; border: 1px solid rgba(255,255,255,.15); border-radius: 50%; }
+    .hero-orbit::before,.hero-orbit::after { position: absolute; inset: 9%; border: 1px solid rgba(255,255,255,.12); border-radius: 50%; content: ""; }
+    .hero-orbit::after { inset: 20%; }
+    .hero-visual .phone { z-index: 2; transform: rotate(-4deg); }
+    .hero-bubble { position: absolute; z-index: 3; display: flex; align-items: center; gap: 9px; padding: 12px 15px; border: 1px solid rgba(255,255,255,.45); border-radius: 16px; background: rgba(255,255,255,.94); color: var(--coffee); box-shadow: 0 15px 36px rgba(30,5,3,.2); font-size: .76rem; font-weight: 800; }
+    .hero-bubble b { color: var(--brand); }
+    .hero-bubble.one { top: 18%; right: -1%; }
+    .hero-bubble.two { bottom: 15%; left: -2%; }
+
+    /* Device mockups */
+    .phone { position: relative; width: 275px; padding: 9px; border: 1px solid #d7ccc4; border-radius: 39px; background: #211a17; box-shadow: 0 28px 65px rgba(38,15,9,.24); }
+    .phone-screen { position: relative; overflow: hidden; min-height: 548px; border-radius: 31px; background: var(--cream); }
+    .phone-notch { position: absolute; z-index: 4; top: 8px; left: 50%; width: 88px; height: 19px; transform: translateX(-50%); border-radius: 0 0 13px 13px; background: #211a17; }
+    .phone-status { display: flex; justify-content: space-between; padding: 12px 15px 3px; color: #392924; font-size: .58rem; font-weight: 800; }
+    .app-top { display: flex; align-items: center; justify-content: space-between; padding: 22px 15px 12px; }
+    .app-brand { display: flex; align-items: center; gap: 8px; color: var(--brand); font-size: .7rem; font-weight: 900; letter-spacing: .08em; }
+    .app-brand img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
+    .app-avatar { display: grid; width: 29px; height: 29px; place-items: center; border-radius: 50%; background: #f1dfd2; color: var(--brand); font-size: .65rem; font-weight: 900; }
+    .app-greeting { padding: 5px 16px 12px; color: var(--coffee); font-size: .82rem; font-weight: 750; }
+    .app-greeting strong { display: block; font-size: 1.12rem; }
+    .member-mini { position: relative; overflow: hidden; margin: 0 13px 13px; padding: 16px; border-radius: 17px; background: linear-gradient(135deg,#68120f,#a22420); color: white; }
+    .member-mini::after { position: absolute; right: -16px; bottom: -30px; width: 105px; height: 105px; border: 1px solid rgba(255,255,255,.25); border-radius: 50%; content: ""; box-shadow: 0 0 0 15px rgba(255,255,255,.06); }
+    .member-mini .label { color: #f0cfaa; font-size: .58rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    .member-mini strong { display: block; margin-top: 3px; font-size: 1.04rem; }
+    .member-mini .points { display: flex; justify-content: space-between; align-items: end; margin-top: 14px; }
+    .member-mini .points b { font-size: 1.3rem; }
+    .member-mini .points small { color: rgba(255,255,255,.7); font-size: .56rem; }
+    .quick-links { display: grid; grid-template-columns: repeat(4,1fr); gap: 6px; padding: 0 13px; }
+    .quick-link { display: grid; justify-items: center; gap: 4px; color: var(--coffee); font-size: .55rem; font-weight: 750; text-align: center; }
+    .quick-icon { display: grid; width: 38px; height: 38px; place-items: center; border-radius: 13px; background: #f1e3d7; color: var(--brand); font-size: 1.02rem; }
+    .app-section-title { display: flex; justify-content: space-between; align-items: baseline; padding: 17px 14px 8px; color: var(--coffee); font-size: .75rem; font-weight: 900; }
+    .app-section-title a { color: var(--brand); font-size: .56rem; }
+    .mini-products { display: grid; grid-template-columns: repeat(2,1fr); gap: 8px; padding: 0 12px 14px; }
+    .mini-product { overflow: hidden; padding: 7px; border-radius: 13px; background: white; box-shadow: 0 4px 14px rgba(50,31,26,.06); }
+    .mini-product img { width: 100%; height: 76px; object-fit: contain; mix-blend-mode: multiply; }
+    .mini-product b { display: block; overflow: hidden; margin-top: 4px; color: var(--coffee); font-size: .56rem; text-overflow: ellipsis; white-space: nowrap; }
+    .mini-product span { color: var(--brand); font-size: .57rem; font-weight: 900; }
+    .app-tabbar { position: absolute; right: 0; bottom: 0; left: 0; display: flex; justify-content: space-around; padding: 8px 3px 9px; border-top: 1px solid #eee3da; background: rgba(255,253,251,.97); }
+    .app-tab { display: grid; justify-items: center; gap: 1px; color: #8b7f78; font-size: .48rem; }
+    .app-tab span { font-size: .9rem; }
+    .app-tab.active { color: var(--brand); font-weight: 900; }
+    .phone-scroll { padding-bottom: 65px; }
+    .screen-title { padding: 4px 15px 13px; color: var(--coffee); font-size: .91rem; font-weight: 900; }
+    .points-card { margin: 0 13px 13px; padding: 18px; border-radius: 18px; background: linear-gradient(135deg,#6f1712,#a82b24); color: white; }
+    .points-card .tier { display: flex; align-items: center; justify-content: space-between; color: #f4d9b7; font-size: .62rem; font-weight: 800; }
+    .points-card .points-big { margin-top: 13px; font-size: 2rem; font-weight: 900; letter-spacing: -.06em; line-height: 1; }
+    .points-card small { color: rgba(255,255,255,.78); font-size: .62rem; }
+    .progress-track { height: 6px; margin-top: 16px; border-radius: 999px; background: rgba(255,255,255,.25); }
+    .progress-track i { display: block; width: 62%; height: 100%; border-radius: inherit; background: #f1c878; }
+    .tier-list { display: grid; gap: 8px; padding: 0 13px; }
+    .tier-row { display: flex; align-items: center; gap: 10px; padding: 10px; border: 1px solid #efe4da; border-radius: 13px; background: white; }
+    .tier-icon { display: grid; width: 35px; height: 35px; flex: 0 0 35px; place-items: center; border-radius: 12px; background: #f5eadf; color: var(--gold); }
+    .tier-row b { display: block; color: var(--coffee); font-size: .65rem; }
+    .tier-row small { display: block; color: var(--muted); font-size: .53rem; }
+    .tier-row em { margin-left: auto; color: var(--brand); font-size: .52rem; font-style: normal; font-weight: 800; }
+
+    /* Section 1 */
+    .miniapp-layout { display: grid; grid-template-columns: 1fr .78fr; gap: clamp(35px,7vw,96px); align-items: center; }
+    .feature-list { display: grid; gap: 14px; margin-top: 26px; }
+    .feature-row { display: grid; grid-template-columns: 44px 1fr; gap: 13px; align-items: start; }
+    .feature-row .num { display: grid; width: 40px; height: 40px; place-items: center; border-radius: 13px; background: var(--brand-wash); color: var(--brand); font-weight: 900; }
+    .feature-row b { display: block; color: var(--coffee); }
+    .feature-row p { margin: 2px 0 0; color: var(--muted); font-size: .91rem; }
+    .device-stage { display: flex; justify-content: center; padding: 20px; border-radius: var(--radius-xl); background: radial-gradient(circle at 50% 40%,white 0 25%,transparent 68%),var(--cream); }
+
+    /* Section 2 */
+    .tier-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(35px,7vw,96px); align-items: center; }
+    .tier-explainer { padding: clamp(24px,4vw,42px); border-radius: var(--radius-xl); background: var(--cream); }
+    .tier-explainer h3 { margin: 0 0 13px; color: var(--coffee); font-size: clamp(1.45rem,3vw,2.2rem); line-height: 1.05; letter-spacing: -.04em; }
+    .tier-explainer p { color: var(--muted); }
+    .tier-bullets { display: grid; gap: 10px; padding: 0; list-style: none; }
+    .tier-bullets li { display: flex; gap: 10px; align-items: start; }
+    .check { color: var(--success); font-weight: 900; }
+
+    /* Process and connection */
+    .process-band { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin: 0 0 50px; }
+    .process-step { position: relative; min-height: 150px; padding: 20px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: white; }
+    .process-step:not(:last-child)::after { position: absolute; top: 50%; right: -18px; z-index: 2; color: var(--gold); content: "→"; font-size: 1.2rem; font-weight: 900; }
+    .process-step .step-num { color: var(--brand-bright); font-size: .68rem; font-weight: 900; letter-spacing: .1em; }
+    .process-step b { display: block; margin: 9px 0 4px; color: var(--coffee); line-height: 1.2; }
+    .process-step p { margin: 0; color: var(--muted); font-size: .8rem; }
+    .system-connection { display: grid; grid-template-columns: .8fr 1.2fr; gap: 24px; align-items: stretch; margin: 50px 0; padding: clamp(22px,4vw,38px); border-radius: var(--radius-xl); background: #f7f1eb; }
+    .connection-title h3 { margin: 10px 0; color: var(--coffee); font-size: clamp(1.4rem,3vw,2.25rem); line-height: 1; letter-spacing: -.04em; }
+    .connection-title p { color: var(--muted); font-size: .9rem; }
+    .connection-flow { display: grid; grid-template-columns: 1fr 40px 1.15fr 40px 1fr; align-items: center; gap: 8px; }
+    .system-node { display: grid; min-height: 132px; place-items: center; padding: 16px; border: 1px solid #e4d2c4; border-radius: 19px; background: white; text-align: center; }
+    .system-node img { width: 92px; height: 54px; object-fit: contain; }
+    .system-node strong { display: block; margin-top: 9px; color: var(--coffee); font-size: .82rem; }
+    .system-node small { display: block; color: var(--muted); font-size: .67rem; }
+    .system-node.cdp { background: var(--brand); border-color: var(--brand); color: white; }
+    .system-node.cdp strong,.system-node.cdp small { color: white; }
+    .flow-arrow { color: var(--brand); text-align: center; font-size: 1.55rem; font-weight: 900; }
+    .data-chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 13px; }
+    .data-chips span { padding: 5px 8px; border-radius: 999px; background: rgba(255,255,255,.17); font-size: .62rem; }
+    .voucher-builder { display: grid; grid-template-columns: 1.15fr .85fr; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-xl); background: white; box-shadow: var(--shadow); }
+    .builder-panel { padding: clamp(22px,4vw,42px); }
+    .builder-panel h3 { margin: 9px 0 23px; color: var(--coffee); font-size: 1.45rem; line-height: 1.1; }
+    .field { display: grid; gap: 6px; margin-bottom: 13px; }
+    .field label { color: var(--muted); font-size: .68rem; font-weight: 800; }
+    .fake-input { padding: 10px 12px; border: 1px solid #eadfd7; border-radius: 10px; background: #fffdfa; color: var(--coffee); font-size: .78rem; }
+    .choice-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .choice { padding: 13px; border: 1px solid #dec9ba; border-radius: 13px; background: #fffdfa; }
+    .choice.active { border-color: var(--brand); background: var(--brand-wash); }
+    .choice b { display: block; color: var(--brand); font-size: .79rem; }
+    .choice small { color: var(--muted); font-size: .66rem; }
+    .rule-card { display: flex; gap: 12px; margin: 11px 0; padding: 13px; border: 1px solid var(--line); border-radius: 13px; background: white; }
+    .rule-card i { color: var(--gold); font-style: normal; }
+    .rule-card b { display: block; color: var(--coffee); font-size: .74rem; }
+    .rule-card small { display: block; color: var(--muted); font-size: .64rem; }
+    .builder-side { display: grid; align-content: center; padding: 30px; background: var(--cream); }
+    .builder-side .phone { width: 230px; margin: 0 auto; transform: rotate(2deg); }
+    .builder-side .phone-screen { min-height: 500px; }
+    .offer-tile { margin: 0 12px 10px; padding: 13px; border: 1px solid #efdfd1; border-radius: 14px; background: white; }
+    .offer-top { display: flex; align-items: center; justify-content: space-between; color: var(--brand); font-size: .58rem; font-weight: 850; }
+    .offer-tile strong { display: block; margin: 9px 0 2px; color: var(--coffee); font-size: .76rem; }
+    .offer-tile small { color: var(--muted); font-size: .58rem; }
+    .offer-code { margin-top: 10px; padding: 8px; border: 1px dashed #c8997c; border-radius: 9px; color: var(--brand); text-align: center; font-size: .7rem; font-weight: 900; letter-spacing: .15em; }
+    .qr-box { display: grid; width: 110px; aspect-ratio: 1; place-items: center; margin: 12px auto 0; border: 7px solid white; background: repeating-conic-gradient(#241b18 0 25%, white 0 50%) 0 0/14px 14px; box-shadow: 0 0 0 1px #ddd; }
+    .qr-box span { padding: 4px; background: white; color: var(--muted); font-size: .48rem; }
+    .admin-note { padding: 10px 12px; border-left: 3px solid var(--gold); background: #fff9ef; color: #6e5743; font-size: .73rem; }
+
+    /* Game */
+    .game-section { overflow: hidden; background: var(--brand-deep); color: white; }
+    .game-section .section-head p { color: rgba(255,255,255,.72); }
+    .game-section .eyebrow { color: #f0c888; }
+    .game-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(35px,7vw,90px); align-items: center; }
+    .game-visual { position: relative; display: flex; justify-content: center; gap: 18px; align-items: center; min-height: 500px; border-radius: var(--radius-xl); background: radial-gradient(circle at center,#a6342b 0,transparent 58%); }
+    .game-card { width: 235px; padding: 9px; border-radius: 34px; background: #241a17; box-shadow: 0 24px 60px rgba(0,0,0,.32); }
+    .game-screen { min-height: 446px; padding: 27px 17px; border-radius: 26px; background: linear-gradient(165deg,#fff6e9,#f3d7ba); color: var(--coffee); text-align: center; }
+    .game-screen .game-brand { color: var(--brand); font-size: .63rem; font-weight: 900; letter-spacing: .15em; }
+    .game-cup { display: grid; width: 118px; height: 118px; place-items: center; margin: 27px auto 20px; border: 8px solid rgba(141,29,25,.14); border-radius: 50%; background: linear-gradient(140deg,#84201a,#bc3f2d); color: white; font-size: 3rem; box-shadow: 0 12px 20px rgba(141,29,25,.2); }
+    .game-screen h3 { margin: 0; color: var(--brand); font-size: 1.5rem; line-height: 1; }
+    .game-screen p { color: #776159; font-size: .75rem; }
+    .game-wheel { position: absolute; right: 2%; top: 14%; width: 105px; height: 105px; display: grid; place-items: center; border: 8px solid rgba(255,255,255,.3); border-radius: 50%; background: conic-gradient(#f5d493 0 25%,#9a2b22 25% 50%,#edd9bb 50% 75%,#6c1512 75%); box-shadow: 0 0 0 8px rgba(255,255,255,.07); }
+    .game-wheel span { display: grid; width: 47px; height: 47px; place-items: center; border: 3px solid white; border-radius: 50%; background: var(--brand-deep); color: white; font-size: .7rem; font-weight: 900; }
+    .game-result { padding: 22px; border: 1px solid rgba(255,255,255,.14); border-radius: var(--radius-lg); background: rgba(255,255,255,.08); }
+    .game-result b { display: block; margin: 6px 0; font-size: 1.2rem; }
+    .game-result p { margin: 0; color: rgba(255,255,255,.74); font-size: .9rem; }
+    .game-detail { display: grid; gap: 14px; margin-top: 22px; }
+    .game-detail div { display: flex; gap: 12px; align-items: start; color: rgba(255,255,255,.85); font-size: .9rem; }
+    .game-detail span { display: grid; width: 27px; height: 27px; flex: 0 0 27px; place-items: center; border-radius: 50%; background: rgba(245,212,147,.18); color: #f5d493; font-size: .72rem; font-weight: 900; }
+
+    /* Messages */
+    .message-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; }
+    .message-card { padding: clamp(20px,3vw,30px); border: 1px solid var(--line); border-radius: var(--radius-lg); background: white; }
+    .message-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+    .message-meta b { color: var(--coffee); font-size: 1rem; }
+    .message-channel { color: var(--muted); font-size: .67rem; }
+    .chat-bubble { max-width: 96%; padding: 16px; border-radius: 5px 17px 17px 17px; background: #f6eee7; color: #51413a; font-size: .86rem; }
+    .chat-bubble strong { color: var(--brand); }
+    .chat-cta { display: inline-flex; margin-top: 12px; padding: 8px 12px; border-radius: 9px; background: var(--brand); color: white; font-size: .74rem; font-weight: 850; }
+    .trigger { display: flex; gap: 7px; align-items: center; margin-top: 15px; color: var(--muted); font-size: .7rem; }
+    .trigger i { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+    .message-footnote { margin-top: 20px; color: var(--muted); font-size: .8rem; }
+
+    /* Pricing */
+    .pricing-section { background: var(--cream); }
+    .quote-banner { display: grid; grid-template-columns: 1fr auto; gap: 25px; align-items: center; margin: 0 0 24px; padding: clamp(24px,4vw,42px); border-radius: var(--radius-xl); background: linear-gradient(125deg,var(--brand-deep),var(--brand)); color: white; }
+    .quote-banner .label { color: #edc991; font-size: .72rem; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
+    .quote-banner h3 { margin: 8px 0 0; font-size: clamp(1.5rem,3vw,2.4rem); line-height: 1.05; }
+    .quote-total { text-align: right; }
+    .quote-total strong { display: block; color: #ffe2ae; font-size: clamp(2.35rem,5vw,4.3rem); line-height: .95; letter-spacing: -.06em; }
+    .quote-total small { color: rgba(255,255,255,.72); }
+    .quote-table { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-lg); background: white; }
+    .quote-table-head,.quote-row { display: grid; grid-template-columns: 1.4fr 1fr .8fr; gap: 16px; align-items: center; }
+    .quote-table-head { padding: 15px 22px; background: var(--coffee); color: white; font-size: .7rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+    .quote-row { padding: 16px 22px; border-top: 1px solid var(--line); }
+    .quote-row b { display: block; color: var(--coffee); font-size: .88rem; }
+    .quote-row small { color: var(--muted); font-size: .71rem; }
+    .quote-row .money { color: var(--brand); font-size: .9rem; font-weight: 900; text-align: right; }
+    .quote-totals { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 16px; }
+    .quote-stat { padding: 19px; border: 1px solid var(--line); border-radius: 16px; background: white; }
+    .quote-stat span { display: block; color: var(--muted); font-size: .7rem; }
+    .quote-stat b { display: block; margin-top: 4px; color: var(--coffee); font-size: clamp(1.25rem,2.5vw,1.85rem); letter-spacing: -.04em; }
+    .quote-stat.highlight-stat { border-color: #e9c7a7; background: #fff8ed; }
+    .quote-stat.highlight-stat b { color: var(--brand); }
+    .pricing-notes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+    .pricing-note { padding: 17px; border-radius: 15px; background: rgba(141,29,25,.055); color: #695950; font-size: .76rem; }
+
+    /* Footer, lightbox and responsive */
+    .footer { padding: 60px var(--pad) 35px; background: #291915; color: white; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 25px; }
+    .footer .brand-word { color: white; }
+    .footer .brand-word small { color: #d8c2b5; }
+    .footer p { margin: 0; color: rgba(255,255,255,.62); font-size: .78rem; text-align: right; }
+    .footer-thanks { margin: 55px 0 0; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.13); color: #eed3b1; font-size: .75rem; font-weight: 850; letter-spacing: .14em; text-align: center; }
+    @media (max-width: 980px) {
+      .nav { gap: 12px; font-size: .68rem; }
+      .nav a:nth-child(3),.nav a:nth-child(4) { display: none; }
+      .hero-grid { grid-template-columns: 1fr .8fr; padding: 48px; }
+      .hero-visual { transform: scale(.88); }
+      .miniapp-layout,.tier-layout { gap: 38px; }
+      .system-connection { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px) {
+      .header { height: 66px; }
+      .brand-lockup { min-width: auto; }
+      .brand-mark { width: 36px; height: 36px; }
+      .brand-word { font-size: .72rem; }
+      .nav a:not(.nav-cta) { display: none; }
+      .hero { padding: 12px 12px 0; }
+      .hero-panel { min-height: auto; }
+      .hero-grid { grid-template-columns: 1fr; gap: 4px; padding: 34px 25px 25px; }
+      .hero h1 { font-size: clamp(3rem,15vw,5.3rem); }
+      .hero-visual { min-height: 440px; transform: scale(.86); margin: -18px 0 -38px; }
+      .hero-bubble.one { right: -5%; }
+      .hero-bubble.two { left: -6%; }
+      .section { padding: 76px 0; }
+      .miniapp-layout,.tier-layout,.game-grid { grid-template-columns: 1fr; }
+      .miniapp-layout .device-stage { grid-row: 1; }
+      .process-band { grid-template-columns: 1fr 1fr; }
+      .process-step:not(:last-child)::after { display: none; }
+      .connection-flow { grid-template-columns: 1fr; }
+      .flow-arrow { transform: rotate(90deg); }
+      .voucher-builder { grid-template-columns: 1fr; }
+      .builder-side { padding: 26px 12px; }
+      .game-visual { min-height: 420px; }
+      .game-card { width: 205px; }
+      .game-screen { min-height: 410px; }
+      .game-wheel { right: 0; width: 82px; height: 82px; }
+      .message-grid { grid-template-columns: 1fr; }
+      .quote-banner { grid-template-columns: 1fr; }
+      .quote-total { text-align: left; }
+      .quote-table-head,.quote-row { grid-template-columns: 1.2fr .9fr .75fr; gap: 9px; padding-inline: 13px; }
+      .quote-table-head { font-size: .58rem; }
+      .quote-row b { font-size: .75rem; }
+      .quote-row small { font-size: .63rem; }
+      .quote-row .money { font-size: .75rem; }
+      .quote-totals { grid-template-columns: 1fr; }
+      .pricing-notes { grid-template-columns: 1fr; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+      .footer p { text-align: left; }
+    }
+    @media (max-width: 390px) {
+      .phone { width: 254px; }
+      .phone-screen { min-height: 530px; }
+      .hero-visual { transform: scale(.78); margin-inline: -28px; }
+      .quote-table-head,.quote-row { grid-template-columns: 1.15fr .8fr .72fr; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a class="brand-lockup" href="#top" aria-label="Metrang Coffee proposal">
+        <img class="brand-mark" src="assets/metrang-mark.webp" alt="Metrang Coffee logo">
+        <span class="brand-word">METRANG<small>COFFEE</small></span>
+      </a>
+      <nav class="nav" aria-label="Điều hướng proposal">
+        <a href="#miniapp">Mini App</a><a href="#member">Thành viên</a><a href="#voucher">Voucher</a><a href="#game">Game</a><a href="#automation">Tự động hóa</a><a class="nav-cta" href="#investment">Báo giá</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-panel">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="hero-kicker">Đề xuất giải pháp khách hàng thân thiết</div>
+            <h1 id="hero-title">Mỗi lần ghé,<span>thêm gắn bó.</span></h1>
+            <p>Kết nối iPOS CRM, CNV CDP và Zalo Mini App để Metrang Coffee quản lý dữ liệu khách hàng, triển khai ưu đãi và chăm sóc thành viên xuyên suốt hành trình mua hàng.</p>
+            <div class="hero-actions"><a class="btn light" href="#miniapp">Khám phá giải pháp <span>↓</span></a><a class="btn" href="#investment">Xem ngân sách</a></div>
+            <div class="hero-foot">Metrang Coffee × CNV Holdings &nbsp;·&nbsp; Đề xuất ngày 22.10.2026</div>
+          </div>
+          <div class="hero-visual" aria-label="Minh họa giao diện Zalo Mini App Metrang Coffee">
+            <div class="hero-orbit"></div>
+            <div class="phone">
+              <div class="phone-screen">
+                <div class="phone-notch"></div><div class="phone-scroll">
+                  <div class="phone-status"><span>9:41</span><span>●●●  ▰</span></div>
+                  <div class="app-top"><div class="app-brand"><img src="assets/metrang-mark.webp" alt=""><span>METRANG COFFEE</span></div><div class="app-avatar">NP</div></div>
+                  <div class="app-greeting">Xin chào,<strong>Nguyễn Phi</strong></div>
+                  <div class="member-mini"><span class="label">Thành viên Metrang</span><strong>Hạng Bạc</strong><div class="points"><div><b>1.250</b><small> điểm tích lũy</small></div><small>Hồ sơ ›</small></div></div>
+                  <div class="quick-links"><div class="quick-link"><span class="quick-icon">✦</span>Ưu đãi</div><div class="quick-link"><span class="quick-icon">♙</span>Thành viên</div><div class="quick-link"><span class="quick-icon">▣</span>Đặt hàng</div><div class="quick-link"><span class="quick-icon">◎</span>Tin tức</div></div>
+                  <div class="app-section-title">Cà phê được yêu thích <a href="#miniapp">Xem tất cả ›</a></div>
+                  <div class="mini-products">
+                    <div class="mini-product"><img src="assets/ocean-blue.webp" alt="Cà phê Ocean Blue"><b>Ocean Blue bột</b><span>90.000₫</span></div>
+                    <div class="mini-product"><img src="assets/m-cafe.webp" alt="Cà phê M-Café"><b>M-Café bột</b><span>326.000₫</span></div>
+                  </div>
+                  <div class="app-tabbar"><div class="app-tab active"><span>⌂</span>Trang chủ</div><div class="app-tab"><span>▦</span>Sản phẩm</div><div class="app-tab"><span>♡</span>Ưu đãi</div><div class="app-tab"><span>♙</span>Cá nhân</div></div>
+                </div>
+              </div>
+            </div>
+            <div class="hero-bubble one"><b>✦</b> Ưu đãi riêng cho thành viên</div>
+            <div class="hero-bubble two"><b>↗</b> iPOS CRM kết nối CNV CDP</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="miniapp">
+      <div class="container miniapp-layout">
+        <div>
+          <span class="section-number">01</span>
+          <div class="section-head section-subhead tight">
+            <div class="eyebrow">Kênh trải nghiệm thành viên</div>
+            <h2>Zalo Mini App của Metrang Coffee</h2>
+            <p>Một điểm chạm để khách khám phá sản phẩm, xem ưu đãi, theo dõi quyền lợi thành viên và tiếp tục tương tác với thương hiệu.</p>
+          </div>
+          <div class="feature-list">
+            <div class="feature-row"><span class="num">01</span><div><b>Trang chủ mang nhận diện Metrang</b><p>Logo, màu đỏ thương hiệu, sản phẩm nổi bật và lối tắt tới ưu đãi, thành viên, đặt hàng.</p></div></div>
+            <div class="feature-row"><span class="num">02</span><div><b>Danh mục sản phẩm cà phê</b><p>Tham khảo nhóm sản phẩm hiện có như cà phê rang xay, hạt rang, cà phê hòa tan và trà.</p></div></div>
+            <div class="feature-row"><span class="num">03</span><div><b>Ưu đãi đi cùng hồ sơ thành viên</b><p>Khách chủ động tra cứu điểm, hạng, lịch sử mua hàng và voucher trên Zalo.</p></div></div>
+          </div>
+          <p class="small-note note-spaced">Giao diện trong proposal là bản minh họa định hướng; nội dung và danh mục có thể được tinh chỉnh cùng Metrang.</p>
+        </div>
+        <div class="device-stage">
+          <div class="phone">
+            <div class="phone-screen"><div class="phone-notch"></div><div class="phone-scroll">
+              <div class="phone-status"><span>9:41</span><span>●●●  ▰</span></div>
+              <div class="app-top"><div class="app-brand"><img src="assets/metrang-mark.webp" alt=""><span>METRANG COFFEE</span></div><div class="app-avatar">NP</div></div>
+              <div class="screen-title">Cà phê rang xay</div>
+              <div class="quick-links category-links"><div class="quick-link"><span class="quick-icon">☕</span>Rang xay</div><div class="quick-link"><span class="quick-icon">◉</span>Hạt rang</div><div class="quick-link"><span class="quick-icon">▤</span>Hòa tan</div><div class="quick-link"><span class="quick-icon">♨</span>Trà</div></div>
+              <div class="mini-products two-col-products">
+                <div class="mini-product"><img src="assets/ocean-blue.webp" alt="Cà phê Ocean Blue"><b>Ocean Blue bột</b><span>90.000₫</span></div>
+                <div class="mini-product"><img src="assets/m-cafe.webp" alt="Cà phê M-Café"><b>M-Café bột</b><span>326.000₫</span></div>
+                <div class="mini-product"><img src="assets/mc3.webp" alt="Cà phê MC3"><b>Cà phê MC3</b><span>231.000₫</span></div>
+                <div class="mini-product"><img src="assets/culi.webp" alt="Cà phê Culi"><b>Cà phê Culi hạt</b><span>252.000₫</span></div>
+              </div>
+              <div class="app-tabbar"><div class="app-tab"><span>⌂</span>Trang chủ</div><div class="app-tab active"><span>▦</span>Sản phẩm</div><div class="app-tab"><span>♡</span>Ưu đãi</div><div class="app-tab"><span>♙</span>Cá nhân</div></div>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft-section" id="member">
+      <div class="container tier-layout">
+        <div class="device-stage">
+          <div class="phone">
+            <div class="phone-screen"><div class="phone-notch"></div><div class="phone-scroll">
+              <div class="phone-status"><span>9:41</span><span>●●●  ▰</span></div>
+              <div class="app-top"><div class="app-brand"><img src="assets/metrang-mark.webp" alt=""><span>METRANG COFFEE</span></div><div class="app-avatar">NP</div></div>
+              <div class="screen-title">Hạng thành viên của bạn</div>
+              <div class="points-card"><div class="tier"><span>✦ HẠNG BẠC</span><span>›</span></div><div class="points-big">1.250</div><small>Điểm tích lũy</small><div class="progress-track"><i></i></div><small class="points-next-note">Còn 750 điểm để tới hạng tiếp theo</small></div>
+              <div class="app-section-title tier-heading">Các hạng thành viên</div>
+              <div class="tier-list"><div class="tier-row"><span class="tier-icon">♙</span><div><b>Thành viên</b><small>Quyền lợi cơ bản</small></div><em>ĐÃ MỞ</em></div><div class="tier-row"><span class="tier-icon">✦</span><div><b>Bạc</b><small>Ưu đãi dành riêng</small></div><em>HIỆN TẠI</em></div><div class="tier-row"><span class="tier-icon">♛</span><div><b>Vàng</b><small>Đặc quyền nâng cao</small></div><em>750 điểm nữa</em></div></div>
+              <div class="app-section-title">Lịch sử điểm <a href="#member">Xem tất cả ›</a></div>
+              <div class="activity-row">Mua hàng tại cửa hàng <b>+120 điểm</b></div>
+              <div class="app-tabbar"><div class="app-tab"><span>⌂</span>Trang chủ</div><div class="app-tab"><span>▦</span>Sản phẩm</div><div class="app-tab"><span>♡</span>Ưu đãi</div><div class="app-tab active"><span>♙</span>Cá nhân</div></div>
+            </div></div>
+          </div>
+        </div>
+        <div>
+          <span class="section-number">02</span>
+          <div class="section-head section-subhead space-below">
+            <div class="eyebrow">Điểm thưởng · Hạng · Lịch sử</div>
+            <h2>Quyền lợi thành viên luôn trong tầm tay</h2>
+            <p>Khách hàng xem điểm hiện có, hạng thành viên, tiến trình lên hạng và lịch sử tích điểm ngay trong Mini App.</p>
+          </div>
+          <div class="tier-explainer">
+            <h3>Khách biết mình đang ở đâu và sẽ nhận gì tiếp theo.</h3>
+            <ul class="tier-bullets"><li><span class="check">✓</span><span>Xem số điểm và hạng hiện tại.</span></li><li><span class="check">✓</span><span>Hiểu điều kiện đạt hạng kế tiếp.</span></li><li><span class="check">✓</span><span>Theo dõi lịch sử đơn hàng và điểm thưởng.</span></li><li><span class="check">✓</span><span>Nhận thông báo tự động khi đạt mốc hạng mới.</span></li></ul>
+            <p class="small-note note-spaced">Điểm, tên hạng và ngưỡng lên hạng trong hình chỉ là dữ liệu mẫu để minh họa.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="voucher">
+      <div class="container">
+        <span class="section-number">03</span>
+        <div class="section-head section-subhead">
+          <div class="eyebrow">Khởi tạo · Điều kiện · Sử dụng</div>
+          <h2>Voucher đi từ thiết lập đến quầy thanh toán</h2>
+          <p>Voucher có thể được khởi tạo từ iPOS hoặc CDP. CDP đảm nhiệm việc xác định nhóm khách và điều kiện phát hành; khách nhận, tra cứu và mở voucher trên Mini App để sử dụng tại cửa hàng.</p>
+        </div>
+
+        <div class="process-band">
+          <div class="process-step"><span class="step-num">BƯỚC 01</span><b>Khởi tạo ưu đãi</b><p>Thiết lập voucher tại iPOS hoặc CNV CDP theo cách vận hành đã thống nhất.</p></div>
+          <div class="process-step"><span class="step-num">BƯỚC 02</span><b>Đặt điều kiện nhận</b><p>Trong CDP, chọn phân khúc hoặc sự kiện làm điều kiện phát hành.</p></div>
+          <div class="process-step"><span class="step-num">BƯỚC 03</span><b>Khách mở voucher</b><p>Khách vào Mini App, chọn Ưu đãi và mở voucher cần sử dụng.</p></div>
+          <div class="process-step"><span class="step-num">BƯỚC 04</span><b>Đổi tại cửa hàng</b><p>Nhân viên kiểm tra mã QR và áp dụng ưu đãi theo điều kiện.</p></div>
+        </div>
+
+        <div class="system-connection">
+          <div class="connection-title"><span class="tag">KẾT NỐI DỮ LIỆU</span><h3>iPOS CRM ↔ CNV CDP</h3><p>Dữ liệu khách hàng, đơn hàng và sản phẩm từ hệ thống iPOS được kết nối về CNV CDP theo phạm vi tích hợp trong báo giá. CDP dùng dữ liệu để phân nhóm và triển khai chăm sóc.</p></div>
+          <div class="connection-flow" aria-label="Sơ đồ kết nối iPOS, CNV CDP và Zalo Mini App">
+            <div class="system-node"><img src="assets/ipos-logo.webp" alt="iPOS"><strong>iPOS CRM</strong><small>Hồ sơ · Đơn hàng · Sản phẩm</small></div>
+            <div class="flow-arrow">→</div>
+            <div class="system-node cdp"><strong>CNV CDP</strong><small>Hợp nhất dữ liệu · Segment · Automation</small><div class="data-chips"><span>Khách hàng</span><span>Đơn hàng</span><span>Sản phẩm</span></div></div>
+            <div class="flow-arrow">→</div>
+            <div class="system-node"><div class="system-icon-zalo">◉</div><strong>Zalo Mini App</strong><small>Điểm · Hạng · Voucher</small></div>
+          </div>
+        </div>
+
+        <div class="voucher-builder">
+          <div class="builder-panel">
+            <span class="tag">GIAO DIỆN QUẢN TRỊ · MINH HỌA</span>
+            <h3>Tạo ưu đãi và xác định ai đủ điều kiện nhận</h3>
+            <div class="field"><label>NƠI KHỞI TẠO VOUCHER</label><div class="choice-row"><div class="choice active"><b>iPOS CRM</b><small>Khởi tạo theo chương trình tại hệ thống bán hàng</small></div><div class="choice"><b>CNV CDP</b><small>Khởi tạo trong chiến dịch chăm sóc khách hàng</small></div></div></div>
+            <div class="field"><label>TÊN CHƯƠNG TRÌNH</label><div class="fake-input">Ưu đãi dành cho thành viên Metrang</div></div>
+            <div class="field"><label>ĐIỀU KIỆN PHÁT HÀNH · CẤU HÌNH TRONG CDP</label><div class="rule-card"><i>◉</i><div><b>Chọn đúng nhóm khách</b><small>Ví dụ: theo hạng, lịch sử mua hàng hoặc tương tác Mini App</small></div></div><div class="rule-card"><i>◷</i><div><b>Chọn sự kiện kích hoạt</b><small>Ví dụ: sinh nhật, đạt hạng mới hoặc mốc giao dịch</small></div></div></div>
+            <div class="admin-note">Luồng đồng bộ và cách nhân viên xác nhận voucher tại quầy cần được chốt theo cấu hình iPOS thực tế của Metrang.</div>
+          </div>
+          <div class="builder-side">
+            <div class="phone">
+              <div class="phone-screen"><div class="phone-notch"></div><div class="phone-scroll">
+                <div class="phone-status"><span>9:41</span><span>●●●  ▰</span></div><div class="app-top"><div class="app-brand"><img src="assets/metrang-mark.webp" alt=""><span>METRANG COFFEE</span></div><div class="app-avatar">NP</div></div>
+                <div class="screen-title">Ưu đãi của bạn</div>
+                <div class="offer-tile"><div class="offer-top"><span>METRANG MEMBER</span><span>ĐANG CÓ HIỆU LỰC</span></div><strong>Ưu đãi dành cho thành viên</strong><small>Áp dụng theo điều kiện chương trình</small><div class="offer-code">MTRG · 6SỐ</div><div class="qr-box"><span>QR MINH HỌA</span></div><small class="qr-instruction">Mở mã tại quầy để nhân viên kiểm tra</small></div>
+                <div class="offer-tile"><div class="offer-top"><span>ƯU ĐÃI MỚI</span><span>›</span></div><strong>Khám phá thêm quyền lợi</strong><small>Danh sách voucher đang áp dụng</small></div>
+                <div class="app-tabbar"><div class="app-tab"><span>⌂</span>Trang chủ</div><div class="app-tab"><span>▦</span>Sản phẩm</div><div class="app-tab active"><span>♡</span>Ưu đãi</div><div class="app-tab"><span>♙</span>Cá nhân</div></div>
+              </div></div>
+            </div>
+            <p class="small-note note-centered">Trang chủ → Ưu đãi → Danh sách voucher → Mở voucher có mã QR</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section game-section" id="game">
+      <div class="container">
+        <span class="section-number game-number">04</span>
+        <div class="section-head section-subhead">
+          <div class="eyebrow">Gamification · Tương tác · Voucher</div>
+          <h2>Chơi game nhận voucher</h2>
+          <p>Một hoạt động tương tác trong Mini App giúp khách có lý do quay lại, tham gia chương trình và nhận ưu đãi theo điều kiện Metrang thiết lập.</p>
+        </div>
+        <div class="game-grid">
+          <div class="game-visual">
+            <div class="game-card"><div class="game-screen"><div class="game-brand">METRANG COFFEE</div><div class="game-cup">☕</div><h3>Vòng quay<br>thân quen</h3><p>Thử vận may và khám phá ưu đãi dành cho bạn</p><span class="btn game-button">QUAY NGAY</span></div></div>
+            <div class="game-wheel"><span>GO</span></div>
+          </div>
+          <div>
+            <div class="game-result"><span class="tag">MÀN HÌNH KẾT QUẢ · VOUCHER</span><b>Chúc mừng! Bạn nhận được một ưu đãi.</b><p>Voucher được lưu vào danh sách Ưu đãi trên Mini App để khách mở mã QR khi tới cửa hàng.</p></div>
+            <div class="game-detail"><div><span>1</span><div>Khách mở trò chơi từ Trang chủ hoặc thông điệp chiến dịch.</div></div><div><span>2</span><div>CDP có thể cấp lượt chơi theo điều kiện và nhóm khách phù hợp.</div></div><div><span>3</span><div>Kết quả hợp lệ được gắn với quyền lợi/voucher đã cấu hình.</div></div><div><span>4</span><div>Khách xem voucher trong Mini App và đưa mã cho nhân viên tại quầy.</div></div></div>
+            <p class="small-note note-game">Gamification là add-on trong báo giá. Cơ chế trò chơi, số lượt và danh sách phần thưởng sẽ được xác nhận trước khi triển khai.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft-section" id="automation">
+      <div class="container">
+        <span class="section-number">05</span>
+        <div class="section-head section-subhead">
+          <div class="eyebrow">CNV CDP · Tự động hóa chăm sóc</div>
+          <h2>Gửi đúng lời nhắn vào đúng thời điểm</h2>
+          <p>Kịch bản được kích hoạt từ hồ sơ, giao dịch, điểm, hạng hoặc hành vi Mini App được kết nối. Nội dung dưới đây là bản mẫu để định hướng cách giao tiếp.</p>
+        </div>
+        <div class="message-grid">
+          <article class="message-card"><div class="message-meta"><b>Chúc mừng sinh nhật</b><span class="message-channel">Zalo OA / ZNS / Mini App</span></div><div class="chat-bubble">Chúc mừng sinh nhật <strong>Nguyễn Phi</strong>! 🎂<br><br>Metrang gửi bạn một món quà nhỏ để tháng sinh nhật thêm trọn vị. Mở Mini App để nhận voucher ưu đãi của bạn nhé.<br><a class="chat-cta" href="#voucher">Nhận voucher sinh nhật</a></div><div class="trigger"><i></i>Kích hoạt theo ngày sinh trong hồ sơ thành viên</div></article>
+          <article class="message-card"><div class="message-meta"><b>Thông báo lên hạng</b><span class="message-channel">Zalo OA / ZNS / Mini App</span></div><div class="chat-bubble">Chúc mừng <strong>Nguyễn Phi</strong> đã trở thành thành viên <strong>hạng Vàng</strong> của Metrang! ✨<br><br>Quyền lợi mới đã được cập nhật trong hồ sơ thành viên. Ghé Mini App để xem điểm và ưu đãi dành riêng cho bạn.<br><a class="chat-cta" href="#member">Xem quyền lợi thành viên</a></div><div class="trigger"><i></i>Kích hoạt khi điểm/hạng thay đổi</div></article>
+          <article class="message-card"><div class="message-meta"><b>Chào mừng thành viên mới</b><span class="message-channel">Zalo OA / Mini App</span></div><div class="chat-bubble">Chào mừng <strong>Nguyễn Phi</strong> đến với cộng đồng Metrang Coffee! ☕<br><br>Thông tin thành viên, điểm tích lũy và các ưu đãi của bạn đã sẵn sàng. Khám phá Mini App để bắt đầu hành trình cùng Metrang.<br><a class="chat-cta" href="#miniapp">Mở Mini App</a></div><div class="trigger"><i></i>Kích hoạt sau khi khách đăng ký thành viên</div></article>
+          <article class="message-card"><div class="message-meta"><b>Mời khách quay lại</b><span class="message-channel">Zalo OA / ZNS</span></div><div class="chat-bubble">Metrang nhớ bạn, <strong>Nguyễn Phi</strong>! ☕<br><br>Lâu rồi mình chưa gặp nhau. Ghé Metrang thưởng thức ly cà phê yêu thích và xem ưu đãi hiện có dành cho bạn nhé.<br><a class="chat-cta" href="#voucher">Xem ưu đãi</a></div><div class="trigger"><i></i>Kích hoạt khi khách không phát sinh giao dịch trong khoảng thời gian đã chọn</div></article>
+        </div>
+        <p class="message-footnote">Kênh gửi, mẫu tin, voucher đi kèm và ngưỡng thời gian sẽ được cấu hình theo quyền sử dụng Zalo, dữ liệu iPOS và mục tiêu chiến dịch của Metrang.</p>
+      </div>
+    </section>
+
+    <section class="section pricing-section" id="investment">
+      <div class="container">
+        <span class="section-number">06</span>
+        <div class="section-head section-subhead">
+          <div class="eyebrow">Ngân sách theo báo giá ngày 22.10.2026</div>
+          <h2>Khoản đầu tư dự kiến</h2>
+          <p>Ngân sách tổng hợp theo các hạng mục trong báo giá CNV CDP dành cho Metrang Coffee. Đơn giá hiển thị theo VND.</p>
+        </div>
+        <div class="quote-banner"><div><div class="label">Tổng đầu tư năm đầu sau ưu đãi</div><h3>Triển khai hệ thống Loyalty,<br>CDP, Mini App và kết nối iPOS</h3></div><div class="quote-total"><strong>58,2 triệu</strong><small>VND · đã trừ ưu đãi 10 triệu</small></div></div>
+        <div class="quote-table" role="table" aria-label="Bảng ngân sách đầu tư">
+          <div class="quote-table-head" role="row"><span>Hạng mục</span><span>Năm đầu</span><span>Gia hạn/năm</span></div>
+          <div class="quote-row" role="row"><div><b>Tính năng ngành hàng / mua hàng trên Mini App</b><small>Đề xuất sản phẩm, quản lý sản phẩm và đơn hàng</small></div><div class="money">10.800.000₫</div><div class="money">5.400.000₫</div></div>
+          <div class="quote-row" role="row"><div><b>CNV CDP Data Hub</b><small>Quản trị dữ liệu khách hàng và chiến dịch</small></div><div class="money">24.000.000₫</div><div class="money">24.000.000₫</div></div>
+          <div class="quote-row" role="row"><div><b>Open API CNV</b><small>Hỗ trợ trao đổi kỹ thuật qua email</small></div><div class="money">8.400.000₫</div><div class="money">8.400.000₫</div></div>
+          <div class="quote-row" role="row"><div><b>Gamification Marketing</b><small>Trò chơi trực tuyến, chơi game nhận quà</small></div><div class="money">15.000.000₫</div><div class="money">15.000.000₫</div></div>
+          <div class="quote-row" role="row"><div><b>App nhân viên Loyalty Hub</b><small>10 tài khoản miễn phí trọn đời; từ tài khoản thứ 11 tính phí theo báo giá</small></div><div class="money">10.000.000₫</div><div class="money">0₫</div></div>
+        </div>
+        <div class="quote-totals">
+          <div class="quote-stat"><span>Tổng trước ưu đãi · năm đầu</span><b>68.200.000₫</b></div>
+          <div class="quote-stat highlight-stat"><span>Ưu đãi giảm riêng</span><b>−10.000.000₫</b></div>
+          <div class="quote-stat"><span>Gia hạn dự kiến từ năm tiếp theo</span><b>52.800.000₫/năm</b></div>
+        </div>
+        <div class="pricing-notes"><div class="pricing-note"><b>Phí chưa bao gồm:</b> phí gửi tin theo biểu phí Zalo/nền tảng và phí nâng cấp ZCA (nếu có).</div><div class="pricing-note"><b>Lưu ý:</b> Ưu đãi 10 triệu được ghi trong báo giá cho chi phí hạ tầng năm đầu và App nhân viên. Hạng mục, điều kiện tích hợp iPOS và cấu hình voucher cần được xác nhận khi chốt phạm vi triển khai.</div></div>
+        <p class="small-note note-pricing">Số liệu lấy từ báo giá CNVCDP – Metrang Coffee ngày 22/10/2026. Proposal không thay thế báo giá chính thức; vui lòng đối chiếu bản báo giá đã nhận khi ký kết.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner"><a class="brand-lockup" href="#top"><img class="brand-mark" src="assets/metrang-mark.webp" alt="Metrang Coffee"><span class="brand-word">METRANG<small>COFFEE</small></span></a><p>Đề xuất giải pháp Loyalty & CDP<br>CNV Holdings · 094.3452.098 · phinv1@cnv.vn</p></div>
+      <div class="footer-thanks">TRÂN TRỌNG CẢM ƠN QUÝ KHÁCH</div>
+    </div>
+  </footer>
+</body>
+</html>
