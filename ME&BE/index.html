@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Đề xuất giải pháp bán hàng và chăm sóc khách hàng trên Zalo dành cho cửa hàng mẹ và bé.">
+  <title>Giải pháp bán hàng & CSKH trên Zalo | CNV CDP</title>
+  <style>
+    :root {
+      --cnv-pink: #f27f9e;
+      --cnv-rose: #d82755;
+      --cnv-navy: #27344a;
+      --cnv-blue: #7167e8;
+      --cnv-mint: #44bfc2;
+      --ink: #202b3d;
+      --muted: #687487;
+      --line: #e7e9ef;
+      --paper: #fff;
+      --soft: #f8f9fc;
+      --pink-wash: #fff1f5;
+      --blue-wash: #f1f1ff;
+      --container: 1180px;
+      --gutter: clamp(20px, 5vw, 72px);
+      --section-space: clamp(76px, 9vw, 126px);
+      --radius-lg: 28px;
+      --radius-md: 20px;
+      --shadow: 0 24px 70px rgba(39, 52, 74, .10);
+      --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font: 400 16px/1.65 var(--font); }
+    img, video { display: block; max-width: 100%; }
+    img { height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(calc(100% - var(--gutter) * 2), var(--container)); margin-inline: auto; }
+    .site-header { position: sticky; inset: 0 0 auto; z-index: 20; height: 76px; background: rgba(255,255,255,.92); border-bottom: 1px solid rgba(39,52,74,.08); backdrop-filter: blur(16px); }
+    .header-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; flex: 0 0 auto; }
+    .brand img { width: 46px; height: 46px; object-fit: contain; }
+    .brand-text { display: grid; line-height: 1.1; }
+    .brand-text strong { color: var(--cnv-navy); font-size: 16px; letter-spacing: -.04em; }
+    .brand-text small { color: var(--muted); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
+    .nav { display: flex; align-items: center; gap: clamp(16px, 2.4vw, 34px); color: #4e596b; font-size: 13px; font-weight: 700; }
+    .nav a { transition: color .2s ease; }
+    .nav a:hover { color: var(--cnv-rose); }
+    .header-cta, .button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: 0; border-radius: 999px; background: var(--cnv-rose); color: white; font-weight: 800; box-shadow: 0 10px 24px rgba(216,39,85,.2); transition: transform .2s ease, box-shadow .2s ease; }
+    .header-cta { padding: 11px 18px; font-size: 12px; white-space: nowrap; }
+    .button { padding: 15px 24px; font-size: 14px; }
+    .header-cta:hover, .button:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(216,39,85,.26); }
+    .hero { position: relative; overflow: hidden; padding: clamp(54px, 8vw, 104px) 0 clamp(74px, 9vw, 120px); background: radial-gradient(ellipse at 83% 20%, rgba(113,103,232,.12), transparent 32%), radial-gradient(ellipse at 5% 15%, rgba(242,127,158,.18), transparent 34%), linear-gradient(180deg,#fff 0%,#fffafd 100%); }
+    .hero:after { content: ""; position: absolute; width: 470px; height: 470px; right: -200px; bottom: -275px; border-radius: 50%; border: 1px solid rgba(242,127,158,.24); box-shadow: 0 0 0 30px rgba(242,127,158,.035), 0 0 0 70px rgba(113,103,232,.025); }
+    .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: clamp(44px, 7vw, 96px); align-items: center; position: relative; z-index: 1; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--cnv-rose); font-size: 11px; font-weight: 850; letter-spacing: .15em; text-transform: uppercase; }
+    .eyebrow:before { content: ""; width: 24px; height: 2px; background: currentColor; border-radius: 5px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 720px; margin: 22px 0 22px; color: var(--cnv-navy); font-size: clamp(44px, 6.7vw, 82px); line-height: .99; letter-spacing: -.072em; font-weight: 850; }
+    h1 em { color: var(--cnv-rose); font-style: normal; }
+    .hero-copy { max-width: 620px; margin-bottom: 30px; color: #586579; font-size: clamp(17px, 1.7vw, 20px); line-height: 1.65; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+    .text-link { display: inline-flex; align-items: center; gap: 8px; color: var(--cnv-navy); font-size: 13px; font-weight: 800; padding: 12px 4px; }
+    .text-link span { color: var(--cnv-rose); font-size: 20px; }
+    .hero-note { display: flex; align-items: center; gap: 12px; margin-top: 34px; color: var(--muted); font-size: 12px; }
+    .hero-note b { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--blue-wash); color: var(--cnv-blue); font-size: 13px; }
+    .hero-visual { position: relative; min-height: 510px; display: grid; place-items: center; }
+    .hero-orb { position: absolute; width: min(92%, 465px); aspect-ratio: 1; border-radius: 50%; background: linear-gradient(145deg, rgba(242,127,158,.18), rgba(113,103,232,.11)); filter: blur(1px); }
+    .hero-phone { position: relative; width: min(67%, 288px); padding: 9px; border: 5px solid #2c3444; border-radius: 38px; background: #fff; box-shadow: 0 35px 80px rgba(39,52,74,.23); transform: rotate(3deg); }
+    .hero-phone img { width: 100%; aspect-ratio: 710 / 1830; object-fit: cover; border-radius: 25px; }
+    .float-card { position: absolute; z-index: 2; display: flex; align-items: center; gap: 12px; padding: 13px 16px; border: 1px solid rgba(255,255,255,.9); border-radius: 17px; background: rgba(255,255,255,.94); box-shadow: var(--shadow); color: var(--cnv-navy); font-size: 12px; font-weight: 800; line-height: 1.35; }
+    .float-card small { display: block; color: var(--muted); font-size: 10px; font-weight: 600; }
+    .float-icon { display: grid; place-items: center; flex: 0 0 36px; height: 36px; border-radius: 12px; background: var(--pink-wash); color: var(--cnv-rose); font-size: 18px; }
+    .float-card.one { top: 12%; left: 1%; }
+    .float-card.two { right: -2%; bottom: 17%; }
+    .float-card.three { left: 0; bottom: 5%; }
+    .proof-strip { position: relative; z-index: 3; margin-top: -34px; }
+    .proof-inner { display: grid; grid-template-columns: repeat(3,1fr); overflow: hidden; border: 1px solid var(--line); border-radius: 20px; background: #fff; box-shadow: 0 15px 42px rgba(39,52,74,.07); }
+    .proof-item { display: flex; align-items: center; gap: 13px; padding: 20px clamp(16px,2.4vw,30px); }
+    .proof-item + .proof-item { border-left: 1px solid var(--line); }
+    .proof-icon { display: grid; place-items: center; width: 38px; height: 38px; flex: 0 0 38px; border-radius: 13px; background: var(--blue-wash); color: var(--cnv-blue); font-weight: 900; }
+    .proof-item:nth-child(2) .proof-icon { background: var(--pink-wash); color: var(--cnv-rose); }
+    .proof-item:nth-child(3) .proof-icon { background: #eaf8f7; color: #198e91; }
+    .proof-item strong { display: block; font-size: 12px; line-height: 1.3; }
+    .proof-item small { display: block; margin-top: 3px; color: var(--muted); font-size: 10px; line-height: 1.4; }
+    .section { padding: var(--section-space) 0; }
+    .section.soft { background: var(--soft); }
+    .section-head { max-width: 760px; margin-bottom: clamp(34px, 5vw, 58px); }
+    .section-head.center { margin-inline: auto; text-align: center; }
+    .section-head.center .eyebrow { justify-content: center; }
+    h2 { margin: 14px 0 16px; color: var(--cnv-navy); font-size: clamp(34px, 5vw, 58px); line-height: 1.05; letter-spacing: -.06em; font-weight: 850; }
+    .section-head p { margin-bottom: 0; color: var(--muted); font-size: 16px; }
+    .number-tag { display: inline-grid; place-items: center; width: 34px; height: 34px; margin-right: 9px; border-radius: 11px; background: var(--pink-wash); color: var(--cnv-rose); font-size: 13px; letter-spacing: 0; vertical-align: 5px; }
+    .screen-grid { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 17px; align-items: start; }
+    .screen-card { min-width: 0; padding: 12px; border: 1px solid var(--line); border-radius: 22px; background: #fff; box-shadow: 0 12px 35px rgba(39,52,74,.045); transition: transform .25s ease, box-shadow .25s ease; }
+    .screen-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .screen-image { position: relative; overflow: hidden; border-radius: 15px; background: #f3f4f7; }
+    .screen-image img { width: 100%; height: 310px; object-fit: cover; object-position: top center; cursor: zoom-in; }
+    .screen-index { position: absolute; top: 10px; left: 10px; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,.94); color: var(--cnv-rose); font-size: 11px; font-weight: 900; box-shadow: 0 4px 14px rgba(39,52,74,.12); }
+    .screen-card h3 { margin: 14px 4px 5px; color: var(--cnv-navy); font-size: 14px; line-height: 1.35; }
+    .screen-card p { margin: 0 4px 6px; color: var(--muted); font-size: 11px; line-height: 1.5; }
+    .section-note { display: flex; align-items: flex-start; gap: 12px; max-width: 760px; margin-top: 28px; padding: 16px 18px; border: 1px solid #e5e4ff; border-radius: 16px; background: var(--blue-wash); color: #55527e; font-size: 12px; line-height: 1.55; }
+    .section-note b { color: var(--cnv-blue); }
+    .flow-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 18px; counter-reset: flow; }
+    .flow-card { position: relative; min-width: 0; border: 1px solid var(--line); border-radius: 22px; background: #fff; box-shadow: 0 12px 34px rgba(39,52,74,.05); counter-increment: flow; }
+    .flow-card:not(:last-child):after { content: "→"; position: absolute; z-index: 2; top: 42%; right: -18px; display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 50%; background: #fff; color: var(--cnv-rose); font-size: 18px; font-weight: 900; box-shadow: 0 5px 18px rgba(39,52,74,.1); }
+    .flow-image { position: relative; padding: 12px 12px 0; background: linear-gradient(140deg,#fff4f7,#f4f4ff); }
+    .flow-image img { width: 100%; height: 310px; object-fit: contain; object-position: top center; border-radius: 13px; cursor: zoom-in; background: white; }
+    .flow-content { padding: 18px; }
+    .flow-step { color: var(--cnv-rose); font-size: 10px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+    .flow-content h3 { margin: 8px 0 7px; color: var(--cnv-navy); font-size: 16px; line-height: 1.25; }
+    .flow-content p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.55; }
+    .flow-callout { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: center; margin-top: 26px; padding: 20px 24px; border-radius: 18px; background: var(--cnv-navy); color: white; }
+    .flow-callout .check { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 14px; background: rgba(255,255,255,.12); color: #ffb1c5; font-size: 19px; }
+    .flow-callout strong { display: block; margin-bottom: 3px; font-size: 14px; }
+    .flow-callout p { margin: 0; color: rgba(255,255,255,.7); font-size: 12px; }
+    .video-layout { display: grid; grid-template-columns: .82fr 1.18fr; gap: clamp(38px,7vw,92px); align-items: center; }
+    .video-panel { position: relative; overflow: hidden; padding: 12px; border: 1px solid var(--line); border-radius: 30px; background: linear-gradient(140deg,#fff0f5,#f0f0ff); box-shadow: var(--shadow); }
+    .video-panel video { width: 100%; max-height: 680px; aspect-ratio: 720 / 1558; object-fit: contain; border-radius: 21px; background: #171b24; }
+    .video-label { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px; padding: 8px 12px; border-radius: 999px; background: var(--blue-wash); color: var(--cnv-blue); font-size: 10px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+    .video-copy h2 { font-size: clamp(36px, 4.5vw, 54px); }
+    .video-copy > p { color: var(--muted); font-size: 15px; }
+    .steps { display: grid; gap: 13px; margin: 26px 0 30px; padding: 0; list-style: none; }
+    .steps li { display: grid; grid-template-columns: 32px 1fr; gap: 12px; align-items: start; color: #49566b; font-size: 13px; }
+    .steps li b { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 10px; background: var(--pink-wash); color: var(--cnv-rose); font-size: 11px; }
+    .messages-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 22px; }
+    .message-card { display: grid; grid-template-columns: minmax(0,1.04fr) minmax(0,.96fr); align-items: center; gap: 22px; min-width: 0; padding: clamp(14px,2vw,22px); border: 1px solid var(--line); border-radius: 24px; background: white; box-shadow: 0 13px 36px rgba(39,52,74,.05); }
+    .message-visual { overflow: hidden; border-radius: 16px; background: #f7f8fa; }
+    .message-visual img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; cursor: zoom-in; }
+    .message-copy .message-type { display: inline-block; margin-bottom: 10px; color: var(--cnv-rose); font-size: 10px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+    .message-copy h3 { margin: 0 0 8px; color: var(--cnv-navy); font-size: 20px; line-height: 1.2; letter-spacing: -.03em; }
+    .message-copy p { margin: 0 0 14px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .message-purpose { display: inline-flex; align-items: center; gap: 7px; padding: 7px 10px; border-radius: 999px; background: #f6f4ff; color: #625bb8; font-size: 10px; font-weight: 800; }
+    .close-line { height: 1px; margin: 56px 0 0; background: linear-gradient(90deg,transparent,var(--line),transparent); }
+    .footer { position: relative; overflow: hidden; padding: 70px 0 32px; background: #f8f9fc; }
+    .footer:before { content: ""; position: absolute; width: 420px; height: 420px; top: -280px; left: calc(50% - 210px); border-radius: 50%; background: rgba(242,127,158,.12); filter: blur(6px); }
+    .footer-inner { position: relative; display: grid; justify-items: center; text-align: center; }
+    .footer .brand img { width: 62px; height: 62px; }
+    .footer .brand-text strong { font-size: 20px; }
+    .footer .brand-text small { font-size: 10px; }
+    .footer p { max-width: 520px; margin: 20px 0 26px; color: var(--muted); font-size: 13px; }
+    .footer-thanks { color: var(--cnv-navy); font-size: clamp(27px,4vw,42px); line-height: 1.1; letter-spacing: -.055em; font-weight: 850; }
+    .footer-rule { width: min(100%, 760px); height: 1px; margin: 50px 0 20px; background: var(--line); }
+    .copyright { color: #9aa2ae; font-size: 10px; }
+    .lightbox { position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; padding: 28px; background: rgba(20,28,42,.92); }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: min(94vw, 1500px); max-height: 90vh; object-fit: contain; border-radius: 10px; }
+    .lightbox button { position: absolute; top: 18px; right: 22px; display: grid; place-items: center; width: 46px; height: 46px; border: 0; border-radius: 50%; background: white; color: var(--cnv-navy); font-size: 25px; cursor: pointer; }
+    @media (max-width: 1020px) {
+      .nav { gap: 14px; font-size: 11px; }
+      .header-cta { padding: 10px 13px; }
+      .screen-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+      .flow-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .flow-card:nth-child(2):after { display: none; }
+      .flow-card:nth-child(3):after { content: "↓"; }
+      .screen-image img { height: 350px; }
+    }
+    @media (max-width: 740px) {
+      :root { --gutter: 20px; --section-space: 76px; }
+      .site-header { height: 68px; }
+      .brand img { width: 40px; height: 40px; }
+      .brand-text strong { font-size: 14px; }
+      .nav { display: none; }
+      .header-cta { font-size: 10px; padding: 9px 12px; }
+      .hero { padding-top: 52px; }
+      .hero-grid, .video-layout { grid-template-columns: 1fr; }
+      .hero-grid { gap: 20px; }
+      .hero-visual { min-height: 420px; margin-top: -5px; }
+      .hero-phone { width: min(63%,260px); }
+      .float-card.one { top: 10%; left: 0; }
+      .float-card.two { right: -1%; bottom: 20%; }
+      .float-card.three { left: -2%; bottom: 4%; }
+      .proof-inner { grid-template-columns: 1fr; }
+      .proof-item + .proof-item { border-left: 0; border-top: 1px solid var(--line); }
+      .proof-item { padding: 14px 18px; }
+      .screen-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+      .screen-card { padding: 8px; border-radius: 17px; }
+      .screen-image img { height: 270px; }
+      .screen-card h3 { font-size: 12px; }
+      .screen-card p { font-size: 10px; }
+      .flow-grid { grid-template-columns: 1fr; gap: 22px; }
+      .flow-image { padding: 8px 8px 0; }
+      .flow-image img { height: 265px; }
+      .flow-content { padding: 14px; }
+      .flow-content h3 { font-size: 14px; }
+      .flow-content p { font-size: 11px; }
+      .flow-card:not(:last-child):after { content: "↓"; top: auto; right: auto; bottom: -27px; left: 50%; width: 30px; height: 30px; transform: translateX(-50%); }
+      .flow-card:nth-child(2):after { display: grid; }
+      .video-layout { gap: 36px; }
+      .video-panel { width: min(100%, 460px); margin-inline: auto; }
+      .messages-grid { grid-template-columns: 1fr; }
+      .message-card { grid-template-columns: minmax(0,.95fr) minmax(0,1.05fr); gap: 15px; padding: 12px; }
+      .message-copy h3 { font-size: 17px; }
+      .message-copy p { font-size: 11px; }
+      .footer { padding-top: 58px; }
+    }
+    @media (max-width: 420px) {
+      h1 { font-size: 43px; }
+      .screen-image img { height: 224px; }
+      .flow-image img { height: 225px; }
+      .flow-content { padding: 12px; }
+      .flow-content h3 { font-size: 13px; }
+      .flow-content p { font-size: 10px; }
+      .message-card { grid-template-columns: 1fr; }
+      .message-visual { max-height: 360px; }
+      .message-visual img { aspect-ratio: 1.15 / 1; object-fit: cover; }
+      .message-copy { padding: 2px 5px 5px; }
+      .float-card { padding: 10px 12px; font-size: 10px; }
+      .float-card small { font-size: 9px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *:before, *:after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="CNV CDP, đầu trang">
+        <img src="assets/cnv-logo.png" alt="Logo CNV CDP">
+        <span class="brand-text"><strong>CNV CDP</strong><small>Your partner in growth</small></span>
+      </a>
+      <nav class="nav" aria-label="Điều hướng chính">
+        <a href="#miniapp">Mini App</a>
+        <a href="#dynamic-action">Dynamic Action</a>
+        <a href="#home-screen">Màn hình chính</a>
+        <a href="#messages">Tin nhắn</a>
+      </nav>
+      <a class="header-cta" href="#miniapp">Khám phá giải pháp <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy-wrap">
+          <span class="eyebrow">Giải pháp cho cửa hàng mẹ & bé</span>
+          <h1>Bán hàng & chăm sóc khách hàng <em>trên Zalo.</em></h1>
+          <p class="hero-copy">Kết nối trải nghiệm mua sắm trên Zalo Mini App với các điểm chạm chăm sóc phù hợp — từ lời mời khách truy cập đến những tin nhắn giúp cửa hàng duy trì gắn kết.</p>
+          <div class="hero-actions">
+            <a class="button" href="#miniapp">Xem trải nghiệm Mini App <span aria-hidden="true">→</span></a>
+            <a class="text-link" href="#dynamic-action">Khám phá hành trình khách <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="hero-note"><b>✦</b><span>Một hành trình liền mạch: khám phá · mua sắm · quay lại</span></div>
+        </div>
+        <div class="hero-visual" aria-label="Minh họa trải nghiệm trên Zalo Mini App">
+          <div class="hero-orb"></div>
+          <div class="float-card one"><span class="float-icon">♡</span><span>Ưu đãi phù hợp<small>Dành cho mẹ và bé</small></span></div>
+          <div class="hero-phone"><img src="assets/miniapp-home.webp" alt="Trang chủ Zalo Mini App dành cho cửa hàng mẹ và bé"></div>
+          <div class="float-card two"><span class="float-icon">🛍</span><span>Mua sắm trên Zalo<small>Sản phẩm · đơn hàng · thành viên</small></span></div>
+          <div class="float-card three"><span class="float-icon">✉</span><span>Chăm sóc tự động<small>Gửi đúng thông điệp theo từng dịp</small></span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container proof-strip" aria-label="Tóm tắt giải pháp">
+      <div class="proof-inner">
+        <div class="proof-item"><span class="proof-icon">01</span><span><strong>Trưng bày và bán hàng</strong><small>Khám phá sản phẩm, ưu đãi và giỏ hàng</small></span></div>
+        <div class="proof-item"><span class="proof-icon">02</span><span><strong>Mời khách vào Mini App</strong><small>Dynamic Action dẫn khách tới điểm mua sắm</small></span></div>
+        <div class="proof-item"><span class="proof-icon">03</span><span><strong>Duy trì gắn kết</strong><small>Thông điệp theo thành viên và hành vi</small></span></div>
+      </div>
+    </div>
+
+    <section class="section" id="miniapp">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Trải nghiệm mua sắm trên Zalo</span>
+          <h2><span class="number-tag">01</span>Zalo Mini App cho cửa hàng mẹ & bé</h2>
+          <p>Một điểm đến để khách khám phá danh mục, xem thông tin sản phẩm, đặt hàng và theo dõi quyền lợi thành viên ngay trong Zalo.</p>
+        </div>
+        <div class="screen-grid">
+          <article class="screen-card">
+            <div class="screen-image"><span class="screen-index">01</span><img class="zoomable" src="assets/miniapp-home.webp" alt="Giao diện trang chủ Mini App với ưu đãi và lối tắt mua sắm"></div>
+            <h3>Trang chủ</h3><p>Ưu đãi, nhóm sản phẩm và lối tắt tới các chức năng chính.</p>
+          </article>
+          <article class="screen-card">
+            <div class="screen-image"><span class="screen-index">02</span><img class="zoomable" src="assets/miniapp-products.webp" alt="Giao diện danh mục nổi bật và sản phẩm sữa"></div>
+            <h3>Danh mục & sản phẩm</h3><p>Khám phá nhóm hàng như mẹ bầu, sữa, bỉm và chăm sóc bé.</p>
+          </article>
+          <article class="screen-card">
+            <div class="screen-image"><span class="screen-index">03</span><img class="zoomable" src="assets/miniapp-product-detail.webp" alt="Giao diện xem chi tiết sản phẩm và thao tác mua hàng"></div>
+            <h3>Chi tiết sản phẩm</h3><p>Thông tin, giá bán và thao tác thêm vào giỏ hoặc mua ngay.</p>
+          </article>
+          <article class="screen-card">
+            <div class="screen-image"><span class="screen-index">04</span><img class="zoomable" src="assets/miniapp-cart.webp" alt="Giao diện giỏ hàng với danh sách sản phẩm và tổng thanh toán"></div>
+            <h3>Giỏ hàng</h3><p>Kiểm tra sản phẩm, số lượng và tổng thanh toán trước khi đặt.</p>
+          </article>
+          <article class="screen-card">
+            <div class="screen-image"><span class="screen-index">05</span><img class="zoomable" src="assets/miniapp-member.webp" alt="Giao diện cá nhân với đơn hàng, điểm tích lũy và thông tin thành viên"></div>
+            <h3>Cá nhân & thành viên</h3><p>Theo dõi đơn hàng, điểm tích lũy, ưu đãi và thông tin tài khoản.</p>
+          </article>
+        </div>
+        <div class="section-note"><span aria-hidden="true">✦</span><span><b>Trải nghiệm tập trung:</b> khách có thể xem ưu đãi, tìm sản phẩm và quản lý thông tin mua sắm trong cùng một Mini App.</span></div>
+      </div>
+    </section>
+
+    <section class="section soft" id="dynamic-action">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow">Từ lời mời đến điểm mua sắm</span>
+          <h2><span class="number-tag">02</span>Mời khách hiện có truy cập Mini App</h2>
+          <p>Dynamic Action tạo một điểm chạm để cửa hàng mời khách để lại thông tin, mở Mini App và kết nối với OA.</p>
+        </div>
+        <div class="flow-grid">
+          <article class="flow-card">
+            <div class="flow-image"><img class="zoomable" src="assets/flow-dynamic-action.webp" alt="Form Dynamic Action mời khách nhận ưu đãi và truy cập Mini App"></div>
+            <div class="flow-content"><span class="flow-step">Bước 01</span><h3>Khách điền form</h3><p>Để lại tên, số điện thoại và giai đoạn của bé; chọn đồng ý nhận thông tin ưu đãi.</p></div>
+          </article>
+          <article class="flow-card">
+            <div class="flow-image"><img class="zoomable" src="assets/flow-zalo-permission.webp" alt="Màn hình xin phép truy cập thông tin tài khoản Zalo"></div>
+            <div class="flow-content"><span class="flow-step">Bước 02</span><h3>Cấp quyền thông tin</h3><p>Khách xác nhận chia sẻ thông tin Zalo theo yêu cầu hiển thị trên Mini App.</p></div>
+          </article>
+          <article class="flow-card">
+            <div class="flow-image"><img class="zoomable" src="assets/miniapp-home.webp" alt="Khách truy cập trang chủ Mini App của cửa hàng"></div>
+            <div class="flow-content"><span class="flow-step">Bước 03</span><h3>Khám phá Mini App</h3><p>Khách đến trang chủ để xem danh mục, sản phẩm, chương trình ưu đãi và thông tin thành viên.</p></div>
+          </article>
+          <article class="flow-card">
+            <div class="flow-image"><img class="zoomable" src="assets/flow-follow-oa.webp" alt="Lời mời khách quan tâm Official Account của cửa hàng"></div>
+            <div class="flow-content"><span class="flow-step">Bước 04</span><h3>Quan tâm OA</h3><p>Khách có thể quan tâm OA để theo dõi thông tin mới từ cửa hàng.</p></div>
+          </article>
+        </div>
+        <div class="flow-callout"><span class="check">✓</span><span><strong>Một hành trình rõ ràng, ít bước rời rạc</strong><p>Từ form Dynamic Action, khách được hướng dẫn qua các bước cần thiết để vào Mini App và kết nối với OA.</p></span></div>
+      </div>
+    </section>
+
+    <section class="section" id="home-screen">
+      <div class="container video-layout">
+        <div class="video-panel">
+          <video controls playsinline preload="metadata" poster="assets/miniapp-home.webp" aria-label="Video hướng dẫn đưa Mini App ra màn hình chính điện thoại">
+            <source src="assets/add-miniapp-to-home.mp4" type="video/mp4">
+            Trình duyệt của bạn không hỗ trợ phát video MP4.
+          </video>
+        </div>
+        <div class="video-copy">
+          <span class="video-label">Hướng dẫn trực quan · Video</span>
+          <span class="eyebrow">Giúp khách truy cập thuận tiện hơn</span>
+          <h2><span class="number-tag">03</span>Đưa Mini App ra màn hình chính</h2>
+          <p>Khách có thể tạo lối tắt để quay lại Mini App nhanh hơn trong những lần mua sắm tiếp theo.</p>
+          <ol class="steps">
+            <li><b>1</b><span>Mở Mini App của cửa hàng trong Zalo.</span></li>
+            <li><b>2</b><span>Mở menu thao tác của Mini App và chọn thêm ra màn hình chính.</span></li>
+            <li><b>3</b><span>Nhấn xác nhận để tạo biểu tượng truy cập trên điện thoại.</span></li>
+          </ol>
+          <a class="button" href="#messages">Xem các mẫu tin nhắn <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft" id="messages">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Chăm sóc theo từng thời điểm</span>
+          <h2><span class="number-tag">04</span>Tin nhắn gửi khách hàng</h2>
+          <p>Các mẫu minh họa cho những tình huống cửa hàng có thể ghi nhận và gửi thông điệp phù hợp tới từng khách hàng.</p>
+        </div>
+        <div class="messages-grid">
+          <article class="message-card">
+            <div class="message-visual"><img class="zoomable" src="assets/message-birthday.webp" alt="Mẫu tin nhắn chúc mừng sinh nhật khách hàng kèm voucher"></div>
+            <div class="message-copy"><span class="message-type">01 · Dịp đặc biệt</span><h3>Chúc mừng sinh nhật</h3><p>Gửi lời chúc và ưu đãi sinh nhật dành riêng cho khách hàng trong tháng.</p><span class="message-purpose">Tạo lý do ghé lại cửa hàng</span></div>
+          </article>
+          <article class="message-card">
+            <div class="message-visual"><img class="zoomable" src="assets/message-gold-tier.webp" alt="Mẫu tin nhắn thông báo khách hàng được nâng lên thành viên Vàng"></div>
+            <div class="message-copy"><span class="message-type">02 · Cột mốc thành viên</span><h3>Thông báo lên hạng</h3><p>Chúc mừng khách đạt hạng Vàng và giới thiệu quyền lợi dành cho thành viên.</p><span class="message-purpose">Ghi nhận sự gắn bó</span></div>
+          </article>
+          <article class="message-card">
+            <div class="message-visual"><img class="zoomable" src="assets/message-welcome.webp" alt="Mẫu tin nhắn chào mừng thành viên mới của cửa hàng mẹ và bé"></div>
+            <div class="message-copy"><span class="message-type">03 · Bắt đầu thành viên</span><h3>Chào mừng thành viên mới</h3><p>Giới thiệu cách tích điểm, theo dõi hạng và khám phá ưu đãi trên Mini App.</p><span class="message-purpose">Khuyến khích tương tác đầu tiên</span></div>
+          </article>
+          <article class="message-card">
+            <div class="message-visual"><img class="zoomable" src="assets/message-winback.webp" alt="Mẫu tin nhắn mời khách quay lại sau 60 ngày chưa mua hàng"></div>
+            <div class="message-copy"><span class="message-type">04 · Khách lâu chưa quay lại</span><h3>Mời khách quay lại</h3><p>Gửi lời nhắc và voucher cá nhân hóa khi khách đã lâu chưa phát sinh lượt mua mới.</p><span class="message-purpose">Kích hoạt mua lại</span></div>
+          </article>
+        </div>
+        <div class="close-line"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a class="brand" href="#top" aria-label="CNV CDP, về đầu trang">
+        <img src="assets/cnv-logo.png" alt="Logo CNV CDP">
+        <span class="brand-text"><strong>CNV CDP</strong><small>Your partner in growth</small></span>
+      </a>
+      <p>Giải pháp bán hàng và chăm sóc khách hàng trên Zalo dành cho cửa hàng mẹ và bé.</p>
+      <div class="footer-thanks">Trân trọng cảm ơn Quý khách</div>
+      <div class="footer-rule"></div>
+      <small class="copyright">© CNV CDP · Giải pháp tăng trưởng cùng khách hàng</small>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Xem ảnh phóng lớn">
+    <button type="button" aria-label="Đóng ảnh">×</button>
+    <img src="" alt="">
+  </div>
+  <script>
+    (() => {
+      const box = document.getElementById('lightbox');
+      const large = box.querySelector('img');
+      const close = () => { box.classList.remove('open'); large.src = ''; document.body.style.overflow = ''; };
+      document.querySelectorAll('img.zoomable').forEach((image) => {
+        image.addEventListener('click', () => {
+          large.src = image.src;
+          large.alt = image.alt;
+          box.classList.add('open');
+          document.body.style.overflow = 'hidden';
+          box.querySelector('button').focus();
+        });
+      });
+      box.querySelector('button').addEventListener('click', close);
+      box.addEventListener('click', (event) => { if (event.target === box) close(); });
+      document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && box.classList.contains('open')) close(); });
+    })();
+  </script>
+</body>
+</html>
