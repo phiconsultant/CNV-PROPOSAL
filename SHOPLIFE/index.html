@@ -1425,54 +1425,6 @@ body img:not(#lightboxImage) {
     margin:7px 0
   }
 }
-.segment-overview {
-  padding:clamp(18px,3vw,30px);
-  border-radius:24px
-}
-.segment-overview-head {
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:20px
-}
-.segment-overview-head h3 {
-  margin:8px 0
-}
-.segment-overview-head p {
-  max-width:740px;
-  color:var(--muted);
-  margin-bottom:0
-}
-.segment-overview-figure {
-  margin:22px 0 0;
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:8px;
-  background:#f7f9fc
-}
-.segment-overview-figure img {
-  display:block;
-  width:100%;
-  height:auto;
-  border-radius:10px;
-  cursor:zoom-in
-}
-.segment-overview-figure figcaption,.campaign-card figure figcaption {
-  color:var(--muted);
-  font-size:.78rem;
-  padding:9px 5px 3px
-}
-.campaign-heading {
-  margin:42px 0 20px
-}
-.campaign-heading h3 {
-  font-size:clamp(1.35rem,2.4vw,2rem);
-  margin:7px 0
-}
-.campaign-heading p {
-  color:var(--muted);
-  margin:0
-}
 .campaign-grid {
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
@@ -1530,13 +1482,6 @@ body img:not(#lightboxImage) {
 @media(max-width:700px) {
   .campaign-grid {
     grid-template-columns:1fr
-  }
-  .segment-overview-head {
-    display:block
-  }
-  .segment-overview-head>.segment {
-    display:inline-block;
-    margin-top:14px
   }
   .campaign-copy dl {
     grid-template-columns:1fr;
@@ -2275,28 +2220,7 @@ body img:not(#lightboxImage) {
   font-weight:850;
   color:#0d8190
 }
-.budget-core-total {
-  display:grid;
-  grid-template-columns:1fr auto auto;
-  gap:22px;
-  align-items:center;
-  margin-top:12px;
-  padding:15px 17px;
-  background:#edf8f8;
-  border-radius:12px;
-  color:#294b5d;
-  font-weight:800
-}
-.budget-core-total strong {
-  color:#087f8d;
-  white-space:nowrap
-}
-.budget-core-total small {
-  margin-left:4px;
-  color:#607b89;
-  font-size:.68rem;
-  font-weight:650
-}
+
 .addon-heading {
   display:flex;
   justify-content:space-between;
@@ -2406,18 +2330,32 @@ body img:not(#lightboxImage) {
   border-radius:14px;
   color:#fff
 }
+.budget-core-summary,.addon-budget-summary {
+  grid-template-columns:repeat(2,minmax(0,1fr))
+}
+.operation-summary {
+  grid-template-columns:1fr;
+  margin-top:12px
+}
 .budget-live-summary>div {
   display:flex;
   flex-direction:column;
   gap:5px;
-  padding:8px 10px
+  padding:10px;
+  background:rgba(255,255,255,.07);
+  border-radius:10px
 }
 .budget-live-summary span {
   color:rgba(255,255,255,.67);
   font-size:.72rem
 }
 .budget-live-summary b {
-  font-size:1.03rem
+  font-size:1.8rem
+}
+.operation-summary small {
+  margin-top:2px;
+  color:rgba(255,255,255,.72);
+  font-size:.75rem
 }
 .budget-live-summary .budget-grand {
   background:rgba(255,255,255,.09);
@@ -2477,29 +2415,7 @@ body img:not(#lightboxImage) {
   color:#0a9ba4;
   font-size:1.4rem
 }
-.operation-total {
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:space-between;
-  align-items:center;
-  gap:8px 16px;
-  margin-top:12px;
-  padding:15px 18px;
-  background:#e9f7f7;
-  border-radius:12px;
-  color:#1e485a;
-  font-weight:800
-}
-.operation-total strong {
-  color:#087e8b;
-  font-size:1.13rem
-}
-.operation-total small {
-  width:100%;
-  color:#627b89;
-  font-size:.76rem;
-  font-weight:500
-}
+
 .operation-scope {
   display:flex;
   flex-wrap:wrap;
@@ -2520,10 +2436,6 @@ body img:not(#lightboxImage) {
   font-size:.73rem
 }
 @media(max-width:760px) {
-  .budget-core-total {
-    grid-template-columns:1fr;
-    gap:7px
-  }
   .addon-grid {
     grid-template-columns:1fr
   }
@@ -2594,10 +2506,10 @@ body img:not(#lightboxImage) {
 <!-- 01 · Zalo Mini App và bán hàng --><section class="section" id="ban-hang"><div class="container">
 <div class="section-head">
 <span class="eyebrow">01 — Bán hàng</span><h2 class="section-title">ZALO MINI APP</h2>
-<p class="section-intro">Giao diện minh họa Zalo Mini App theo một hành trình mẫu dành cho khách hàng sử dụng: Khám phá thương hiệu, duyệt danh mục, xem sản phẩm, tham gia thành viên và hoàn tất đơn hàng.</p>
+<p class="section-intro">Bộ 10 màn hình minh họa hành trình mua sắm trên Zalo Mini App: từ khám phá thương hiệu, xem sản phẩm và ưu đãi đến quản lý địa chỉ, thanh toán và theo dõi đơn hàng.</p>
 </div>
 <div class="app-showcase"><div class="phone-row">
-<figure class="mockup-card"><img class="mockup-img" src="assets/02-giao-dien-trang-chu-zalo-mini-app-song-khoe-tre-24h.webp" alt="Giao diện trang chủ Zalo Mini App Song Khỏe Trẻ 24h" loading="lazy"><figcaption class="phone-caption">01 · Trang chủ</figcaption></figure><figure class="mockup-card"><img class="mockup-img" src="assets/03-giao-dien-danh-muc-san-pham-zalo-mini-app.webp" alt="Giao diện danh mục sản phẩm Zalo Mini App" loading="lazy"><figcaption class="phone-caption">02 · Danh mục sản phẩm</figcaption></figure><figure class="mockup-card"><img class="mockup-img" src="assets/04-giao-dien-chi-tiet-san-pham-zalo-mini-app.webp" alt="Giao diện chi tiết sản phẩm Zalo Mini App" loading="lazy"><figcaption class="phone-caption">03 · Chi tiết sản phẩm</figcaption></figure><figure class="mockup-card"><img class="mockup-img" src="assets/05-giao-dien-tai-khoan-khach-hang-zalo-mini-app.webp" alt="Giao diện tài khoản khách hàng Zalo Mini App" loading="lazy"><figcaption class="phone-caption">04 · Tài khoản khách hàng</figcaption></figure><figure class="mockup-card"><img class="mockup-img" src="assets/06-giao-dien-gio-hang-zalo-mini-app.webp" alt="Giao diện giỏ hàng Zalo Mini App" loading="lazy"><figcaption class="phone-caption">05 · Giỏ hàng</figcaption></figure>
+<figure class="mockup-card"><img class="mockup-img" src="assets/02-giao-dien-trang-chu-zalo-mini-app-song-khoe-tre-24h.webp" alt="Giao diện trang chủ Zalo Mini App Song Khỏe Trẻ 24h" loading="lazy"><figcaption class="phone-caption">01 · Trang chủ</figcaption></figure><figure class="mockup-card"><img class="mockup-img" src="assets/03-giao-dien-danh-muc-san-pham-zalo-mini-app.webp" alt="Giao diện danh mục sản phẩm Zalo Mini App" loading="lazy"><figcaption class="phone-caption">02 · Danh mục sản phẩm</figcaption></figure><figure class="mockup-card"><img class="mockup-img" src="assets/04-giao-dien-chi-tiet-san-pham-zalo-mini-app.webp" alt="Giao diện chi tiết sản phẩm Zalo Mini App" loading="lazy"><figcaption class="phone-caption">03 · Chi tiết sản phẩm</figcaption></figure><figure class="mockup-card"><img class="mockup-img" src="assets/05-giao-dien-tai-khoan-khach-hang-zalo-mini-app.webp" alt="Giao diện tài khoản khách hàng Zalo Mini App" loading="lazy"><figcaption class="phone-caption">04 · Tài khoản khách hàng</figcaption></figure><figure class="mockup-card"><img class="mockup-img" src="assets/06-giao-dien-gio-hang-zalo-mini-app.webp" alt="Giao diện giỏ hàng Zalo Mini App" loading="lazy"><figcaption class="phone-caption">05 · Giỏ hàng</figcaption></figure><figure class="mockup-card"><img class="mockup-img" src="assets/35-giao-dien-ap-dung-ma-uu-dai-zalo-mini-app.webp" alt="Giao diện thanh toán Zalo Mini App áp dụng mã ưu đãi" loading="lazy"><figcaption class="phone-caption">06 · Áp dụng mã ưu đãi</figcaption></figure><figure class="mockup-card"><img class="mockup-img" src="assets/36-giao-dien-lich-su-don-hang-zalo-mini-app.webp" alt="Giao diện lịch sử và theo dõi đơn hàng trên Zalo Mini App" loading="lazy"><figcaption class="phone-caption">07 · Lịch sử đơn hàng</figcaption></figure><figure class="mockup-card"><img class="mockup-img" src="assets/37-giao-dien-danh-sach-uu-dai-zalo-mini-app.webp" alt="Giao diện danh sách voucher và ưu đãi của khách hàng trên Zalo Mini App" loading="lazy"><figcaption class="phone-caption">08 · Danh sách ưu đãi</figcaption></figure><figure class="mockup-card"><img class="mockup-img" src="assets/38-giao-dien-so-dia-chi-zalo-mini-app.webp" alt="Giao diện sổ địa chỉ nhận hàng trên Zalo Mini App" loading="lazy"><figcaption class="phone-caption">09 · Sổ địa chỉ</figcaption></figure><figure class="mockup-card"><img class="mockup-img" src="assets/39-giao-dien-chon-phuong-thuc-thanh-toan-zalo-mini-app.webp" alt="Giao diện chọn phương thức thanh toán trên Zalo Mini App" loading="lazy"><figcaption class="phone-caption">10 · Phương thức thanh toán</figcaption></figure>
 </div></div>
 <div class="grid-3 qr-cards">
 <article class="panel qr-card"><div>
@@ -2687,16 +2599,6 @@ body img:not(#lightboxImage) {
 <div class="section-head">
 <span class="eyebrow">04 — Chăm sóc khách hàng</span><h2 class="section-title">Xây dựng và Triển khai chiến dịch CSKH Cá Nhân Hóa</h2>
 <p class="section-intro">Minh họa cách CNV CDP sử dụng dữ liệu và hành vi để tạo các nhóm khách hàng, sau đó kích hoạt thông điệp theo từng thời điểm trong hành trình mua hàng.</p>
-</div>
-<div class="segment-overview panel">
-<div class="segment-overview-head">
-<div>
-<span class="panel-mark">Phân loại khách hàng</span><h3>Mẫu Segment trong hệ thống CNV CDP</h3>
-<p>Danh sách mẫu giúp đội ngũ bắt đầu xây dựng nhóm theo thuộc tính và hành vi; điều kiện cụ thể sẽ cấu hình theo dữ liệu của Sống Khỏe Trẻ 24h.</p>
-</div>
-<span class="segment blue">Ảnh giao diện thực tế</span>
-</div>
-<figure class="segment-overview-figure"><img class="cskh-img" src="assets/17-segment-mau-trong-cnv-cdp.webp" alt="Danh sách các Segment mẫu trong hệ thống CNV CDP" loading="lazy"><figcaption>Màn hình mẫu các nhóm phân khúc khách hàng có thể dùng để xây dựng chiến dịch.</figcaption></figure>
 </div>
 <div class="campaign-heading">
 <span class="eyebrow">CHIẾN DỊCH MARKETING MẪU</span><h3>Tin nhắn chăm sóc Cá nhân hóa</h3>
@@ -2856,86 +2758,92 @@ body img:not(#lightboxImage) {
 <!-- 08 · Báo giá và ngân sách --><section class="section" id="bao-gia"><div class="container">
 <div class="section-head">
 <span class="eyebrow">08 — Báo giá</span><h2 class="section-title">Ngân Sách Nền Tảng & Vận Hành</h2>
-<p class="section-intro">Bảng dưới đây gồm ba hạng mục nền tảng cốt lõi, các tiện ích có thể chọn thêm và gói vận hành Nâng Cao. Chi phí tin nhắn và phí giao dịch phát sinh được ghi chú riêng.</p>
+<p class="section-intro">Ngân sách được trình bày riêng thành ba phần: 3 hạng mục lõi, tiện ích bổ sung có thể chọn và gói vận hành Nâng Cao. Mỗi phần có tổng chi phí độc lập.</p>
 </div>
 <div class="budget-part">
-<div class="budget-part-head">
-<span class="budget-index">01</span><div>
-<h3>Ngân sách đầu tư nền tảng</h3>
-<p>Ba hạng mục lõi để triển khai Mini App, quản trị dữ liệu khách hàng và đồng bộ với KiotViet.</p>
+  <div class="budget-part-head">
+    <span class="budget-index">01</span>
+    <div>
+      <h3>Ngân sách đầu tư nền tảng · 3 hạng mục lõi</h3>
+      <p>Ba hạng mục cốt lõi để triển khai Mini App, quản trị dữ liệu khách hàng và đồng bộ với KiotViet.</p>
+    </div>
+  </div>
+
+  <div class="budget-table-wrap">
+    <table class="budget-table">
+      <thead>
+        <tr>
+          <th>Hạng mục cốt lõi</th>
+          <th>Phạm vi</th>
+          <th>Năm đầu</th>
+          <th>Gia hạn/năm</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>Zalo Mini App + Loyalty/Ecom</b></td>
+          <td>Giao diện Mini App, tích điểm, ưu đãi, danh mục và mua hàng trực tuyến.</td>
+          <td>10.800.000đ</td>
+          <td>5.400.000đ</td>
+        </tr>
+        <tr>
+          <td><b>CDP Marketing Automation</b></td>
+          <td>Trang Quản Trị: Data Hub, hồ sơ khách hàng, phân nhóm, chiến dịch và tự động hóa chăm sóc.</td>
+          <td>24.000.000đ</td>
+          <td>24.000.000đ</td>
+        </tr>
+        <tr>
+          <td><b>Đấu nối KiotViet</b></td>
+          <td>Đồng bộ dữ liệu khách hàng, đơn hàng và sản phẩm qua kết nối API.</td>
+          <td>8.400.000đ</td>
+          <td>8.400.000đ</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="budget-live-summary budget-core-summary" aria-label="Tổng ngân sách ba hạng mục lõi">
+    <div><span>Tổng 3 hạng mục lõi · năm đầu</span><b>43.200.000đ</b></div>
+    <div><span>Tổng 3 hạng mục lõi · gia hạn/năm</span><b>37.800.000đ</b></div>
+  </div>
+  <p class="budget-footnote">Mức phí nền tảng được tổng hợp theo báo giá đính kèm. Chưa bao gồm phí gửi tin ZBS (trung bình 500đ/tin) và phí nâng cấp Zalo OA gói Tăng trưởng (2.500.000đ).</p>
 </div>
+
+<div class="budget-part addon-budget-part">
+  <div class="budget-part-head">
+    <span class="budget-index">02</span>
+    <div>
+      <h3>Tính năng nâng cao bổ sung</h3>
+      <p>Chọn các tiện ích doanh nghiệp muốn triển khai. Tổng phần này chỉ tính những tiện ích được đánh dấu.</p>
+    </div>
+  </div>
+
+  <div class="addon-heading">
+    <div>
+      <h4>Danh sách tiện ích</h4>
+      <p>Giá trị quà tặng Loyalty Hub không được tính vào tổng ngân sách.</p>
+    </div>
+    <span class="addon-hint">Có thể chọn nhiều mục</span>
+  </div>
+
+  <div class="addon-grid">
+    <label class="addon-card"><input type="checkbox" class="addon-choice" data-year1="15000000" data-renew="15000000"><span class="addon-check" aria-hidden="true"></span><span class="addon-copy"><b>Affiliate nâng cao</b><small>Quản lý mạng lưới, hoa hồng, đối soát và lệnh rút tiền.</small><em>15.000.000đ/năm · gia hạn 15.000.000đ/năm</em></span></label>
+    <label class="addon-card"><input type="checkbox" class="addon-choice" data-year1="10000000" data-renew="10000000"><span class="addon-check" aria-hidden="true"></span><span class="addon-copy"><b>Ví trả trước Top Up</b><small>Khách nạp trước, theo dõi số dư và thanh toán trên Mini App.</small><em>10.000.000đ/năm · gia hạn 10.000.000đ/năm</em><small class="addon-note">Phí giao dịch: 300đ/giao dịch.</small></span></label>
+    <label class="addon-card"><input type="checkbox" class="addon-choice" data-year1="8000000" data-renew="8000000"><span class="addon-check" aria-hidden="true"></span><span class="addon-copy"><b>Mua giá sỉ</b><small>Thiết lập chính sách giá và chiết khấu theo số lượng sản phẩm.</small><em>8.000.000đ/năm · gia hạn 8.000.000đ/năm</em></span></label>
+    <label class="addon-card"><input type="checkbox" class="addon-choice" data-year1="7000000" data-renew="7000000"><span class="addon-check" aria-hidden="true"></span><span class="addon-copy"><b>Mua X tặng Y</b><small>Tạo chương trình tặng sản phẩm và ghi nhận xuất kho theo điều kiện.</small><em>7.000.000đ/năm · gia hạn 7.000.000đ/năm</em></span></label>
+    <article class="addon-card addon-gift-card"><span class="addon-gift-badge">QUÀ TẶNG</span><span class="addon-copy"><b>Ứng dụng nhân viên Loyalty Hub</b><small>Hỗ trợ thao tác tại cửa hàng và xem báo cáo cơ bản; tặng 10 tài khoản.</small><em>Không tính giá trị vào tổng ngân sách</em><small class="addon-note">Từ tài khoản thứ 11: 500.000đ/tài khoản/năm.</small></span></article>
+    <label class="addon-card"><input type="checkbox" class="addon-choice" data-year1="3360000" data-renew="3360000"><span class="addon-check" aria-hidden="true"></span><span class="addon-copy"><b>Chat đa kênh · 5 Page</b><small>Mỗi Page là một fanpage hoặc kênh chat được kết nối vào Hộp thư.</small><em>3.360.000đ/năm · gia hạn 3.360.000đ/năm</em><small class="addon-note">Cần kết nối tài khoản AI để sử dụng tính năng AI Chat.</small></span></label>
+  </div>
+
+  <div class="budget-live-summary addon-budget-summary" aria-live="polite">
+    <div><span>Tổng tiện ích đã chọn · năm đầu</span><b id="addon-year1-total">0đ</b></div>
+    <div><span>Tổng tiện ích đã chọn · gia hạn/năm</span><b id="addon-renew-total">0đ</b></div>
+  </div>
 </div>
-<div class="budget-table-wrap"><table class="budget-table">
-<thead><tr>
-<th>Hạng mục cốt lõi</th>
-<th>Phạm vi</th>
-<th>Năm đầu</th>
-<th>Gia hạn/năm</th>
-</tr></thead>
-<tbody>
-<tr>
-<td><b>Zalo Mini App + Loyalty/Ecom</b></td>
-<td>Giao diện Mini App, tích điểm, ưu đãi, danh mục và mua hàng trực tuyến.</td>
-<td>10.800.000đ</td>
-<td>5.400.000đ</td>
-</tr>
-<tr>
-<td><b>CDP Marketing Automation</b></td>
-<td>Data Hub, hồ sơ khách hàng, phân nhóm, chiến dịch và tự động hóa chăm sóc.</td>
-<td>24.000.000đ</td>
-<td>24.000.000đ</td>
-</tr>
-<tr>
-<td><b>Đấu nối KiotViet</b></td>
-<td>Đồng bộ dữ liệu khách hàng, đơn hàng và sản phẩm qua kết nối/API.</td>
-<td>8.400.000đ</td>
-<td>8.400.000đ</td>
-</tr>
-</tbody>
-</table></div>
-<div class="budget-core-total">
-<span>Tổng ba hạng mục lõi</span><strong>43.200.000đ <small>năm đầu</small></strong><strong>37.800.000đ <small>gia hạn/năm</small></strong>
-</div>
-<div class="addon-heading">
-<div>
-<h4>Tiện ích bổ sung</h4>
-<p>Đánh dấu các hạng mục doanh nghiệp muốn cân nhắc. Tổng ngân sách sẽ tự cập nhật.</p>
-</div>
-<span class="addon-hint">Có thể chọn nhiều mục</span>
-</div>
-<div class="addon-grid">
-<label class="addon-card"><input type="checkbox" class="addon-choice" data-year1="15000000" data-renew="15000000"><span class="addon-check" aria-hidden="true"></span><span class="addon-copy"><b>Affiliate nâng cao</b><small>Quản lý mạng lưới, hoa hồng, đối soát và lệnh rút tiền.</small><em>15.000.000đ/năm · gia hạn 15.000.000đ/năm</em></span></label>
-<label class="addon-card"><input type="checkbox" class="addon-choice" data-year1="10000000" data-renew="10000000"><span class="addon-check" aria-hidden="true"></span><span class="addon-copy"><b>Ví trả trước Top Up</b><small>Khách nạp trước, theo dõi số dư và thanh toán trên Mini App.</small><em>10.000.000đ/năm · gia hạn 10.000.000đ/năm</em><small class="addon-note">Phí giao dịch: 300đ/giao dịch.</small></span></label>
-<label class="addon-card"><input type="checkbox" class="addon-choice" data-year1="8000000" data-renew="8000000"><span class="addon-check" aria-hidden="true"></span><span class="addon-copy"><b>Mua giá sỉ</b><small>Thiết lập chính sách giá và chiết khấu theo số lượng sản phẩm.</small><em>8.000.000đ/năm · gia hạn 8.000.000đ/năm</em></span></label>
-<label class="addon-card"><input type="checkbox" class="addon-choice" data-year1="7000000" data-renew="7000000"><span class="addon-check" aria-hidden="true"></span><span class="addon-copy"><b>Mua X tặng Y</b><small>Tạo chương trình tặng sản phẩm và ghi nhận xuất kho theo điều kiện.</small><em>7.000.000đ/năm · gia hạn 7.000.000đ/năm</em></span></label>
-<article class="addon-card addon-gift-card"><span class="addon-gift-badge">QUÀ TẶNG</span><span class="addon-copy"><b>Ứng dụng nhân viên Loyalty Hub</b><small>Hỗ trợ thao tác tại cửa hàng và xem báo cáo cơ bản; tặng 10 tài khoản.</small><em>Không tính giá trị vào tổng ngân sách</em><small class="addon-note">Từ tài khoản thứ 11: 500.000đ/tài khoản/năm.</small></span></article>
-<label class="addon-card"><input type="checkbox" class="addon-choice" data-year1="3360000" data-renew="3360000"><span class="addon-check" aria-hidden="true"></span><span class="addon-copy"><b>Chat đa kênh · 5 Page</b><small>Mỗi Page là một fanpage hoặc kênh chat được kết nối vào Hộp thư.</small><em>3.360.000đ/năm · gia hạn 3.360.000đ/năm</em><small class="addon-note">Cần kết nối tài khoản AI để sử dụng tính năng AI Chat.</small></span></label>
-</div>
-<div class="budget-live-summary">
-<div>
-<span>Hạng mục lõi · năm đầu</span><b>43.200.000đ</b>
-</div>
-<div>
-<span>Tiện ích đã chọn · năm đầu</span><b id="addon-year1-total">0đ</b>
-</div>
-<div class="budget-grand">
-<span>Tổng dự kiến · năm đầu</span><b id="budget-year1-total">43.200.000đ</b>
-</div>
-<div>
-<span>Hạng mục lõi · gia hạn/năm</span><b>37.800.000đ</b>
-</div>
-<div>
-<span>Tiện ích đã chọn · gia hạn/năm</span><b id="addon-renew-total">0đ</b>
-</div>
-<div class="budget-grand">
-<span>Tổng dự kiến · gia hạn/năm</span><b id="budget-renew-total">37.800.000đ</b>
-</div>
-</div>
-<p class="budget-footnote">Mức phí nền tảng được tổng hợp theo báo giá đính kèm. Báo giá chưa bao gồm: Phí gửi tin ZBS (trung bình 500 VND/tin), Phí nâng cấp Zalo OA gói tăng trưởng - 2.500.000 VND.</p>
-</div>
+
 <div class="budget-part operation-part">
 <div class="budget-part-head">
-<span class="budget-index">02</span><div>
+<span class="budget-index">03</span><div>
 <h3>Ngân sách đầu tư vận hành — Gói Nâng Cao</h3>
 <p>Đội ngũ CNV hỗ trợ cấu hình, cập nhật chương trình và duy trì hoạt động Mini App theo tháng.</p>
 </div>
@@ -2944,13 +2852,17 @@ body img:not(#lightboxImage) {
 <article><span>THÁNG ĐẦU · THIẾT LẬP</span><strong>15.000.000đ</strong><p>Cấu hình hệ thống, dữ liệu, chiến dịch và các hạng mục vận hành ban đầu theo phạm vi gói.</p></article><div class="operation-arrow" aria-hidden="true">→</div>
 <article><span>TỪ THÁNG THỨ HAI · DUY TRÌ</span><strong>10.500.000đ<small>/tháng</small></strong><p>Phí hỗ trợ vận hành định kỳ từ tháng thứ hai trở đi.</p></article>
 </div>
-<div class="operation-total">
-<span>Ngân sách vận hành 2 tháng đầu</span><strong>25.500.000đ</strong><small>Tháng 1: 15.000.000đ · Tháng 2: 10.500.000đ</small>
+<div class="budget-live-summary operation-summary" aria-label="Tổng ngân sách vận hành hai tháng đầu">
+  <div>
+    <span>Tổng ngân sách vận hành · 2 tháng đầu</span>
+    <b>25.500.000đ</b>
+    <small>Tháng 1: 15.000.000đ · Tháng 2: 10.500.000đ</small>
+  </div>
 </div>
 <div class="operation-scope">
 <b>Gói Nâng Cao gồm:</b><span>Nhóm và phân loại khách hàng</span><span>3 lần/tháng nhập dữ liệu sản phẩm và khách hàng</span><span>2 lần/tháng cập nhật banner và ưu đãi</span><span>Thiết lập chiến dịch tự động</span><span>2 bài OA và 4 tin Follow OA/tháng</span><span>Sao lưu dữ liệu hàng tuần</span><span>Báo cáo 2 lần/tháng và họp định kỳ</span><span>Hỗ trợ vận hành Mini App</span>
 </div>
-<p class="budget-footnote">Báo giá vận hành yêu cầu thời gian triển khai tối thiểu 3 tháng. Chi phí này tách biệt với ngân sách nền tảng ở phần 01 và chưa gồm ngân sách gửi tin.</p>
+<p class="budget-footnote">Báo giá vận hành yêu cầu thời gian triển khai tối thiểu 3 tháng. Ngân sách vận hành được tính riêng, không cộng vào tổng hạng mục lõi hoặc tiện ích bổ sung; chưa gồm ngân sách gửi tin.</p>
 </div>
 </div></section>
 
@@ -3025,7 +2937,26 @@ body img:not(#lightboxImage) {
   });
 })();
 </script>
-<script>(function(){const choices=[...document.querySelectorAll('.addon-choice')];const fmt=n=>new Intl.NumberFormat('vi-VN').format(n)+'đ';function update(){let y=0,r=0;for(const c of choices)if(c.checked){y+=Number(c.dataset.year1||0);r+=Number(c.dataset.renew||0)}document.getElementById('addon-year1-total').textContent=fmt(y);document.getElementById('budget-year1-total').textContent=fmt(43200000+y);document.getElementById('addon-renew-total').textContent=fmt(r);document.getElementById('budget-renew-total').textContent=fmt(37800000+r)}choices.forEach(c=>c.addEventListener('change',update));})();</script>
+<script>
+(function(){
+  const choices=[...document.querySelectorAll('.addon-choice')];
+  const fmt=value=>new Intl.NumberFormat('vi-VN').format(value)+'đ';
+  function updateAddonTotals(){
+    let year1=0;
+    let renew=0;
+    for(const choice of choices){
+      if(choice.checked){
+        year1+=Number(choice.dataset.year1||0);
+        renew+=Number(choice.dataset.renew||0);
+      }
+    }
+    document.getElementById('addon-year1-total').textContent=fmt(year1);
+    document.getElementById('addon-renew-total').textContent=fmt(renew);
+  }
+  choices.forEach(choice=>choice.addEventListener('change',updateAddonTotals));
+  updateAddonTotals();
+})();
+</script>
 </div></section></main>
 </body>
 </html>
