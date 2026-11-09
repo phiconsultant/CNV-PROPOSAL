@@ -2440,7 +2440,15 @@ body img:not(#lightboxImage) {
     grid-template-columns:1fr
   }
   .budget-live-summary {
-    grid-template-columns:repeat(2,minmax(0,1fr))
+    grid-template-columns:1fr
+  }
+  .budget-live-summary>div {
+    min-width:0
+  }
+  .budget-live-summary b {
+    font-size:clamp(1.2rem,5vw,1.65rem);
+    line-height:1.2;
+    overflow-wrap:anywhere
   }
   .operation-pricing {
     grid-template-columns:1fr
@@ -2452,6 +2460,96 @@ body img:not(#lightboxImage) {
     align-items:flex-start;
     flex-direction:column;
     gap:8px
+  }
+}
+@media(max-width:620px) {
+  .grid-3.qr-cards {
+    grid-template-columns:1fr
+  }
+  .budget-table-wrap {
+    overflow:visible;
+    border:0
+  }
+  .budget-table,
+  .budget-table tbody,
+  .budget-table tr,
+  .budget-table td {
+    display:block;
+    width:100%;
+    min-width:0
+  }
+  .budget-table {
+    border-collapse:separate;
+    border-spacing:0 10px
+  }
+  .budget-table thead {
+    display:none
+  }
+  .budget-table tr {
+    overflow:hidden;
+    border:1px solid #e0eaf0;
+    border-radius:12px;
+    background:#fff
+  }
+  .budget-table td,
+  .budget-table td:first-child,
+  .budget-table td:nth-child(2),
+  .budget-table td:nth-child(3),
+  .budget-table td:nth-child(4) {
+    width:100%;
+    padding:7px 13px;
+    border:0;
+    white-space:normal
+  }
+  .budget-table td:first-child {
+    padding-top:13px;
+    color:#18394e
+  }
+  .budget-table td:nth-child(2) {
+    padding-bottom:10px
+  }
+  .budget-table td:nth-child(3)::before {
+    content:"Năm đầu: ";
+    color:#526c7c;
+    font-weight:500
+  }
+  .budget-table td:nth-child(4)::before {
+    content:"Gia hạn/năm: ";
+    color:#526c7c;
+    font-weight:500
+  }
+  .budget-live-summary {
+    grid-template-columns:1fr;
+    padding:12px
+  }
+  .budget-live-summary>div {
+    padding:12px
+  }
+  .budget-live-summary b {
+    font-size:clamp(1.25rem,5.5vw,1.7rem);
+    white-space:normal;
+    overflow-wrap:anywhere
+  }
+  .addon-card {
+    min-width:0;
+    padding:14px
+  }
+  .addon-copy {
+    min-width:0;
+    overflow-wrap:anywhere
+  }
+  .addon-copy em {
+    line-height:1.45
+  }
+  .addon-gift-card {
+    flex-direction:column
+  }
+  .header-inner {
+    height:60px
+  }
+  .brand img {
+    width:145px;
+    max-height:42px
   }
 }
 .addon-gift-card {
