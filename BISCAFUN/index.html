@@ -324,6 +324,38 @@
       .campaign-affiliate .affiliate-secondary .media-frame { max-width:100%; }
     }
 
+  
+    /* V6 — Section 06: nội dung thay 2 ảnh tổng quan; 5 ảnh tính năng giữ nguyên */
+    .campaign-affiliate .affiliate-capabilities { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin:26px 0 18px; }
+    .campaign-affiliate .affiliate-capability { padding:23px; border-radius:18px; background:#fff; border:1px solid #eddbcb; }
+    .campaign-affiliate .affiliate-capability strong { display:block; color:var(--red-dark); font-size:1.02rem; margin-bottom:7px; }
+    .campaign-affiliate .affiliate-capability p { font-size:.91rem; line-height:1.65; color:var(--muted); margin:0; }
+    .campaign-affiliate .affiliate-policy-note { color:var(--muted); font-size:.84rem; line-height:1.6; margin:0 0 30px; }
+    @media(max-width:680px) { .campaign-affiliate .affiliate-capabilities { grid-template-columns:1fr; } }
+    /* V6 — Section 08: cân bằng số gia hạn và làm nổi bật chi phí vận hành */
+    .pricing .pricing-summary { grid-template-columns:minmax(0,1fr) minmax(0,1fr); align-items:stretch; }
+    .pricing .total-card, .pricing .renew-card { min-width:0; }
+    .pricing .renew-card .total-amount { font-size:clamp(1.7rem,2.95vw,2.7rem); letter-spacing:-.045em; white-space:nowrap; }
+    .pricing .operations { border:2px solid #a52231; background:#fff7f0; box-shadow:0 20px 48px rgba(117,27,43,.11); margin-top:26px; }
+    .pricing .operations-heading { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:24px 28px 8px; }
+    .pricing .operations-heading h3 { padding:5px 0 0; margin:0; font-size:clamp(1.2rem,2.1vw,1.65rem); color:var(--red-dark); }
+    .pricing .operations-kicker { color:#a52231; font-size:.72rem; font-weight:900; letter-spacing:.11em; }
+    .pricing .operations-term { border-radius:100px; background:#a52231; color:#fff; padding:8px 12px; font-size:.7rem; font-weight:850; white-space:nowrap; }
+    .pricing .operations > p { padding:0 28px 20px; }
+    .pricing .operations-grid { padding:0 28px 23px; gap:16px; }
+    .pricing .operations-grid > div { padding:26px 24px; border:1px solid #e8bfae; }
+    .pricing .operations-grid .operations-first { background:var(--red-dark); border-color:var(--red-dark); color:white; }
+    .pricing .operations-grid .operations-renew { background:#fff; }
+    .pricing .operations-grid span { font-size:.74rem; letter-spacing:.045em; }
+    .pricing .operations-grid .operations-first span { color:#ffe0d2; }
+    .pricing .operations-grid strong { font-size:clamp(1.65rem,2.55vw,2.25rem); line-height:1.16; letter-spacing:-.04em; white-space:nowrap; }
+    .pricing .operations-grid .operations-first strong { color:#fff; }
+    .pricing .operations-grid strong small { font-size:.54em; letter-spacing:0; }
+    .pricing .operations-grid em { display:block; margin-top:12px; font-size:.81rem; font-style:normal; opacity:.77; }
+    .pricing .operations-note { padding:0 28px 24px; }
+    @media(max-width:950px) { .pricing .pricing-summary { grid-template-columns:1fr; } .pricing .renew-card .total-amount { font-size:clamp(1.9rem,5vw,3rem); } }
+    @media(max-width:680px) { .pricing .operations-heading { padding:22px 18px 12px; align-items:flex-start; flex-direction:column; gap:10px; } .pricing .operations > p { padding:0 18px 18px; } .pricing .operations-grid { padding:0 18px 18px; } .pricing .operations-grid > div { padding:20px 17px; } .pricing .operations-grid strong { font-size:clamp(1.5rem,7.3vw,2.1rem); } .pricing .operations-note { padding:0 18px 20px; } .pricing .renew-card .total-amount { font-size:clamp(1.55rem,7.4vw,2.3rem); } }
+
   </style>
 </head>
 <body>
@@ -485,8 +517,15 @@
 <div class="affiliate-step"><b>02</b><strong>Giới thiệu khách hàng</strong><p>Chia sẻ đường dẫn hoặc mã giới thiệu để ghi nhận nguồn giới thiệu.</p></div>
 <div class="affiliate-step"><b>03</b><strong>Ghi nhận quyền lợi</strong><p>Theo dõi kết quả và đối soát thưởng theo chính sách được phê duyệt.</p></div>
 </div>
-<div class="real-case"><div class="case-header"><div><span class="case-tag">MINH HỌA GIAO DIỆN AFFILIATE</span><h3>01. Giải pháp quản trị và tăng trưởng kênh CTV</h3><p>Minh họa giao diện Affiliate trên Zalo Mini App: chia sẻ link giới thiệu, theo dõi hoa hồng, lịch sử khách được giới thiệu và thứ hạng CTV. Chính sách hoa hồng thực tế của Biscafun cần được thống nhất riêng.</p></div></div>
-<div class="overview-gallery"><figure class="media-frame overview"><img alt="Affiliate — Tổng quan tính năng Affiliate — hành trình CTV" class="zoomable" decoding="async" height="806" loading="lazy" src="assets/case-studies/affiliate-01.webp" tabindex="0" width="1518"/><figcaption>Tổng quan tính năng Affiliate — hành trình CTV</figcaption></figure><figure class="media-frame overview"><img alt="Affiliate — Cơ chế quản lý và tăng trưởng kênh CTV" class="zoomable" decoding="async" height="709" loading="lazy" src="assets/case-studies/affiliate-02.webp" tabindex="0" width="1266"/><figcaption>Cơ chế quản lý và tăng trưởng kênh CTV</figcaption></figure></div><h4 class="subcase-heading">5 màn hình tính năng chính</h4><div class="case-flow"><div class="flow-card"><span class="step-label">01</span><figure class="media-frame phone"><img alt="Affiliate — Tham gia CTV &amp; xem chính sách hoa hồng" class="zoomable" decoding="async" height="691" loading="lazy" src="assets/case-studies/affiliate-03.webp" tabindex="0" width="347"/><figcaption>Tham gia CTV &amp; xem chính sách hoa hồng</figcaption></figure></div><div class="flow-card"><span class="step-label">02</span><figure class="media-frame phone"><img alt="Affiliate — Sao chép link, chia sẻ bạn bè" class="zoomable" decoding="async" height="691" loading="lazy" src="assets/case-studies/affiliate-04.webp" tabindex="0" width="342"/><figcaption>Sao chép link, chia sẻ bạn bè</figcaption></figure></div><div class="flow-card"><span class="step-label">03</span><figure class="media-frame phone"><img alt="Affiliate — Quản lý doanh thu và hoa hồng" class="zoomable" decoding="async" height="686" loading="lazy" src="assets/case-studies/affiliate-05.webp" tabindex="0" width="345"/><figcaption>Quản lý doanh thu và hoa hồng</figcaption></figure></div><div class="flow-card"><span class="step-label">04</span><figure class="media-frame phone"><img alt="Affiliate — Lịch sử hành động và hoa hồng của khách F2" class="zoomable" decoding="async" height="690" loading="lazy" src="assets/case-studies/affiliate-06.webp" tabindex="0" width="344"/><figcaption>Lịch sử hành động và hoa hồng của khách F2</figcaption></figure></div><div class="flow-card"><span class="step-label">05</span><figure class="media-frame phone"><img alt="Affiliate — Bảng xếp hạng thành viên CTV" class="zoomable" decoding="async" height="690" loading="lazy" src="assets/case-studies/affiliate-07.webp" tabindex="0" width="346"/><figcaption>Bảng xếp hạng thành viên CTV</figcaption></figure></div></div>
+<div class="real-case"><div class="case-header"><div><span class="case-tag">MINH HỌA GIAO DIỆN AFFILIATE</span><h3>01. Giải pháp quản trị và tăng trưởng kênh CTV</h3><p>Giao diện Affiliate trên Zalo Mini App giúp cộng tác viên chia sẻ sản phẩm, kiểm tra hoa hồng, theo dõi khách hàng được giới thiệu (F2) và xem bảng xếp hạng. Ví dụ minh họa dưới đây không phải chương trình đang vận hành của Biscafun.</p></div></div>
+<div class="affiliate-capabilities" aria-label="Năng lực quản trị và tăng trưởng kênh cộng tác viên">
+  <div class="affiliate-capability"><strong>Định danh khách hàng qua liên kết giới thiệu</strong><p>Gắn nguồn giới thiệu với khách hàng trong phạm vi nhận diện được; có thể ghi nhận tương tác sau khi khách truy cập Mini App.</p></div>
+  <div class="affiliate-capability"><strong>Chia sẻ đơn giản</strong><p>Cộng tác viên sao chép liên kết hoặc chia sẻ nhanh qua Zalo để giới thiệu sản phẩm.</p></div>
+  <div class="affiliate-capability"><strong>Theo dõi mạng lưới &amp; đối soát</strong><p>Quan sát dữ liệu khách F2, lịch sử hành động, hoa hồng và trạng thái đối soát qua giao diện quản trị.</p></div>
+  <div class="affiliate-capability"><strong>Cơ chế thúc đẩy tăng trưởng</strong><p>Có thể thiết kế kỳ xét hạng, doanh thu tích lũy, bảng xếp hạng và quyền lợi theo chính sách từng chương trình.</p></div>
+</div>
+<p class="affiliate-policy-note">Các mô tả về ghi nhận khách hàng dài hạn, phân hạng tự động và chính sách hoa hồng là định hướng giải pháp theo tư liệu minh họa; cần xác nhận phạm vi kỹ thuật và điều kiện triển khai cho Biscafun.</p>
+<h4 class="subcase-heading">5 màn hình tính năng chính</h4><div class="case-flow"><div class="flow-card"><span class="step-label">01</span><figure class="media-frame phone"><img alt="Affiliate — Tham gia CTV &amp; xem chính sách hoa hồng" class="zoomable" decoding="async" height="691" loading="lazy" src="assets/case-studies/affiliate-03.webp" tabindex="0" width="347"/><figcaption>Tham gia CTV &amp; xem chính sách hoa hồng</figcaption></figure></div><div class="flow-card"><span class="step-label">02</span><figure class="media-frame phone"><img alt="Affiliate — Sao chép link, chia sẻ bạn bè" class="zoomable" decoding="async" height="691" loading="lazy" src="assets/case-studies/affiliate-04.webp" tabindex="0" width="342"/><figcaption>Sao chép link, chia sẻ bạn bè</figcaption></figure></div><div class="flow-card"><span class="step-label">03</span><figure class="media-frame phone"><img alt="Affiliate — Quản lý doanh thu và hoa hồng" class="zoomable" decoding="async" height="686" loading="lazy" src="assets/case-studies/affiliate-05.webp" tabindex="0" width="345"/><figcaption>Quản lý doanh thu và hoa hồng</figcaption></figure></div><div class="flow-card"><span class="step-label">04</span><figure class="media-frame phone"><img alt="Affiliate — Lịch sử hành động và hoa hồng của khách F2" class="zoomable" decoding="async" height="690" loading="lazy" src="assets/case-studies/affiliate-06.webp" tabindex="0" width="344"/><figcaption>Lịch sử hành động và hoa hồng của khách F2</figcaption></figure></div><div class="flow-card"><span class="step-label">05</span><figure class="media-frame phone"><img alt="Affiliate — Bảng xếp hạng thành viên CTV" class="zoomable" decoding="async" height="690" loading="lazy" src="assets/case-studies/affiliate-07.webp" tabindex="0" width="346"/><figcaption>Bảng xếp hạng thành viên CTV</figcaption></figure></div></div>
 <p class="flow-hint">← Kéo ngang để xem toàn bộ 5 màn hình</p></div>
 </div>
 </section>
@@ -541,20 +580,14 @@
               <tr class="price-group"><td colspan="4">Hạ tầng &amp; kết nối</td></tr>
               <tr><td><strong>Hạ tầng hệ thống</strong></td><td>Máy chủ và năng lực vận hành Zalo Mini App, CDP, chiến dịch Marketing và lưu trữ dữ liệu.</td><td class="money">20.000.000 đ</td><td class="money">20.000.000 đ</td></tr>
               <tr><td><strong>Kết nối API bên thứ ba</strong></td><td>Open API và kết nối hệ thống theo phạm vi báo giá.<small>Có điều kiện miễn phí kết nối riêng cho API Sapo, cần xác minh trước khi ký.</small></td><td class="money">8.400.000 đ</td><td class="money">8.400.000 đ</td></tr>
-
-              <tr class="price-group"><td colspan="4">Ưu đãi</td></tr>
-              <tr class="gift-row"><td><strong>App nhân viên (Loyalty Hub)</strong><span class="chip">Tặng năm đầu</span></td><td>Quản trị thao tác nghiệp vụ dành cho nhân viên.<small>Giá niêm yết 10.000.000 đ; miễn phí trong tổng năm đầu theo báo giá. Miễn phí 10 tài khoản, tài khoản thêm tính riêng.</small></td><td class="money">0 đ</td><td class="money">0 đ</td></tr>
             </tbody>
           </table>
 
           <div class="pricing-summary">
             <div class="total-card">
-              <span class="total-label">Tổng đầu tư năm đầu sau ưu đãi</span>
+              <span class="total-label">Tổng đầu tư nền tảng năm đầu</span>
               <strong class="total-amount">490.400.000 đ</strong>
-              <div class="total-detail">
-                <div><span>Tổng trước ưu đãi</span><strong>500.400.000 đ</strong></div>
-                <div><span>Giảm giá App nhân viên</span><strong>−10.000.000 đ</strong></div>
-              </div>
+              <div class="total-detail">Tổng các hạng mục tính phí trong báo giá, không bao gồm dịch vụ quản trị &amp; vận hành theo tháng.</div>
             </div>
             <div class="renew-card">
               <span class="total-label">Chi phí gia hạn hằng năm</span>
@@ -564,11 +597,11 @@
           </div>
 
           <div class="operations">
-            <h3>Dịch vụ quản trị &amp; vận hành — Gói Nâng Cao</h3>
+            <div class="operations-heading"><div><span class="operations-kicker">DỊCH VỤ VẬN HÀNH · BÁO GIÁ RIÊNG</span><h3>Dịch vụ quản trị &amp; vận hành — Gói Nâng Cao</h3></div><span class="operations-term">THEO THÁNG</span></div>
             <p>Hỗ trợ cấu hình hệ thống, nhập dữ liệu, quản trị chương trình ưu đãi, triển khai chiến dịch, tin nhắn ZNS, báo cáo và hỗ trợ kỹ thuật theo phạm vi dịch vụ.</p>
             <div class="operations-grid">
-              <div><span>Phí dịch vụ tháng đầu</span><strong>15.000.000 đ</strong></div>
-              <div><span>Phí duy trì từ tháng thứ 2</span><strong>10.500.000 đ/tháng</strong></div>
+              <div class="operations-first"><span>PHÍ DỊCH VỤ THÁNG ĐẦU</span><strong>15.000.000 <small>đ</small></strong><em>Thiết lập và vận hành tháng đầu</em></div>
+              <div class="operations-renew"><span>PHÍ DUY TRÌ TỪ THÁNG THỨ 2</span><strong>10.500.000 <small>đ/tháng</small></strong><em>Dịch vụ hỗ trợ vận hành định kỳ</em></div>
             </div>
             <div class="operations-note">Dịch vụ vận hành được báo giá riêng theo tháng và <strong>không cộng vào tổng 490.400.000 đ</strong> của chi phí triển khai nền tảng.</div>
           </div>
@@ -576,7 +609,7 @@
           <div class="notes">
             <h3>Ghi chú &amp; điều kiện</h3>
             <ul>
-              <li>Bảng giá thể hiện toàn bộ hạng mục nêu trong tài liệu CNV mới; tổng 490.400.000 đ là ngân sách nếu triển khai đầy đủ các hạng mục liệt kê.</li>
+              <li>Bảng giá thể hiện các hạng mục có tính phí của tài liệu CNV mới; không trình bày hạng mục App nhân viên (Loyalty Hub) theo yêu cầu. Tổng năm đầu 490.400.000 đ bằng tổng các hạng mục tính phí.</li>
               <li>Chưa bao gồm phí nâng cấp ZCA, phí gửi tin theo biểu phí nền tảng và các khoản phát sinh ngoài phạm vi hợp đồng.</li>
               <li>Chi phí sản xuất/in ấn bao bì, POSM, sampling và ngân sách quà tặng thực tế cần xác nhận riêng; không mặc định đã bao gồm.</li>
               <li>Báo giá có mục quà tặng trị giá 22.390.000 đ mang nhãn “Tháng 11/2025”; cần xác nhận thời hạn chương trình trước khi áp dụng.</li>
