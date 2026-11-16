@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#c82132">
   <meta name="description" content="Biscafun × CNV CDP — Proposal chiến dịch thu thập dữ liệu người tiêu dùng đa điểm chạm.">
-  <title>Biscafun × CNV CDP | Proposal V2</title>
+  <title>Biscafun × CNV CDP | Proposal V3</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap&subset=vietnamese" rel="stylesheet">
@@ -34,7 +34,7 @@
     .container { width: min(calc(100% - 2 * var(--gutter)), var(--container)); margin-inline: auto; }
     .section { padding: var(--section-y) 0; }
     .eyebrow { font-size: .77rem; font-weight: 900; letter-spacing: .14em; color: var(--red); text-transform: uppercase; }
-    .section-title { font-size: clamp(2.15rem, 4.3vw, 4.3rem); font-weight: 900; margin: 12px 0 20px; max-width: 930px; }
+    .section-title { font-size: clamp(2.15rem, 4.3vw, 4.3rem); font-weight: 900; margin: 12px 0 20px; max-width: none; width: 100%; }
     .section-desc { max-width: 760px; color: var(--muted); font-size: clamp(1rem, 1.35vw, 1.14rem); }
     .chip { display: inline-block; background: #ffede1; color: var(--red-dark); border-radius: 100px; padding: 6px 12px; font-weight: 800; font-size: .76rem; }
     .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 12px 21px; border-radius: 100px; color: white; background: var(--red); font-weight: 800; }
@@ -160,6 +160,16 @@
     .pricing .notes h3 { font-size: 1.14rem; margin-bottom: 12px; }
     .pricing .notes ul { margin: 0; padding-left: 21px; font-size: .89rem; color: var(--muted); }
     .pricing .notes li + li { margin-top: 7px; }
+     .pricing .price-group td { background: #fff0e4; color: var(--red-dark); font-weight: 900; font-size: .78rem; letter-spacing: .09em; text-transform: uppercase; padding: 13px 20px; }
+    .pricing .price-group td::before { display: none !important; }
+    .pricing .operations { margin: 20px 24px 28px; border: 1px solid var(--border); border-radius: 20px; background: #fffaf6; overflow: hidden; }
+    .pricing .operations h3 { padding: 22px 24px 8px; font-size: 1.3rem; }
+    .pricing .operations p { padding: 0 24px 17px; color: var(--muted); font-size: .91rem; }
+    .pricing .operations-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 24px 24px; }
+    .pricing .operations-grid div { padding: 20px; border-radius: 15px; background: white; border: 1px solid var(--border); }
+    .pricing .operations-grid span { display: block; color: var(--muted); font-size: .81rem; font-weight: 700; }
+    .pricing .operations-grid strong { display: block; margin-top: 8px; font-size: clamp(1.35rem, 2.5vw, 2.1rem); color: var(--red-dark); }
+    .pricing .operations-note { padding: 0 24px 20px; font-size: .84rem; color: var(--muted); }
     .pricing .gift-note { background: #fff5ed; padding: 15px 20px; border-left: 4px solid var(--orange); margin-top: 20px; border-radius: 8px; font-size: .87rem; }
 
     /* ================================================================
@@ -204,6 +214,9 @@
       .pricing .pricing-table tbody tr { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 12px; padding: 18px 16px; border-top: 1px solid var(--border); }
       .pricing .pricing-table td { padding: 0; border: 0; text-align: left !important; }
       .pricing .pricing-table td:first-child { grid-column: 1 / -1; }
+      .pricing .price-group { display: block !important; padding: 0 !important; }
+      .pricing .price-group td { display: block !important; padding: 12px 16px !important; }
+      .pricing .operations-grid { grid-template-columns: 1fr; }
       .pricing .pricing-table td:nth-child(2) { grid-column: 1 / -1; }
       .pricing .pricing-table td:nth-child(3):before { content: "NĂM ĐẦU"; }
       .pricing .pricing-table td:nth-child(4):before { content: "GIA HẠN"; }
@@ -247,7 +260,7 @@
             <div class="kicker">Biscafun × CNV CDP / Consumer Data Acquisition</div>
             <h1>Mỗi điểm chạm.<br><em>Một kết nối.</em></h1>
             <p class="intro">Giải pháp thu thập thông tin người tiêu dùng B2C thông qua 4 chiến dịch tương tác: TMĐT, đại lý, bao bì sản phẩm và sự kiện Sampling.</p>
-            <div class="actions"><a class="btn" href="#ecommerce">Khám phá 4 campaign ↓</a><span class="version">PROPOSAL V2 · BẢN ĐỀ XUẤT</span></div>
+            <div class="actions"><a class="btn" href="#ecommerce">Khám phá 4 campaign ↓</a><span class="version">PROPOSAL V3 · BẢN ĐỀ XUẤT</span></div>
           </div>
           <div class="graphic" aria-hidden="true">
             <div class="floating"><span class="count">01</span><strong>Chạm đúng thời điểm</strong><small>Khách nhận hàng, nhìn thấy kệ, mở bánh hoặc dùng thử</small></div>
@@ -348,53 +361,82 @@
       </div>
     </section>
 
-    <!-- ==============================================================
-         08. PRICING — BÁO GIÁ BISCAFUN 16/11/2026
-         ============================================================= -->
+    <!-- ============================================================== 
+         08. PRICING — DỮ LIỆU GỐC: BÁO GIÁ BISCAFUN 16/11/2026
+         CSS ĐỘC LẬP: .pricing | KHÔNG ĐỔI CÁC SECTION CAMPAIGN
+         ============================================================== -->
     <section class="section pricing" id="pricing">
       <div class="container">
         <span class="eyebrow">06 / Ngân sách đầu tư</span>
         <h2 class="section-title">Ngân sách triển khai giải pháp.</h2>
-        <p class="section-desc">Báo giá gói nền tảng và Gamification Marketing theo tài liệu CNV dành cho Biscafun ngày 16/11/2026. Các hạng mục dưới đây giữ nguyên số tiền trong bảng giá.</p>
+        <p class="section-desc">Cập nhật theo báo giá CNV CDP dành cho BISCAFUN ngày 16/11/2026, gồm nền tảng, các dịch vụ mở rộng, hạ tầng, kết nối API và dịch vụ vận hành.</p>
+
         <div class="pricing-card">
           <div class="pricing-top">
-            <div><span class="chip">BÁO GIÁ CNV CDP × BISCAFUN</span><h3>Hạng mục triển khai & gia hạn</h3></div>
+            <div><span class="chip">BÁO GIÁ CNV CDP × BISCAFUN</span><h3>Chi phí triển khai nền tảng &amp; add-on</h3></div>
             <div class="quote-date">Ngày báo giá: 16/11/2026</div>
           </div>
-          <table class="pricing-table" aria-label="Bảng giá CNV CDP dành cho Biscafun">
+
+          <table class="pricing-table" aria-label="Bảng báo giá triển khai CNV CDP Biscafun ngày 16 tháng 11 năm 2026">
             <thead><tr><th>HẠNG MỤC</th><th>PHẠM VI</th><th>NĂM ĐẦU</th><th>GIA HẠN</th></tr></thead>
             <tbody>
-              <tr><td><strong>Mini App & Loyalty / Ecom</strong></td><td>Giao diện Zalo Mini App, tính năng thành viên và quản trị theo báo giá.<small>Gói nền tảng bao gồm nhóm tính năng Loyalty, Ecom và Mini App được liệt kê trong PDF.</small></td><td class="money">10.800.000 đ</td><td class="money">5.400.000 đ</td></tr>
-              <tr><td><strong>CNV CDP Marketing Automation</strong></td><td>Data Hub, phân nhóm, Customer Insight, quản lý chiến dịch và automation.<small>Các tính năng chi tiết áp dụng theo phạm vi báo giá.</small></td><td class="money">24.000.000 đ</td><td class="money">24.000.000 đ</td></tr>
-              <tr><td><strong>Kết nối API bên thứ ba</strong></td><td>Hạng mục tích hợp hệ thống theo bảng giá.<small>Cần xác nhận phạm vi API cụ thể; báo giá có ghi điều kiện miễn phí riêng đối với API Sapo.</small></td><td class="money">8.400.000 đ</td><td class="money">8.400.000 đ</td></tr>
-              <tr><td><strong>Gamification Marketing</strong></td><td>Triển khai Mini Game phục vụ chiến dịch tương tác và nhận quà.<small>Chi phí duy trì theo năm; cơ chế trò chơi và ưu đãi thực tế cần chốt khi triển khai.</small></td><td class="money">15.000.000 đ</td><td class="money">15.000.000 đ</td></tr>
-              <tr class="gift-row"><td><strong>App nhân viên — Loyalty Hub</strong><span class="chip">Ưu đãi 100% năm đầu</span></td><td>Ứng dụng nhân viên theo báo giá; miễn phí 10 tài khoản, phát sinh tài khoản tính riêng.<small>Giá trị niêm yết 10.000.000 đ được khấu trừ trong tổng đầu tư năm đầu.</small></td><td class="money">0 đ</td><td class="money">0 đ</td></tr>
+              <tr class="price-group"><td colspan="4">Gói nền tảng</td></tr>
+              <tr><td><strong>Loyalty &amp; Ecom / Zalo Mini App</strong></td><td>Quản lý thành viên, điểm thưởng, ưu đãi, sản phẩm và trải nghiệm trên Mini App.<small>Theo nhóm tính năng nền tảng trong báo giá.</small></td><td class="money">50.000.000 đ</td><td class="money">25.000.000 đ</td></tr>
+              <tr><td><strong>CNV CDP &amp; Marketing Automation</strong></td><td>Data Hub, Customer Insight, Segment, Automation, Tracking và quản lý dữ liệu khách hàng đa kênh.<small>Bao gồm phạm vi các tính năng theo tài liệu báo giá.</small></td><td class="money">80.000.000 đ</td><td class="money">80.000.000 đ</td></tr>
+
+              <tr class="price-group"><td colspan="4">Dịch vụ add-on</td></tr>
+              <tr><td><strong>Gamification Marketing</strong></td><td>Gói 10 game và 80.000 lượt chơi phục vụ các chiến dịch tương tác, tích điểm và trao quà.</td><td class="money">22.000.000 đ</td><td class="money">22.000.000 đ</td></tr>
+              <tr><td><strong>Thẻ trả trước (Topup)</strong></td><td>Chức năng thẻ trả trước, nạp tiền và theo dõi số dư.<small>Phí giao dịch 300 đ/lượt theo báo giá.</small></td><td class="money">10.000.000 đ</td><td class="money">10.000.000 đ</td></tr>
+              <tr><td><strong>Affiliate (Enterprise)</strong></td><td>Quản lý cộng tác viên, giới thiệu khách hàng, hoa hồng và đối soát.</td><td class="money">30.000.000 đ</td><td class="money">30.000.000 đ</td></tr>
+              <tr><td><strong>QR Code trên sản phẩm</strong></td><td>Mã định danh cho sản phẩm, kiểm soát mã tham gia, lượt chơi, tích điểm và đổi quà.</td><td class="money">50.000.000 đ</td><td class="money">50.000.000 đ</td></tr>
+              <tr><td><strong>Nạp Card điện thoại tự động</strong></td><td>Trao thưởng bằng mã thẻ hoặc nạp tiền điện thoại, quản lý lịch sử và trạng thái phát thưởng.</td><td class="money">20.000.000 đ</td><td class="money">20.000.000 đ</td></tr>
+              <tr><td><strong>Voucher Got It / UrBox</strong></td><td>Tích hợp phát hành và phân phối voucher điện tử, theo dõi lịch sử trao thưởng.</td><td class="money">200.000.000 đ</td><td class="money">200.000.000 đ</td></tr>
+
+              <tr class="price-group"><td colspan="4">Hạ tầng &amp; kết nối</td></tr>
+              <tr><td><strong>Hạ tầng hệ thống</strong></td><td>Máy chủ và năng lực vận hành Zalo Mini App, CDP, chiến dịch Marketing và lưu trữ dữ liệu.</td><td class="money">20.000.000 đ</td><td class="money">20.000.000 đ</td></tr>
+              <tr><td><strong>Kết nối API bên thứ ba</strong></td><td>Open API và kết nối hệ thống theo phạm vi báo giá.<small>Có điều kiện miễn phí kết nối riêng cho API Sapo, cần xác minh trước khi ký.</small></td><td class="money">8.400.000 đ</td><td class="money">8.400.000 đ</td></tr>
+
+              <tr class="price-group"><td colspan="4">Ưu đãi</td></tr>
+              <tr class="gift-row"><td><strong>App nhân viên (Loyalty Hub)</strong><span class="chip">Tặng năm đầu</span></td><td>Quản trị thao tác nghiệp vụ dành cho nhân viên.<small>Giá niêm yết 10.000.000 đ; miễn phí trong tổng năm đầu theo báo giá. Miễn phí 10 tài khoản, tài khoản thêm tính riêng.</small></td><td class="money">0 đ</td><td class="money">0 đ</td></tr>
             </tbody>
           </table>
+
           <div class="pricing-summary">
             <div class="total-card">
               <span class="total-label">Tổng đầu tư năm đầu sau ưu đãi</span>
-              <strong class="total-amount">58.200.000 đ</strong>
+              <strong class="total-amount">490.400.000 đ</strong>
               <div class="total-detail">
-                <div><span>Giá niêm yết trước ưu đãi</span><strong>68.200.000 đ</strong></div>
-                <div><span>Giảm giá / App nhân viên</span><strong>−10.000.000 đ</strong></div>
+                <div><span>Tổng trước ưu đãi</span><strong>500.400.000 đ</strong></div>
+                <div><span>Giảm giá App nhân viên</span><strong>−10.000.000 đ</strong></div>
               </div>
             </div>
             <div class="renew-card">
-              <span class="total-label">Chi phí gia hạn theo báo giá</span>
-              <strong class="total-amount">52.800.000 đ</strong>
-              <p class="caption">Chi phí gia hạn cho các hạng mục của gói đã liệt kê; điều kiện có thể cần xác nhận tại thời điểm ký hợp đồng.</p>
+              <span class="total-label">Chi phí gia hạn hằng năm</span>
+              <strong class="total-amount">465.400.000 đ</strong>
+              <p class="caption">Tổng chi phí gia hạn theo toàn bộ hạng mục trong báo giá. Chưa bao gồm dịch vụ vận hành định kỳ.</p>
             </div>
           </div>
+
+          <div class="operations">
+            <h3>Dịch vụ quản trị &amp; vận hành — Gói Nâng Cao</h3>
+            <p>Hỗ trợ cấu hình hệ thống, nhập dữ liệu, quản trị chương trình ưu đãi, triển khai chiến dịch, tin nhắn ZNS, báo cáo và hỗ trợ kỹ thuật theo phạm vi dịch vụ.</p>
+            <div class="operations-grid">
+              <div><span>Phí dịch vụ tháng đầu</span><strong>15.000.000 đ</strong></div>
+              <div><span>Phí duy trì từ tháng thứ 2</span><strong>10.500.000 đ/tháng</strong></div>
+            </div>
+            <div class="operations-note">Dịch vụ vận hành được báo giá riêng theo tháng và <strong>không cộng vào tổng 490.400.000 đ</strong> của chi phí triển khai nền tảng.</div>
+          </div>
+
           <div class="notes">
-            <h3>Ghi chú & điều kiện</h3>
+            <h3>Ghi chú &amp; điều kiện</h3>
             <ul>
-              <li>Chưa bao gồm phí nâng cấp ZCA và phí gửi tin của các nền tảng; khách hàng chuẩn bị thiết bị phục vụ đào tạo.</li>
-              <li>Chi phí sản xuất mã trong bao bì, POSM tại đại lý, sampling, giải thưởng và vận hành sự kiện chưa được thể hiện thành hạng mục có giá riêng trong bảng báo giá.</li>
-              <li>Điều kiện miễn phí API Sapo, nếu phù hợp, cần xác nhận; tổng số tiền phía trên được giữ theo đúng bảng tính PDF.</li>
-              <li>PDF ghi ưu đãi tặng quà tổng trị giá 22.390.000 đ nhưng đặt dưới tiêu đề “Tháng 11/2025”; cần xác minh hiệu lực trước khi áp dụng cho Biscafun.</li>
+              <li>Bảng giá thể hiện toàn bộ hạng mục nêu trong tài liệu CNV mới; tổng 490.400.000 đ là ngân sách nếu triển khai đầy đủ các hạng mục liệt kê.</li>
+              <li>Chưa bao gồm phí nâng cấp ZCA, phí gửi tin theo biểu phí nền tảng và các khoản phát sinh ngoài phạm vi hợp đồng.</li>
+              <li>Chi phí sản xuất/in ấn bao bì, POSM, sampling và ngân sách quà tặng thực tế cần xác nhận riêng; không mặc định đã bao gồm.</li>
+              <li>Báo giá có mục quà tặng trị giá 22.390.000 đ mang nhãn “Tháng 11/2025”; cần xác nhận thời hạn chương trình trước khi áp dụng.</li>
+              <li>Những chức năng chưa liên quan trực tiếp tới 4 campaign B2C (ví dụ Topup, Affiliate) vẫn được hiển thị để phản ánh đầy đủ báo giá mới.</li>
             </ul>
-            <div class="gift-note"><strong>Phạm vi đề xuất:</strong> Bảng giá được chuyển từ tài liệu CNV có khách hàng là BISCAFUN. Giá, ưu đãi và điều kiện cuối cùng cần xác nhận với CNV trước khi phát hành báo giá chính thức.</div>
+            <div class="gift-note"><strong>Nguồn:</strong> BÁO GIÁ CNVCDP - BISCAFUN 161126 - Total chi tiết + add on.pdf, ngày 16/11/2026. Chi tiết triển khai và các điều kiện cuối cùng xác nhận khi ký hợp đồng.</div>
           </div>
         </div>
       </div>
@@ -411,7 +453,7 @@
       <h2>THANK YOU.</h2>
       <p>CONSULTANT — NGUYỄN PHI — 094.3452.098</p>
       <p class="contact-details">phinv1@cnv.vn · cnv.vn</p>
-      <p class="contact-details">Proposal V2 · Chi phí theo báo giá ngày 16/11/2026; điều kiện cần xác nhận trước ký hợp đồng.</p>
+      <p class="contact-details">Proposal V3 · Chi phí theo báo giá ngày 16/11/2026; điều kiện cần xác nhận trước ký hợp đồng.</p>
     </div>
   </footer>
 
