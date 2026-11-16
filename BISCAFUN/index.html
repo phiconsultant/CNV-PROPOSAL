@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#c82132">
   <meta name="description" content="Biscafun × CNV CDP — Proposal chiến dịch thu thập dữ liệu người tiêu dùng đa điểm chạm.">
-  <title>Biscafun × CNV CDP | Proposal V5</title>
+  <title>Biscafun × CNV CDP | Proposal V7</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap&subset=vietnamese" rel="stylesheet">
@@ -188,6 +188,83 @@
     .pricing .operations-grid strong { display: block; margin-top: 8px; font-size: clamp(1.35rem, 2.5vw, 2.1rem); color: var(--red-dark); }
     .pricing .operations-note { padding: 0 24px 20px; font-size: .84rem; color: var(--muted); }
     .pricing .gift-note { background: #fff5ed; padding: 15px 20px; border-left: 4px solid var(--orange); margin-top: 20px; border-radius: 8px; font-size: .87rem; }
+
+
+    /* ================================================================
+       08A. PRICING V7 — COMPONENT-SCOPED VISUAL SYSTEM
+       ================================================================ */
+    .pricing .pricing-card { border-color:#e8cfc1; border-radius:30px; box-shadow:0 24px 72px rgba(95,32,32,.08); }
+    .pricing .pricing-top { padding-bottom:24px; align-items:flex-start; }
+    .pricing .pricing-top h3 { letter-spacing:-.045em; margin:14px 0 7px; }
+    .pricing .pricing-top-desc { color:var(--muted); font-size:.93rem; max-width:600px; line-height:1.6; }
+    .pricing .quote-date { background:#fff6ee; border:1px solid #f0d9c9; padding:13px 17px; border-radius:14px; font-size:.65rem; letter-spacing:.09em; line-height:1.7; white-space:nowrap; }
+    .pricing .quote-date strong { color:var(--red-dark); font-size:1rem; letter-spacing:0; }
+    .pricing .pricing-overview { display:grid; grid-template-columns:1fr 1fr; gap:14px; padding:0 clamp(20px,4vw,45px) 28px; }
+    .pricing .pricing-overview-item { display:flex; gap:14px; align-items:center; border:1px solid #eadbd4; border-radius:18px; background:#fff9f4; padding:18px 20px; min-width:0; }
+    .pricing .pricing-overview-item:first-child { background:#fff1e5; border-color:#ecc5af; }
+    .pricing .pricing-overview-number { display:grid; place-items:center; background:#8c1927; color:white; width:46px; height:46px; flex:none; border-radius:13px; font-size:1rem; font-weight:900; }
+    .pricing .pricing-overview-number small { font-size:.53rem; opacity:.7; margin-top:-8px; }
+    .pricing .pricing-overview-item > div { min-width:0; flex:1; }
+    .pricing .pricing-overview-item > div strong { display:block; font-size:.93rem; }
+    .pricing .pricing-overview-item > div span { font-size:.73rem; color:var(--muted); }
+    .pricing .pricing-overview-item b { color:var(--red-dark); font-size:clamp(1.15rem,2vw,1.55rem); white-space:nowrap; letter-spacing:-.05em; }
+    .pricing .pricing-overview-item b small { font-size:.55em; letter-spacing:0; }
+    .pricing .pricing-table-wrap { padding:0 18px; }
+    .pricing .pricing-table { border:1px solid #eadbd4; border-radius:17px; border-collapse:separate; border-spacing:0; overflow:hidden; }
+    .pricing .pricing-table thead { background:#36252b; }
+    .pricing .pricing-table thead th { padding:17px 18px; font-size:.72rem; }
+    .pricing .pricing-table th:nth-child(1) { width:25%; }
+    .pricing .pricing-table th:nth-child(2) { width:39%; }
+    .pricing .pricing-table th:nth-child(3), .pricing .pricing-table th:nth-child(4) { width:18%; }
+    .pricing .pricing-table td { padding:18px; }
+    .pricing .pricing-table tbody tr:nth-child(even) { background:transparent; }
+    .pricing .pricing-table tbody tr:not(.price-group):not(.group-subtotal):hover { background:#fffaf6; }
+    .pricing .pricing-table td:first-child > strong { font-size:.92rem; line-height:1.4; }
+    .pricing .pricing-table td:nth-child(2) { font-size:.84rem; line-height:1.55; color:#5c5154; }
+    .pricing .pricing-table .money { font-size:.88rem; font-variant-numeric:tabular-nums; letter-spacing:-.025em; }
+    .pricing .price-group td { padding:0 !important; background:#fff0e5 !important; border-top:2px solid #e5c8b9 !important; }
+    .pricing .group-heading { display:flex; align-items:center; gap:13px; padding:14px 18px; letter-spacing:0; }
+    .pricing .group-index { display:grid; place-items:center; background:#fff; border:1px solid #ecc7b2; border-radius:10px; width:37px; height:37px; color:var(--red-dark); font-size:.84rem; }
+    .pricing .group-heading strong { display:block; font-size:.85rem; letter-spacing:.07em; }
+    .pricing .group-heading small { display:block; font-size:.7rem; letter-spacing:0; text-transform:none; color:#936963; margin-top:2px; }
+    .pricing .item-index { display:inline-grid; place-items:center; vertical-align:middle; margin-right:8px; background:#f8e5db; width:24px; height:24px; border-radius:7px; font-size:.68rem; font-weight:850; color:var(--red-dark); }
+    .pricing .platform-item { background:#fffdfb; }
+    .pricing .group-subtotal td { background:#f9f2eb !important; border-top:1px solid #e8d8cb; color:var(--red-dark); font-weight:850; }
+    .pricing .group-subtotal td:first-child { font-size:.82rem; letter-spacing:.03em; }
+    .pricing .group-subtotal td small { display:inline; margin-left:10px; font-size:.72rem; font-weight:500; }
+    .pricing .group-subtotal td.money { font-size:.9rem; }
+    .pricing .pricing-summary { grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr); gap:14px; padding:26px 18px 10px; }
+    .pricing .total-card, .pricing .renew-card { padding:28px; }
+    .pricing .total-card { background:linear-gradient(130deg,#8c1927,#b51f30); }
+    .pricing .renew-card { background:#fff8f2; }
+    .pricing .total-amount { font-size:clamp(1.9rem,3.3vw,3.05rem); letter-spacing:-.055em; white-space:nowrap; font-variant-numeric:tabular-nums; }
+    .pricing .renew-card .total-amount { font-size:clamp(1.85rem,2.8vw,2.6rem); }
+    .pricing .operations { margin:24px 18px 30px; }
+    .pricing .notes { padding:0 30px 32px; }
+    @media(max-width:950px) {
+      .pricing .pricing-summary { grid-template-columns:1fr; }
+      .pricing .pricing-overview-item { flex-wrap:wrap; }
+    }
+    @media(max-width:680px) {
+      .pricing .pricing-top { padding:22px 17px 18px; }
+      .pricing .pricing-overview { grid-template-columns:1fr; padding:0 16px 18px; gap:9px; }
+      .pricing .pricing-overview-item { flex-wrap:nowrap; padding:13px; }
+      .pricing .pricing-table-wrap { padding:0 10px; }
+      .pricing .pricing-table { border-radius:13px; overflow:visible; border-collapse:separate; }
+      .pricing .pricing-table tbody tr:not(.price-group):not(.group-subtotal) { padding:15px; }
+      .pricing .pricing-table tbody tr.group-subtotal { display:grid; grid-template-columns:1fr 1fr; padding:15px; }
+      .pricing .group-subtotal td:first-child { grid-column:1 / -1; }
+      .pricing .group-subtotal td:nth-child(2)::before { content:'NĂM ĐẦU'; }
+      .pricing .group-subtotal td:nth-child(3)::before { content:'GIA HẠN'; }
+      .pricing .group-subtotal td.money::before { display:block; font-size:.65rem; color:#8b6b6b; }
+      .pricing .group-subtotal td.money { grid-column:auto; text-align:left !important; font-size:.83rem; }
+      .pricing .price-group { display:block !important; padding:0 !important; border:0 !important; }
+      .pricing .price-group td { display:block !important; border:0 !important; padding:0 !important; }
+      .pricing .pricing-summary { padding:18px 10px; }
+      .pricing .total-amount, .pricing .renew-card .total-amount { font-size:clamp(1.52rem,7.2vw,2.25rem); }
+      .pricing .operations { margin:8px 10px 24px; }
+      .pricing .notes { padding:0 18px 24px; }
+    }
 
     /* ================================================================
        09. FOOTER — VISUAL SCOPE: .footer
@@ -554,45 +631,52 @@
       <div class="container">
         <span class="eyebrow">08 / Ngân sách triển khai</span>
         <h2 class="section-title">Ngân sách triển khai giải pháp.</h2>
-        <p class="section-desc">Cập nhật theo báo giá CNV CDP dành cho BISCAFUN ngày 16/11/2026, gồm nền tảng, các dịch vụ mở rộng, hạ tầng, kết nối API và dịch vụ vận hành.</p>
+        <p class="section-desc">Cấu trúc 4 thành phần nền tảng, các tiện ích mở rộng và dịch vụ vận hành riêng biệt, theo báo giá CNV CDP dành cho BISCAFUN ngày 16/11/2026.</p>
 
         <div class="pricing-card">
           <div class="pricing-top">
-            <div><span class="chip">BÁO GIÁ CNV CDP × BISCAFUN</span><h3>Chi phí triển khai nền tảng &amp; add-on</h3></div>
-            <div class="quote-date">Ngày báo giá: 16/11/2026</div>
+            <div><span class="chip">BÁO GIÁ CNV CDP × BISCAFUN</span><h3>Đầu tư theo nhóm giải pháp</h3><p class="pricing-top-desc">4 hạng mục nền tảng và 6 giải pháp mở rộng. Phân tách rõ chi phí thiết lập năm đầu và gia hạn thường niên.</p></div>
+            <div class="quote-date">BÁO GIÁ NGÀY<br><strong>16/11/2026</strong></div>
           </div>
 
-          <table class="pricing-table" aria-label="Bảng báo giá triển khai CNV CDP Biscafun ngày 16 tháng 11 năm 2026">
-            <thead><tr><th>HẠNG MỤC</th><th>PHẠM VI</th><th>NĂM ĐẦU</th><th>GIA HẠN</th></tr></thead>
-            <tbody>
-              <tr class="price-group"><td colspan="4">Gói nền tảng</td></tr>
-              <tr><td><strong>Loyalty &amp; Ecom / Zalo Mini App</strong></td><td>Quản lý thành viên, điểm thưởng, ưu đãi, sản phẩm và trải nghiệm trên Mini App.<small>Theo nhóm tính năng nền tảng trong báo giá.</small></td><td class="money">50.000.000 đ</td><td class="money">25.000.000 đ</td></tr>
-              <tr><td><strong>CNV CDP &amp; Marketing Automation</strong></td><td>Data Hub, Customer Insight, Segment, Automation, Tracking và quản lý dữ liệu khách hàng đa kênh.<small>Bao gồm phạm vi các tính năng theo tài liệu báo giá.</small></td><td class="money">80.000.000 đ</td><td class="money">80.000.000 đ</td></tr>
+          <div class="pricing-overview" aria-label="Tổng quan các nhóm ngân sách">
+            <div class="pricing-overview-item"><span class="pricing-overview-number">01 <small>/ 02</small></span><div><strong>Gói nền tảng</strong><span>4 hạng mục bắt buộc</span></div><b>158,4 <small>triệu</small></b></div>
+            <div class="pricing-overview-item"><span class="pricing-overview-number">02 <small>/ 02</small></span><div><strong>Giải pháp mở rộng</strong><span>6 hạng mục theo báo giá</span></div><b>332 <small>triệu</small></b></div>
+          </div>
 
-              <tr class="price-group"><td colspan="4">Dịch vụ add-on</td></tr>
-              <tr><td><strong>Gamification Marketing</strong></td><td>Gói 10 game và 80.000 lượt chơi phục vụ các chiến dịch tương tác, tích điểm và trao quà.</td><td class="money">22.000.000 đ</td><td class="money">22.000.000 đ</td></tr>
-              <tr><td><strong>Thẻ trả trước (Topup)</strong></td><td>Chức năng thẻ trả trước, nạp tiền và theo dõi số dư.<small>Phí giao dịch 300 đ/lượt theo báo giá.</small></td><td class="money">10.000.000 đ</td><td class="money">10.000.000 đ</td></tr>
-              <tr><td><strong>Affiliate (Enterprise)</strong></td><td>Quản lý cộng tác viên, giới thiệu khách hàng, hoa hồng và đối soát.</td><td class="money">30.000.000 đ</td><td class="money">30.000.000 đ</td></tr>
-              <tr><td><strong>QR Code trên sản phẩm</strong></td><td>Mã định danh cho sản phẩm, kiểm soát mã tham gia, lượt chơi, tích điểm và đổi quà.</td><td class="money">50.000.000 đ</td><td class="money">50.000.000 đ</td></tr>
-              <tr><td><strong>Nạp Card điện thoại tự động</strong></td><td>Trao thưởng bằng mã thẻ hoặc nạp tiền điện thoại, quản lý lịch sử và trạng thái phát thưởng.</td><td class="money">20.000.000 đ</td><td class="money">20.000.000 đ</td></tr>
-              <tr><td><strong>Voucher Got It / UrBox</strong></td><td>Tích hợp phát hành và phân phối voucher điện tử, theo dõi lịch sử trao thưởng.</td><td class="money">200.000.000 đ</td><td class="money">200.000.000 đ</td></tr>
+          <div class="pricing-table-wrap">
+            <table class="pricing-table" aria-label="Bảng báo giá triển khai CNV CDP Biscafun ngày 16 tháng 11 năm 2026">
+              <thead><tr><th>HẠNG MỤC</th><th>PHẠM VI TRIỂN KHAI</th><th>NĂM ĐẦU</th><th>GIA HẠN / NĂM</th></tr></thead>
+              <tbody>
+                <tr class="price-group"><td colspan="4"><span class="group-heading"><span class="group-index">01</span><span><strong>GÓI NỀN TẢNG</strong><small>4 thành phần thiết lập hệ thống</small></span></span></td></tr>
+                <tr class="platform-item"><td><span class="item-index">01</span><strong>Loyalty &amp; Ecom / Zalo Mini App</strong></td><td>Quản lý thành viên, điểm thưởng, ưu đãi, sản phẩm và trải nghiệm trên Mini App.<small>Theo nhóm tính năng nền tảng trong báo giá.</small></td><td class="money">50.000.000 đ</td><td class="money">25.000.000 đ</td></tr>
+                <tr class="platform-item"><td><span class="item-index">02</span><strong>CNV CDP &amp; Marketing Automation</strong></td><td>Data Hub, Customer Insight, Segment, Automation, Tracking và quản lý dữ liệu khách hàng đa kênh.<small>Bao gồm phạm vi các tính năng theo tài liệu báo giá.</small></td><td class="money">80.000.000 đ</td><td class="money">80.000.000 đ</td></tr>
+                <tr class="platform-item"><td><span class="item-index">03</span><strong>Hạ tầng hệ thống</strong></td><td>Máy chủ và năng lực vận hành Zalo Mini App, CDP, chiến dịch Marketing và lưu trữ dữ liệu.</td><td class="money">20.000.000 đ</td><td class="money">20.000.000 đ</td></tr>
+                <tr class="platform-item"><td><span class="item-index">04</span><strong>Kết nối API bên thứ ba</strong></td><td>Open API và kết nối hệ thống theo phạm vi báo giá.<small>Có điều kiện miễn phí kết nối riêng cho API Sapo, cần xác minh trước khi ký.</small></td><td class="money">8.400.000 đ</td><td class="money">8.400.000 đ</td></tr>
+                <tr class="group-subtotal"><td colspan="2"><strong>TỔNG GÓI NỀN TẢNG</strong><small>4 hạng mục</small></td><td class="money">158.400.000 đ</td><td class="money">133.400.000 đ</td></tr>
 
-              <tr class="price-group"><td colspan="4">Hạ tầng &amp; kết nối</td></tr>
-              <tr><td><strong>Hạ tầng hệ thống</strong></td><td>Máy chủ và năng lực vận hành Zalo Mini App, CDP, chiến dịch Marketing và lưu trữ dữ liệu.</td><td class="money">20.000.000 đ</td><td class="money">20.000.000 đ</td></tr>
-              <tr><td><strong>Kết nối API bên thứ ba</strong></td><td>Open API và kết nối hệ thống theo phạm vi báo giá.<small>Có điều kiện miễn phí kết nối riêng cho API Sapo, cần xác minh trước khi ký.</small></td><td class="money">8.400.000 đ</td><td class="money">8.400.000 đ</td></tr>
-            </tbody>
-          </table>
+                <tr class="price-group"><td colspan="4"><span class="group-heading"><span class="group-index">02</span><span><strong>GIẢI PHÁP MỞ RỘNG</strong><small>6 tiện ích bổ sung theo báo giá Biscafun</small></span></span></td></tr>
+                <tr><td><strong>Gamification Marketing</strong></td><td>Gói 10 game và 80.000 lượt chơi phục vụ các chiến dịch tương tác, tích điểm và trao quà.</td><td class="money">22.000.000 đ</td><td class="money">22.000.000 đ</td></tr>
+                <tr><td><strong>Thẻ trả trước (Topup)</strong></td><td>Chức năng thẻ trả trước, nạp tiền và theo dõi số dư.<small>Phí giao dịch 300 đ/lượt theo báo giá.</small></td><td class="money">10.000.000 đ</td><td class="money">10.000.000 đ</td></tr>
+                <tr><td><strong>Affiliate (Enterprise)</strong></td><td>Quản lý cộng tác viên, giới thiệu khách hàng, hoa hồng và đối soát.</td><td class="money">30.000.000 đ</td><td class="money">30.000.000 đ</td></tr>
+                <tr><td><strong>QR Code trên sản phẩm</strong></td><td>Mã định danh cho sản phẩm, kiểm soát mã tham gia, lượt chơi, tích điểm và đổi quà.</td><td class="money">50.000.000 đ</td><td class="money">50.000.000 đ</td></tr>
+                <tr><td><strong>Nạp Card điện thoại tự động</strong></td><td>Trao thưởng bằng mã thẻ hoặc nạp tiền điện thoại, quản lý lịch sử và trạng thái phát thưởng.</td><td class="money">20.000.000 đ</td><td class="money">20.000.000 đ</td></tr>
+                <tr><td><strong>Voucher Got It / UrBox</strong></td><td>Tích hợp phát hành và phân phối voucher điện tử, theo dõi lịch sử trao thưởng.</td><td class="money">200.000.000 đ</td><td class="money">200.000.000 đ</td></tr>
+                <tr class="group-subtotal"><td colspan="2"><strong>TỔNG GIẢI PHÁP MỞ RỘNG</strong><small>6 hạng mục</small></td><td class="money">332.000.000 đ</td><td class="money">332.000.000 đ</td></tr>
+              </tbody>
+            </table>
+          </div>
 
           <div class="pricing-summary">
             <div class="total-card">
               <span class="total-label">Tổng đầu tư nền tảng năm đầu</span>
               <strong class="total-amount">490.400.000 đ</strong>
-              <div class="total-detail">Tổng các hạng mục tính phí trong báo giá, không bao gồm dịch vụ quản trị &amp; vận hành theo tháng.</div>
+              <div class="total-detail">Gói nền tảng 158,4 triệu + giải pháp mở rộng 332 triệu. Chưa bao gồm dịch vụ quản trị &amp; vận hành theo tháng.</div>
             </div>
             <div class="renew-card">
               <span class="total-label">Chi phí gia hạn hằng năm</span>
               <strong class="total-amount">465.400.000 đ</strong>
-              <p class="caption">Tổng chi phí gia hạn theo toàn bộ hạng mục trong báo giá. Chưa bao gồm dịch vụ vận hành định kỳ.</p>
+              <p class="caption">Gói nền tảng 133,4 triệu + giải pháp mở rộng 332 triệu. Chưa bao gồm dịch vụ vận hành định kỳ.</p>
             </div>
           </div>
 
