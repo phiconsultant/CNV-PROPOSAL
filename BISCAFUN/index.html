@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#c82132">
   <meta name="description" content="Biscafun × CNV CDP — Proposal chiến dịch thu thập dữ liệu người tiêu dùng đa điểm chạm.">
-  <title>Biscafun × CNV CDP | Proposal V8</title>
+  <title>Biscafun × CNV CDP | Proposal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap&subset=vietnamese" rel="stylesheet">
@@ -85,13 +85,15 @@
     .hero .inner { position: relative; z-index: 1; padding: clamp(36px, 4.5vw, 70px); padding-bottom: 205px; min-height: 718px; }
     .hero .copy { position: relative; z-index: 2; width: min(58%, 710px); }
     .hero .kicker { font-size: clamp(.66rem, .9vw, .82rem); font-weight: 900; text-transform: uppercase; letter-spacing: .15em; color: #fff4dc; }
-    .hero h1 { color: #fff; font-size: clamp(3.15rem, 6.2vw, 6.8rem); font-weight: 900; letter-spacing: -.065em; line-height: 1.035; margin: 28px 0 24px; }
+    .hero h1 { color: #fff; font-size: clamp(2rem, 5vw, 5rem); font-weight: 900; letter-spacing: -.065em; line-height: 1.035; margin: 28px 0 24px; }
     .hero h1 em { color: #ffe09a; font-style: normal; }
     .hero .intro { color: #fff7ef; max-width: 625px; font-size: clamp(1.03rem, 1.48vw, 1.35rem); line-height: 1.54; text-wrap: pretty; }
     .hero .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; margin-top: 30px; }
     .hero .actions .btn { color: #a71427; background: white; box-shadow: 0 10px 26px rgba(118,13,23,.16); }
     .hero .actions .btn:hover { background: #fff2de; }
     .hero .version { color: #fff3e5; font-weight: 800; font-size: .78rem; border-left: 1px solid rgba(255,255,255,.6); padding-left: 20px; }
+    /* Mobile-only product visual: independent layout, never overlaps CTA. */
+    .hero .mobile-product { display: none; }
     .hero .benefits { position: absolute; z-index: 3; left: clamp(24px, 4.5vw, 70px); right: clamp(24px, 4.5vw, 70px); bottom: 30px; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; }
     .hero .benefit { display: flex; align-items: flex-start; gap: 14px; min-width: 0; padding: 21px 22px; background: rgba(255,254,250,.96); border: 1px solid rgba(255,255,255,.85); border-radius: 24px; box-shadow: 0 18px 35px rgba(98,31,18,.17); }
     .hero .benefit-num { display: inline-grid; flex: 0 0 45px; width: 45px; height: 45px; place-items: center; border-radius: 50%; background: #fb8b0b; color: white; font-size: 1.15rem; font-weight: 900; }
@@ -111,26 +113,30 @@
       .hero .benefits { gap: 10px; }
     }
     @media (max-width: 680px) {
+      /* Mobile: real vertical flow — copy > product photograph > benefits. */
       .hero { padding: 8px 8px 0; }
-      .hero .stage { min-height: 910px; border-radius: 22px; }
-      .hero .inner { min-height: 910px; padding: 34px 24px 430px; }
-      .hero .stage::before { inset: 205px 0 250px 12%; background-size: contain; background-position: right center; opacity: .96; }
-      .hero .stage::after { bottom: 0; left: -20%; width: 140%; height: 315px; transform: rotate(-4deg); }
+      .hero .stage { min-height: 0; border-radius: 22px; }
+      .hero .stage::before, .hero .stage::after { display: none; }
+      .hero .inner { min-height: 0; padding: 32px 20px 22px; }
       .hero .copy { width: 100%; }
-      .hero .kicker { font-size: .65rem; letter-spacing: .1em; }
-      .hero h1 { font-size: clamp(2.7rem, 11vw, 4.5rem); margin: 18px 0; }
-      .hero .intro { font-size: .98rem; max-width: 90%; }
-      .hero .actions { margin-top: 18px; gap: 12px; }
-      .hero .version { border: 0; padding-left: 0; font-size: .68rem; }
-      .hero .benefits { left: 18px; right: 18px; bottom: 18px; grid-template-columns: 1fr; gap: 9px; }
-      .hero .benefit { padding: 12px 14px; border-radius: 15px; gap: 12px; }
-      .hero .benefit h3 { font-size: 1rem; margin-bottom: 2px; }
-      .hero .benefit p { font-size: .79rem; }
-      .hero .benefit-num { flex-basis: 32px; width: 32px; height: 32px; font-size: .92rem; }
+      .hero .kicker { font-size: .65rem; line-height: 1.6; letter-spacing: .08em; }
+      .hero h1 { font-size: clamp(2.45rem, 10.3vw, 3.55rem); line-height: 1.07; letter-spacing: -.055em; margin: 18px 0; }
+      .hero .intro { max-width: 100%; font-size: .96rem; line-height: 1.58; }
+      .hero .actions { display: flex; flex-direction: column; align-items: flex-start; gap: 13px; margin-top: 22px; }
+      .hero .actions .btn { max-width: 100%; text-align: center; }
+      .hero .version { display: block; border: 0; padding: 0; font-size: .69rem; opacity: .88; }
+      .hero .mobile-product { display: block; margin: 26px -20px 18px; overflow: hidden; background: #ffc247; }
+      .hero .mobile-product img { display: block; width: 100%; height: auto; object-fit: contain; }
+      .hero .benefits { position: static; display: grid; grid-template-columns: 1fr; gap: 10px; }
+      .hero .benefit { padding: 14px; border-radius: 17px; gap: 12px; box-shadow: 0 8px 18px rgba(98,31,18,.12); }
+      .hero .benefit h3 { font-size: 1rem; margin-bottom: 3px; }
+      .hero .benefit p { font-size: .83rem; }
+      .hero .benefit-num { flex: 0 0 36px; width: 36px; height: 36px; font-size: .94rem; }
     }
     @media (max-width: 390px) {
-      .hero .stage, .hero .inner { min-height: 940px; }
-      .hero .stage::before { inset: 250px 0 275px 4%; }
+      .hero .inner { padding-inline: 18px; }
+      .hero .mobile-product { margin-inline: -18px; }
+      .hero h1 { font-size: clamp(2.25rem, 10vw, 2.65rem); }
     }
 
     /* ================================================================
@@ -559,17 +565,20 @@
         <div class="inner">
           <div class="copy">
             <div class="kicker">Biscafun × CNV CDP / Consumer Data Acquisition</div>
-            <h1>Mỗi điểm chạm.<br><em>Một kết nối.</em></h1>
-            <p class="intro">Giải pháp thu thập dữ liệu người tiêu dùng từ TMĐT, kênh MT/GT, QR Unique trong bao bì, sự kiện offline và chương trình Affiliate.</p>
+            <h1>Mỗi Điểm Chạm<br><em>Một Dữ Liệu</em></h1>
+            <p class="intro">Giải pháp thu thập dữ liệu người tiêu dùng từ TMĐT, kênh MT/GT, trong Gói Sản Phẩm, sự kiện Offline.</p>
             <div class="actions">
               <a class="btn" href="#ecommerce">Khám phá giải pháp →</a>
-              <span class="version">PROPOSAL V10 · CASE STUDIES</span>
+              
             </div>
+          </div>
+          <div class="mobile-product" aria-label="Hình ảnh các sản phẩm Biscafun">
+            <img src="assets/biscafun-hero-products-v10.webp" alt="Các dòng sản phẩm bánh kẹo Biscafun" loading="eager" decoding="async">
           </div>
           <div class="benefits" aria-label="Ba giá trị của giải pháp">
             <article class="benefit">
               <span class="benefit-num">01</span>
-              <div><h3>Chạm đúng thời điểm</h3><p>Kích hoạt nhận hàng, trưng bày, mở bánh hoặc dùng thử</p></div>
+              <div><h3>Chạm đúng thời điểm</h3><p>Khi Nhận Hàng · Khi Ăn Bánh · Tại Sự Kiện</p></div>
             </article>
             <article class="benefit">
               <span class="benefit-num">02</span>
@@ -577,7 +586,7 @@
             </article>
             <article class="benefit">
               <span class="benefit-num">03</span>
-              <div><h3>Kết nối dữ liệu</h3><p>Ghi nhận hồ sơ và nguồn chiến dịch</p></div>
+              <div><h3>Kết nối dữ liệu</h3><p>Ghi Nhận Hồ Sơ Khách Hàng</p></div>
             </article>
           </div>
         </div>
@@ -590,10 +599,10 @@
     <section class="section context" id="context">
       <div class="container">
         <span class="eyebrow">02 / Bối cảnh & mục tiêu</span>
-        <h2 class="section-title">Bán được sản phẩm chưa đồng nghĩa với nhận diện được người mua.</h2>
-        <p class="section-desc">Với mô hình FMCG, Biscafun có thể tiếp cận người tiêu dùng thông qua nhiều kênh trung gian. Proposal tập trung tạo ra những lý do đủ hấp dẫn để khách chủ động đăng ký và tương tác với thương hiệu.</p>
+        <h2 class="section-title">Nhận Diện và Kết Nối với Khách Hàng Cuối</h2>
+        <p>Với mô hình FMCG, Biscafun có thể tiếp cận người tiêu dùng thông qua nhiều kênh trung gian. Proposal tập trung tạo ra những lý do đủ hấp dẫn để khách chủ động đăng ký và tương tác với thương hiệu.</p>
         <div class="panel">
-          <div class="insight"><span class="chip">Bài toán cần giải quyết</span><strong>Từ người mua ẩn danh thành khách hàng có thể kết nối trực tiếp.</strong><p>Đây là định hướng giải pháp, không phải kết luận Biscafun hiện thiếu dữ liệu.</p></div>
+          <div class="insight"><span class="chip">Bài toán cần giải quyết</span><strong>Từ người mua ẩn danh thành khách hàng có thể kết nối trực tiếp.</strong><p>Định hướng giải pháp phù hợp</p></div>
           <div class="goals">
             <div class="goal"><b>01</b> Tạo điểm chạm thu thập thông tin từ kênh bán và hoạt động thực tế.</div>
             <div class="goal"><b>02</b> Đổi thông tin khách hàng lấy quyền lợi rõ ràng, hấp dẫn.</div>
@@ -603,9 +612,9 @@
 <!-- V10 / biscafun-miniapp-visual: Biscafun proposal illustration, before case studies -->
 <div class="biscafun-miniapp-visual" aria-label="Giao diện Zalo Mini App Biscafun">
   <h3>Giao diện Zalo Mini App Biscafun</h3>
-  <p>Minh họa năm màn hình: Trang chủ, Danh mục sản phẩm, Chi tiết sản phẩm, Giỏ hàng và Tài khoản khách hàng.</p>
+  <p>Zalo Mini App có vai trò là trọng tâm trong chuỗi hoạt động tương tác với khách hàng, là điểm chạm cuối để khách hàng nhận, theo dõi và sử dụng quyền lợi hạng thành viên.</p>
   <figure>
-    <img class="zoomable" tabindex="0" loading="lazy" decoding="async" src="assets/biscafun-miniapp-overview.webp" alt="Giao diện mẫu Zalo Mini App Biscafun gồm 5 màn hình">
+    <img class="zoomable" tabindex="0" loading="lazy" decoding="async" src="assets/biscafun-miniapp-overview.webp" alt="Giao diện mẫu Zalo Mini App Biscafun">
     <figcaption>Giao diện minh họa đề xuất cho Biscafun · Nhấn vào ảnh để xem lớn</figcaption>
   </figure>
 </div>
@@ -617,9 +626,9 @@
          ============================================================== -->
     <section class="section campaign-ecom" id="ecommerce">
 <div class="container">
-<span class="eyebrow">03 / Thu thập dữ liệu · TMĐT &amp; kênh MT/GT</span>
-<h2 class="section-title">Thu thập dữ liệu khách hàng từ sàn TMĐT và kênh MT/GT.</h2>
-<p class="section-desc">Tận dụng các điểm chạm sau mua và tại điểm bán để mời người tiêu dùng Biscafun tham gia chương trình thành viên, tích điểm và nhận quà. Mỗi kênh có thể dùng QR riêng để ghi nhận nguồn đăng ký.</p>
+<span class="eyebrow">03 / Giải Pháp Thu thập dữ liệu · TMĐT &amp; kênh MT/GT</span>
+<h2 class="section-title">Thu thập dữ liệu khách hàng từ sàn TMĐT và kênh MT/GT</h2>
+<p>Tận dụng các điểm chạm sau mua và tại điểm bán để mời người tiêu dùng Biscafun tham gia chương trình thành viên, tích điểm và nhận quà. Mỗi kênh có thể dùng QR riêng để ghi nhận nguồn đăng ký.</p>
 <div class="overview">
 <div class="box">
 <h3>Từ đơn hàng TMĐT</h3>
@@ -634,7 +643,6 @@
 <ul>
 <li>Đặt QR trên POSM hoặc kệ hàng tại điểm bán tham gia chiến dịch.</li>
 <li>Khách quét mã, đăng ký và nhận quyền tương tác hoặc quà phổ thông.</li>
-<li>Không phụ thuộc việc kết nối dữ liệu hóa đơn của đại lý.</li>
 </ul>
 </div>
 </div>
@@ -642,20 +650,20 @@
 <!-- V10 / biscafun-proposal-visual: Biscafun proposal illustration, before case studies -->
 <div class="biscafun-proposal-visual" aria-label="Giải pháp Biscafun — QR trong kiện hàng TMĐT">
   <h3>Giải pháp Biscafun — QR trong kiện hàng TMĐT</h3>
-  <p>Hành trình 6 bước: quét QR từ thẻ cảm ơn, kích hoạt thành viên, đăng ký, nhận voucher, truy cập Mini App và dùng voucher ở lần mua tiếp theo.</p>
+  <p>Luồng minh họa hành trình khách hàng kích hoạt thành viên mới thông quan hành động quét mã QR Thank You Card trong hộp hàng nhận từ sàn TMĐT. Sử dụng quyền lợi để khuyến khích khách hàng quét mã.</p>
   <figure>
     <img class="zoomable" tabindex="0" loading="lazy" decoding="async" src="assets/biscafun-ecommerce-journey.webp" alt="Hành trình sáu bước thu thập dữ liệu khách hàng từ kiện hàng TMĐT Biscafun">
     <figcaption>Giao diện minh họa đề xuất cho Biscafun · Nhấn vào ảnh để xem lớn</figcaption>
   </figure>
 </div>
 <div class="real-case" id="case-ohar">
-<div class="case-header"><div><span class="case-tag">CASE STUDY THỰC TẾ</span><h3>01. OHAR Healthy Life — QR trong hộp hàng</h3><p>Từ QR trong hộp sản phẩm, khách được kết nối với Mini App và tiếp nhận quyền lợi. Sau đó khách có thể chọn chuyển thưởng để quyên góp hoặc đổi quà.</p></div></div>
+<div class="case-header"><div><span class="case-tag">CASE STUDY THỰC TẾ</span><h3>OHAR Healthy Life — QR trong hộp hàng</h3><p>Từ QR trong hộp sản phẩm, khách được kết nối với Mini App và tiếp nhận quyền lợi. Sau đó khách có thể chọn chuyển thưởng để quyên góp hoặc đổi quà.</p></div></div>
 <h4 class="subcase-heading">Hành trình chi tiết</h4>
 <div class="case-flow"><div class="flow-card"><span class="step-label">01</span><figure class="media-frame phone"><img alt="OHAR — QR trong hộp sản phẩm" class="zoomable" decoding="async" height="710" loading="lazy" src="assets/case-studies/ohar-02.webp" tabindex="0" width="511"/><figcaption>QR trong hộp sản phẩm</figcaption></figure></div><div class="flow-card"><span class="step-label">02</span><figure class="media-frame phone"><img alt="OHAR — Tin nhắn thông báo ghi nhận quyền lợi" class="zoomable" decoding="async" height="499" loading="lazy" src="assets/case-studies/ohar-03.webp" tabindex="0" width="242"/><figcaption>Tin nhắn thông báo ghi nhận quyền lợi</figcaption></figure></div><div class="flow-card"><span class="step-label">03</span><figure class="media-frame phone"><img alt="OHAR — Giao diện Zalo Mini App" class="zoomable" decoding="async" height="606" loading="lazy" src="assets/case-studies/ohar-04.webp" tabindex="0" width="294"/><figcaption>Giao diện Zalo Mini App</figcaption></figure></div><div class="flow-card"><span class="step-label">04</span><figure class="media-frame phone"><img alt="OHAR — Chuyển thưởng vào quỹ từ thiện" class="zoomable" decoding="async" height="808" loading="lazy" src="assets/case-studies/ohar-05.webp" tabindex="0" width="392"/><figcaption>Chuyển thưởng vào quỹ từ thiện</figcaption></figure></div><div class="flow-card"><span class="step-label">05</span><figure class="media-frame phone"><img alt="OHAR — Tra cứu phần thưởng và quyền lợi" class="zoomable" decoding="async" height="816" loading="lazy" src="assets/case-studies/ohar-06.webp" tabindex="0" width="396"/><figcaption>Tra cứu phần thưởng và quyền lợi</figcaption></figure></div><div class="flow-card"><span class="step-label">06</span><figure class="media-frame phone"><img alt="OHAR — Đổi thẻ cào điện thoại" class="zoomable" decoding="async" height="816" loading="lazy" src="assets/case-studies/ohar-07.webp" tabindex="0" width="396"/><figcaption>Đổi thẻ cào điện thoại</figcaption></figure></div></div>
 <p class="flow-hint">← Kéo ngang để xem đủ các bước · Chạm ảnh để phóng lớn</p></div>
 <hr class="case-separator"/>
 <div class="real-case" id="case-udon">
-<div class="case-header"><div><span class="case-tag">CASE STUDY THỰC TẾ</span><h3>02. Marukame Udon Vietnam — Đăng ký thành viên &amp; nhận voucher</h3><p>Hành trình từ truyền thông chương trình đến đăng ký Zalo OA, cung cấp thông tin và xem voucher thành viên. Đây là một ví dụ tham khảo về điểm chạm thu thập dữ liệu và quyền lợi sau đăng ký.</p></div></div>
+<div class="case-header"><div><span class="case-tag">CASE STUDY THỰC TẾ</span><h3>Marukame Udon Vietnam — Đăng ký thành viên &amp; nhận voucher</h3><p>Hành trình từ truyền thông chương trình đến đăng ký Zalo OA, cung cấp thông tin và xem voucher thành viên. Đây là một ví dụ tham khảo về điểm chạm thu thập dữ liệu và quyền lợi sau đăng ký.</p></div></div>
 <div aria-label="Hành trình Marukame Udon Vietnam" class="case-flow"><div class="flow-card"><span class="step-label">01</span><figure class="media-frame phone"><img alt="Marukame Udon Vietnam — Truyền thông chương trình trên mạng xã hội" class="zoomable" decoding="async" height="655" loading="lazy" src="assets/case-studies/udon-01.webp" tabindex="0" width="263"/><figcaption>Truyền thông chương trình trên mạng xã hội</figcaption></figure></div><div class="flow-card"><span class="step-label">02</span><figure class="media-frame phone"><img alt="Marukame Udon Vietnam — Giới thiệu quyền lợi thành viên" class="zoomable" decoding="async" height="819" loading="lazy" src="assets/case-studies/udon-02.webp" tabindex="0" width="329"/><figcaption>Giới thiệu quyền lợi thành viên</figcaption></figure></div><div class="flow-card"><span class="step-label">03</span><figure class="media-frame phone"><img alt="Marukame Udon Vietnam — Quan tâm Zalo OA" class="zoomable" decoding="async" height="818" loading="lazy" src="assets/case-studies/udon-03.webp" tabindex="0" width="328"/><figcaption>Quan tâm Zalo OA</figcaption></figure></div><div class="flow-card"><span class="step-label">04</span><figure class="media-frame phone"><img alt="Marukame Udon Vietnam — Cấp quyền thông tin theo cơ chế Zalo" class="zoomable" decoding="async" height="819" loading="lazy" src="assets/case-studies/udon-04.webp" tabindex="0" width="329"/><figcaption>Cấp quyền thông tin theo cơ chế Zalo</figcaption></figure></div><div class="flow-card"><span class="step-label">05</span><figure class="media-frame phone"><img alt="Marukame Udon Vietnam — Điền thông tin đăng ký thành viên" class="zoomable" decoding="async" height="819" loading="lazy" src="assets/case-studies/udon-05.webp" tabindex="0" width="329"/><figcaption>Điền thông tin đăng ký thành viên</figcaption></figure></div><div class="flow-card"><span class="step-label">06</span><figure class="media-frame phone"><img alt="Marukame Udon Vietnam — Tra cứu voucher đang có" class="zoomable" decoding="async" height="819" loading="lazy" src="assets/case-studies/udon-06.webp" tabindex="0" width="329"/><figcaption>Tra cứu voucher đang có</figcaption></figure></div><div class="flow-card"><span class="step-label">07</span><figure class="media-frame phone"><img alt="Marukame Udon Vietnam — Xem điều kiện và chi tiết voucher" class="zoomable" decoding="async" height="819" loading="lazy" src="assets/case-studies/udon-07.webp" tabindex="0" width="329"/><figcaption>Xem điều kiện và chi tiết voucher</figcaption></figure></div></div>
 <p class="flow-hint">← Luồng 7 ảnh liên tục, giữ đúng thứ tự tư liệu gốc</p></div>
 </div>
@@ -667,8 +675,8 @@
     <section class="section campaign-unique" id="unique-qr">
 <div class="container">
 <span class="eyebrow">04 / FMCG · QR Code Unique</span>
-<h2 class="section-title">Thu thập data end-user FMCG bằng QR Code Unique.</h2>
-<p class="section-desc">Đặt mã dự thưởng duy nhất bên trong gói bánh Biscafun thuộc chiến dịch. Khách mở gói, quét hoặc nhập mã và nhận quyền chơi game với phần thưởng có giá trị cao hơn chương trình QR công khai trên kệ.</p>
+<h2 class="section-title">Thu Thập Dữ Liệu Khách Hàng Bằng QR Code Unique Trong Sản Phẩm</h2>
+<p class="section-desc">Đặt mã dự thưởng duy nhất bên trong gói bánh Biscafun thuộc chiến dịch. Khách mở gói, quét hoặc nhập mã và nhận quyền chơi game với phần thưởng có giá trị cao hơn với các chương trình khác.</p>
 <div class="unique-steps">
 <div class="step"><b>01</b><strong>Mở gói bánh</strong><p>Khách tiếp cận mã dự thưởng nằm trong bao bì sản phẩm.</p></div>
 <div class="step"><b>02</b><strong>Quét mã duy nhất</strong><p>Đăng ký và xác nhận mã hợp lệ, giới hạn lượt sử dụng.</p></div>
@@ -684,7 +692,7 @@
     <figcaption>Giao diện minh họa đề xuất cho Biscafun · Nhấn vào ảnh để xem lớn</figcaption>
   </figure>
 </div>
-<div class="real-case" id="case-ofood"><div class="case-header"><div><span class="case-tag">CASE STUDY THỰC TẾ</span><h3>01. O’Food Vietnam — Xé rong biển, Bay vút đến Hàn</h3><p>Minh họa thực tế cách thương hiệu kết hợp truyền thông chương trình, mã dự thưởng trên thẻ trong sản phẩm, đăng ký thông tin và game nhận quà.</p></div></div>
+<div class="real-case" id="case-ofood"><div class="case-header"><div><span class="case-tag">CASE STUDY THỰC TẾ</span><h3>O’Food Vietnam — Xé rong biển, Bay vút đến Hàn</h3><p>Minh họa thực tế cách thương hiệu kết hợp truyền thông chương trình, mã dự thưởng trên thẻ trong sản phẩm, đăng ký thông tin và game nhận quà.</p></div></div>
 <h4 class="subcase-heading">Truyền thông chiến dịch · 3 hình ảnh</h4><div class="social-gallery"><figure class="media-frame social"><img alt="OFood — Truyền thông &amp; giải đáp chương trình" class="zoomable" decoding="async" height="668" loading="lazy" src="assets/case-studies/ofood-01.webp" tabindex="0" width="582"/><figcaption>Truyền thông &amp; giải đáp chương trình</figcaption></figure><figure class="media-frame social"><img alt="OFood — Công bố người trúng giải" class="zoomable" decoding="async" height="668" loading="lazy" src="assets/case-studies/ofood-02.webp" tabindex="0" width="594"/><figcaption>Công bố người trúng giải</figcaption></figure><figure class="media-frame social"><img alt="OFood — Hướng dẫn tham gia và quét QR" class="zoomable" decoding="async" height="668" loading="lazy" src="assets/case-studies/ofood-03.webp" tabindex="0" width="599"/><figcaption>Hướng dẫn tham gia và quét QR</figcaption></figure></div>
 <h4 class="subcase-heading">Hành trình người dùng · 6 bước</h4><div class="case-flow"><div class="flow-card"><span class="step-label">01</span><figure class="media-frame phone"><img alt="OFood — Lấy thẻ dự thưởng và quét QR" class="zoomable" decoding="async" height="853" loading="lazy" src="assets/case-studies/ofood-04.webp" tabindex="0" width="672"/><figcaption>Lấy thẻ dự thưởng và quét QR</figcaption></figure></div><div class="flow-card"><span class="step-label">02</span><figure class="media-frame phone"><img alt="OFood — Nhập mã dự thưởng và thông tin đăng ký" class="zoomable" decoding="async" height="755" loading="lazy" src="assets/case-studies/ofood-05.webp" tabindex="0" width="374"/><figcaption>Nhập mã dự thưởng và thông tin đăng ký</figcaption></figure></div><div class="flow-card"><span class="step-label">03</span><figure class="media-frame phone"><img alt="OFood — Xác nhận mã dự thưởng hợp lệ" class="zoomable" decoding="async" height="754" loading="lazy" src="assets/case-studies/ofood-06.webp" tabindex="0" width="406"/><figcaption>Xác nhận mã dự thưởng hợp lệ</figcaption></figure></div><div class="flow-card"><span class="step-label">04</span><figure class="media-frame phone"><img alt="OFood — Truy cập Mini App chương trình" class="zoomable" decoding="async" height="896" loading="lazy" src="assets/case-studies/ofood-07.webp" tabindex="0" width="446"/><figcaption>Truy cập Mini App chương trình</figcaption></figure></div><div class="flow-card"><span class="step-label">05</span><figure class="media-frame phone"><img alt="OFood — Tham gia vòng quay may mắn" class="zoomable" decoding="async" height="896" loading="lazy" src="assets/case-studies/ofood-08.webp" tabindex="0" width="533"/><figcaption>Tham gia vòng quay may mắn</figcaption></figure></div><div class="flow-card"><span class="step-label">06</span><figure class="media-frame phone"><img alt="OFood — Nhận kết quả và phần thưởng" class="zoomable" decoding="async" height="893" loading="lazy" src="assets/case-studies/ofood-09.webp" tabindex="0" width="450"/><figcaption>Nhận kết quả và phần thưởng</figcaption></figure></div></div>
 <p class="flow-hint">← Vuốt ngang để theo dõi 6 bước · Ảnh có thể mở lớn</p>
@@ -699,8 +707,8 @@
     <section class="section campaign-offline" id="offline">
 <div class="container">
 <span class="eyebrow">05 / Thu thập dữ liệu tại sự kiện offline</span>
-<h2 class="section-title">Thu thập dữ liệu khách hàng tại sự kiện Offline.</h2>
-<p class="section-desc">Tại booth, quầy sampling hoặc điểm check-in, Biscafun có thể mời khách quét QR để đăng ký trước khi trải nghiệm sản phẩm hoặc tham gia sự kiện. Hai mô hình dưới đây minh họa các hướng triển khai thực tế.</p>
+<h2 class="section-title">Thu thập dữ liệu khách hàng tại sự kiện Offline</h2>
+<p>Tại booth, quầy sampling hoặc điểm check-in, Biscafun có thể mời khách quét QR để đăng ký trước khi trải nghiệm sản phẩm hoặc tham gia sự kiện. Hai mô hình dưới đây minh họa các hướng triển khai thực tế.</p>
 <div class="benefits">
 <div class="benefit"><b>01</b><strong>Trải nghiệm sản phẩm</strong><p>Khách dùng thử hoặc tương tác tại khu vực sự kiện.</p></div>
 <div class="benefit"><b>02</b><strong>Đăng ký &amp; chơi game</strong><p>Quét QR, điền thông tin cần thiết, nhận lượt chơi và quyền lợi.</p></div>
@@ -716,9 +724,9 @@
     <figcaption>Giao diện minh họa đề xuất cho Biscafun · Nhấn vào ảnh để xem lớn</figcaption>
   </figure>
 </div>
-<div class="real-case" id="case-adolph"><div class="case-header"><div><span class="case-tag">CASE STUDY THỰC TẾ</span><h3>01. ADOLPH — Quét QR trước khi trải nghiệm sản phẩm</h3><p>Khách tham dự quét QR tại booth, cung cấp thông tin theo chương trình rồi mới tiếp tục trải nghiệm sản phẩm. Hình ảnh minh họa từ sự kiện thực tế.</p></div></div>
+<div class="real-case" id="case-adolph"><div class="case-header"><div><span class="case-tag">CASE STUDY THỰC TẾ</span><h3>ADOLPH — Quét QR trước khi trải nghiệm sản phẩm</h3><p>Khách tham dự quét QR tại booth, cung cấp thông tin theo chương trình rồi mới tiếp tục trải nghiệm sản phẩm. Hình ảnh minh họa từ sự kiện thực tế.</p></div></div>
 <div class="photo-pair"><figure class="media-frame photo"><img alt="ADOLPH — Khách quét QR tại khu vực booth" class="zoomable" decoding="async" height="1184" loading="lazy" src="assets/case-studies/adolph-01.webp" tabindex="0" width="1776"/><figcaption>Khách quét QR tại khu vực booth</figcaption></figure><figure class="media-frame photo"><img alt="ADOLPH — Khu vực trải nghiệm sản phẩm thực tế" class="zoomable" decoding="async" height="1184" loading="lazy" src="assets/case-studies/adolph-02.webp" tabindex="0" width="1776"/><figcaption>Khu vực trải nghiệm sản phẩm thực tế</figcaption></figure></div></div>
-<div class="real-case" id="case-bca"><div class="case-header"><div><span class="case-tag">CASE STUDY THỰC TẾ</span><h3>02. BCA Group — Check-in sự kiện bằng QR</h3><p>Luồng minh họa điểm danh qua QR, xác thực thông tin và gửi tin xác nhận trên Zalo. Ảnh trạng thái dấu X được giữ nguyên vì là một bước trong tư liệu, không diễn giải thành check-in thành công.</p></div></div>
+<div class="real-case" id="case-bca"><div class="case-header"><div><span class="case-tag">CASE STUDY THỰC TẾ</span><h3>BCA Group — Check-in sự kiện bằng QR</h3><p>Luồng minh họa điểm danh qua QR, xác thực thông tin và gửi tin xác nhận trên Zalo. Ảnh trạng thái dấu X được giữ nguyên vì là một bước trong tư liệu, không diễn giải thành check-in thành công.</p></div></div>
 <div aria-label="Hành trình BCA Group check-in" class="case-flow"><div class="flow-card"><span class="step-label">01</span><figure class="media-frame phone"><img alt="BCA Group check-in — Quét QR check-in tại sự kiện" class="zoomable" decoding="async" height="291" loading="lazy" src="assets/case-studies/bca-01.webp" tabindex="0" width="286"/><figcaption>Quét QR check-in tại sự kiện</figcaption></figure></div><div class="flow-card"><span class="step-label">02</span><figure class="media-frame phone"><img alt="BCA Group check-in — Truy cập form check-in" class="zoomable" decoding="async" height="546" loading="lazy" src="assets/case-studies/bca-02.webp" tabindex="0" width="269"/><figcaption>Truy cập form check-in</figcaption></figure></div><div class="flow-card"><span class="step-label">03</span><figure class="media-frame phone"><img alt="BCA Group check-in — Cho phép truy cập thông tin" class="zoomable" decoding="async" height="547" loading="lazy" src="assets/case-studies/bca-03.webp" tabindex="0" width="269"/><figcaption>Cho phép truy cập thông tin</figcaption></figure></div><div class="flow-card"><span class="step-label">04</span><figure class="media-frame phone"><img alt="BCA Group check-in — Nhập và xác nhận thông tin" class="zoomable" decoding="async" height="546" loading="lazy" src="assets/case-studies/bca-04.webp" tabindex="0" width="269"/><figcaption>Nhập và xác nhận thông tin</figcaption></figure></div><div class="flow-card"><span class="step-label">05</span><figure class="media-frame phone"><img alt="BCA Group check-in — Trạng thái xác thực / thông báo hệ thống" class="zoomable" decoding="async" height="546" loading="lazy" src="assets/case-studies/bca-05.webp" tabindex="0" width="268"/><figcaption>Trạng thái xác thực / thông báo hệ thống</figcaption></figure></div><div class="flow-card"><span class="step-label">06</span><figure class="media-frame phone"><img alt="BCA Group check-in — Nhận thông tin xác nhận qua Zalo OA" class="zoomable" decoding="async" height="544" loading="lazy" src="assets/case-studies/bca-06.webp" tabindex="0" width="268"/><figcaption>Nhận thông tin xác nhận qua Zalo OA</figcaption></figure></div></div>
 <p class="flow-hint">← Sáu ảnh hiển thị theo đúng thứ tự checkin 0–5</p></div>
 </div>
@@ -731,13 +739,13 @@
 <div class="container">
 <span class="eyebrow">06 / Chương trình Affiliate</span>
 <h2 class="section-title">Chương trình Affiliate.</h2>
-<p class="section-desc">Đề xuất phát triển hoạt động giới thiệu khách hàng và cộng tác viên thông qua liên kết hoặc mã giới thiệu được quản lý tập trung. Giao diện tham khảo minh họa đăng ký CTV, chia sẻ đường dẫn, theo dõi hoa hồng và kết quả giới thiệu. Phạm vi và cơ chế thưởng sẽ được xác định riêng cho Biscafun.</p>
+<p>Đề xuất phát triển hoạt động giới thiệu khách hàng và cộng tác viên thông qua liên kết hoặc mã giới thiệu được quản lý tập trung. Giao diện tham khảo minh họa đăng ký CTV, chia sẻ đường dẫn, theo dõi hoa hồng và kết quả giới thiệu. Phạm vi và cơ chế thưởng sẽ được xác định riêng cho Biscafun.</p>
 <div class="affiliate-grid">
 <div class="affiliate-step"><b>01</b><strong>Đăng ký tham gia</strong><p>Người giới thiệu hoặc cộng tác viên đăng ký theo điều kiện chương trình.</p></div>
 <div class="affiliate-step"><b>02</b><strong>Giới thiệu khách hàng</strong><p>Chia sẻ đường dẫn hoặc mã giới thiệu để ghi nhận nguồn giới thiệu.</p></div>
 <div class="affiliate-step"><b>03</b><strong>Ghi nhận quyền lợi</strong><p>Theo dõi kết quả và đối soát thưởng theo chính sách được phê duyệt.</p></div>
 </div>
-<div class="real-case"><div class="case-header"><div><span class="case-tag">MINH HỌA GIAO DIỆN AFFILIATE</span><h3>01. Giải pháp quản trị và tăng trưởng kênh CTV</h3><p>Giao diện Affiliate trên Zalo Mini App giúp cộng tác viên chia sẻ sản phẩm, kiểm tra hoa hồng, theo dõi khách hàng được giới thiệu (F2) và xem bảng xếp hạng. Ví dụ minh họa dưới đây không phải chương trình đang vận hành của Biscafun.</p></div></div>
+<div class="real-case"><div class="case-header"><div><span class="case-tag">MINH HỌA GIAO DIỆN AFFILIATE</span><h3>Giải pháp quản trị và tăng trưởng kênh CTV</h3><p>Giao diện Affiliate trên Zalo Mini App giúp cộng tác viên chia sẻ sản phẩm, kiểm tra hoa hồng, theo dõi khách hàng được giới thiệu (F2) và xem bảng xếp hạng. Ví dụ minh họa dưới đây không phải chương trình đang vận hành của Biscafun.</p></div></div>
 <div class="affiliate-capabilities" aria-label="Năng lực quản trị và tăng trưởng kênh cộng tác viên">
   <div class="affiliate-capability"><strong>Định danh khách hàng qua liên kết giới thiệu</strong><p>Gắn nguồn giới thiệu với khách hàng trong phạm vi nhận diện được; có thể ghi nhận tương tác sau khi khách truy cập Mini App.</p></div>
   <div class="affiliate-capability"><strong>Chia sẻ đơn giản</strong><p>Cộng tác viên sao chép liên kết hoặc chia sẻ nhanh qua Zalo để giới thiệu sản phẩm.</p></div>
@@ -745,7 +753,7 @@
   <div class="affiliate-capability"><strong>Cơ chế thúc đẩy tăng trưởng</strong><p>Có thể thiết kế kỳ xét hạng, doanh thu tích lũy, bảng xếp hạng và quyền lợi theo chính sách từng chương trình.</p></div>
 </div>
 <p class="affiliate-policy-note">Các mô tả về ghi nhận khách hàng dài hạn, phân hạng tự động và chính sách hoa hồng là định hướng giải pháp theo tư liệu minh họa; cần xác nhận phạm vi kỹ thuật và điều kiện triển khai cho Biscafun.</p>
-<h4 class="subcase-heading">5 màn hình tính năng chính</h4><div class="case-flow"><div class="flow-card"><span class="step-label">01</span><figure class="media-frame phone"><img alt="Affiliate — Tham gia CTV &amp; xem chính sách hoa hồng" class="zoomable" decoding="async" height="691" loading="lazy" src="assets/case-studies/affiliate-03.webp" tabindex="0" width="347"/><figcaption>Tham gia CTV &amp; xem chính sách hoa hồng</figcaption></figure></div><div class="flow-card"><span class="step-label">02</span><figure class="media-frame phone"><img alt="Affiliate — Sao chép link, chia sẻ bạn bè" class="zoomable" decoding="async" height="691" loading="lazy" src="assets/case-studies/affiliate-04.webp" tabindex="0" width="342"/><figcaption>Sao chép link, chia sẻ bạn bè</figcaption></figure></div><div class="flow-card"><span class="step-label">03</span><figure class="media-frame phone"><img alt="Affiliate — Quản lý doanh thu và hoa hồng" class="zoomable" decoding="async" height="686" loading="lazy" src="assets/case-studies/affiliate-05.webp" tabindex="0" width="345"/><figcaption>Quản lý doanh thu và hoa hồng</figcaption></figure></div><div class="flow-card"><span class="step-label">04</span><figure class="media-frame phone"><img alt="Affiliate — Lịch sử hành động và hoa hồng của khách F2" class="zoomable" decoding="async" height="690" loading="lazy" src="assets/case-studies/affiliate-06.webp" tabindex="0" width="344"/><figcaption>Lịch sử hành động và hoa hồng của khách F2</figcaption></figure></div><div class="flow-card"><span class="step-label">05</span><figure class="media-frame phone"><img alt="Affiliate — Bảng xếp hạng thành viên CTV" class="zoomable" decoding="async" height="690" loading="lazy" src="assets/case-studies/affiliate-07.webp" tabindex="0" width="346"/><figcaption>Bảng xếp hạng thành viên CTV</figcaption></figure></div></div>
+<h4 class="subcase-heading">Một số màn hình tính năng chính</h4><div class="case-flow"><div class="flow-card"><span class="step-label">01</span><figure class="media-frame phone"><img alt="Affiliate — Tham gia CTV &amp; xem chính sách hoa hồng" class="zoomable" decoding="async" height="691" loading="lazy" src="assets/case-studies/affiliate-03.webp" tabindex="0" width="347"/><figcaption>Tham gia CTV &amp; xem chính sách hoa hồng</figcaption></figure></div><div class="flow-card"><span class="step-label">02</span><figure class="media-frame phone"><img alt="Affiliate — Sao chép link, chia sẻ bạn bè" class="zoomable" decoding="async" height="691" loading="lazy" src="assets/case-studies/affiliate-04.webp" tabindex="0" width="342"/><figcaption>Sao chép link, chia sẻ bạn bè</figcaption></figure></div><div class="flow-card"><span class="step-label">03</span><figure class="media-frame phone"><img alt="Affiliate — Quản lý doanh thu và hoa hồng" class="zoomable" decoding="async" height="686" loading="lazy" src="assets/case-studies/affiliate-05.webp" tabindex="0" width="345"/><figcaption>Quản lý doanh thu và hoa hồng</figcaption></figure></div><div class="flow-card"><span class="step-label">04</span><figure class="media-frame phone"><img alt="Affiliate — Lịch sử hành động và hoa hồng của khách F2" class="zoomable" decoding="async" height="690" loading="lazy" src="assets/case-studies/affiliate-06.webp" tabindex="0" width="344"/><figcaption>Lịch sử hành động và hoa hồng của khách F2</figcaption></figure></div><div class="flow-card"><span class="step-label">05</span><figure class="media-frame phone"><img alt="Affiliate — Bảng xếp hạng thành viên CTV" class="zoomable" decoding="async" height="690" loading="lazy" src="assets/case-studies/affiliate-07.webp" tabindex="0" width="346"/><figcaption>Bảng xếp hạng thành viên CTV</figcaption></figure></div></div>
 <p class="flow-hint">← Kéo ngang để xem toàn bộ 5 màn hình</p></div>
 </div>
 </section>
@@ -757,7 +765,7 @@
 <div class="container">
 <span class="eyebrow">07 / Các Case Study khác</span>
 <h2 class="section-title">Các Case Study khác.</h2>
-<p class="section-desc">Các trường hợp tham khảo cho việc thu thập dữ liệu qua chương trình quà tặng, đăng ký thành viên và gamification. Các số liệu được ghi rõ theo mục tiêu chiến dịch, không suy diễn thành kết quả thực tế.</p>
+<p>Các trường hợp tham khảo cho việc thu thập dữ liệu qua chương trình quà tặng, đăng ký thành viên và gamification. Các số liệu được ghi rõ theo mục tiêu chiến dịch, không suy diễn thành kết quả thực tế.</p>
 <div class="real-case" id="case-gaudo"><div class="case-header"><div><span class="case-tag">CASE STUDY THỰC TẾ</span><h3>01. Gấu Đỏ — Xuân khơi lộc mới, Chào ấm lòng vui</h3><p>Chương trình đăng ký nhận quà, kết hợp Mini App, thông báo xác nhận và hoạt động trao quà offline. Mục tiêu được cung cấp: 20.000 dữ liệu khách hàng thông qua phát tặng 20.000 thùng cháo.</p></div></div>
 <h4 class="subcase-heading">Truyền thông và đăng ký nhận quà</h4><div class="social-pair"><figure class="media-frame social"><img alt="Gấu Đỏ — Truyền thông mở đăng ký &amp; chương trình" class="zoomable" decoding="async" height="796" loading="lazy" src="assets/case-studies/gaudo-01.webp" tabindex="0" width="796"/><figcaption>Truyền thông mở đăng ký &amp; chương trình</figcaption></figure><figure class="media-frame social"><img alt="Gấu Đỏ — Truyền thông quyền lợi và hình thức nhận quà" class="zoomable" decoding="async" height="795" loading="lazy" src="assets/case-studies/gaudo-02.webp" tabindex="0" width="918"/><figcaption>Truyền thông quyền lợi và hình thức nhận quà</figcaption></figure></div>
 <h4 class="subcase-heading">Đăng ký → xác nhận → thông báo nhận quà</h4><div class="case-flow"><div class="flow-card"><span class="step-label">01</span><figure class="media-frame phone"><img alt="Gấu Đỏ — Đăng ký nhận quà trên Mini App" class="zoomable" decoding="async" height="792" loading="lazy" src="assets/case-studies/gaudo-03.webp" tabindex="0" width="402"/><figcaption>Đăng ký nhận quà trên Mini App</figcaption></figure></div><div class="flow-card"><span class="step-label">02</span><figure class="media-frame phone"><img alt="Gấu Đỏ — Tin nhắn Zalo xác nhận đăng ký" class="zoomable" decoding="async" height="793" loading="lazy" src="assets/case-studies/gaudo-04.webp" tabindex="0" width="399"/><figcaption>Tin nhắn Zalo xác nhận đăng ký</figcaption></figure></div><div class="flow-card"><span class="step-label">03</span><figure class="media-frame phone"><img alt="Gấu Đỏ — Giao diện chương trình trên Mini App" class="zoomable" decoding="async" height="793" loading="lazy" src="assets/case-studies/gaudo-05.webp" tabindex="0" width="399"/><figcaption>Giao diện chương trình trên Mini App</figcaption></figure></div><div class="flow-card"><span class="step-label">04</span><figure class="media-frame phone"><img alt="Gấu Đỏ — Thông báo hướng dẫn nhận quà" class="zoomable" decoding="async" height="795" loading="lazy" src="assets/case-studies/gaudo-06.webp" tabindex="0" width="397"/><figcaption>Thông báo hướng dẫn nhận quà</figcaption></figure></div></div>
@@ -774,12 +782,12 @@
       <div class="container">
         <span class="eyebrow">08 / Ngân sách triển khai</span>
         <h2 class="section-title">Ngân sách triển khai giải pháp.</h2>
-        <p class="section-desc">Cấu trúc 4 thành phần nền tảng, các tiện ích mở rộng và dịch vụ vận hành riêng biệt, theo báo giá CNV CDP dành cho BISCAFUN ngày 16/11/2026.</p>
+        <p class="section-desc">Gói Nền Tảng và Gói Tiện Ích Mở Rộng</p>
 
         <div class="pricing-card">
           <div class="pricing-top">
             <div><span class="chip">BÁO GIÁ CNV CDP × BISCAFUN</span><h3>Đầu tư theo nhóm giải pháp</h3><p class="pricing-top-desc">4 hạng mục nền tảng và 6 giải pháp mở rộng. Phân tách rõ chi phí thiết lập năm đầu và gia hạn thường niên.</p></div>
-            <div class="quote-date">BÁO GIÁ NGÀY<br><strong>16/11/2026</strong></div>
+            <div class="quote-date">Gia Hạn<br><strong>THEO NĂM</strong></div>
           </div>
 
           <div class="pricing-overview" aria-label="Tổng quan các nhóm ngân sách">
@@ -834,15 +842,12 @@
           </div>
 
           <div class="notes">
-            <h3>Ghi chú &amp; điều kiện</h3>
+            <h3>Ghi chú</h3>
             <ul>
-              <li>Bảng giá thể hiện các hạng mục có tính phí của tài liệu CNV mới; không trình bày hạng mục App nhân viên (Loyalty Hub) theo yêu cầu. Tổng năm đầu 490.400.000 đ bằng tổng các hạng mục tính phí.</li>
               <li>Chưa bao gồm phí nâng cấp ZCA, phí gửi tin theo biểu phí nền tảng và các khoản phát sinh ngoài phạm vi hợp đồng.</li>
               <li>Chi phí sản xuất/in ấn bao bì, POSM, sampling và ngân sách quà tặng thực tế cần xác nhận riêng; không mặc định đã bao gồm.</li>
-              <li>Báo giá có mục quà tặng trị giá 22.390.000 đ mang nhãn “Tháng 11/2025”; cần xác nhận thời hạn chương trình trước khi áp dụng.</li>
-              <li>Các hạng mục được giữ theo báo giá mới. Phạm vi thực tế của mỗi campaign và add-on sẽ được xác nhận trước triển khai.</li>
-            </ul>
-            <div class="gift-note"><strong>Nguồn:</strong> BÁO GIÁ CNVCDP - BISCAFUN 161126 - Total chi tiết + add on.pdf, ngày 16/11/2026. Chi tiết triển khai và các điều kiện cuối cùng xác nhận khi ký hợp đồng.</div>
+                    </ul>
+            <div class="gift-note"><strong>Nguồn:</strong> BÁO GIÁ CNVCDP - BISCAFUN 161126 - Total chi tiết + add on.pdf. Chi tiết triển khai và các điều kiện cuối cùng xác nhận khi ký hợp đồng.</div>
           </div>
         </div>
       </div>
@@ -859,7 +864,7 @@
       <h2>THANK YOU.</h2>
       <p>CONSULTANT — NGUYỄN PHI — 094.3452.098</p>
       <p class="contact-details">phinv1@cnv.vn · cnv.vn</p>
-      <p class="contact-details">Proposal V5 · Chi phí theo báo giá ngày 16/11/2026; điều kiện cần xác nhận trước ký hợp đồng.</p>
+      
     </div>
   </footer>
 
