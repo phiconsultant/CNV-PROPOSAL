@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Proposal V0: Hệ sinh thái kết nối người tiêu dùng Biscafun bằng CNV CDP và Zalo Mini App.">
+  <title>Biscafun × CNV CDP | Consumer Engagement Proposal V0</title>
+  <style>
+    /* ==========================================================
+       00 — DESIGN SYSTEM | chỉnh tokens toàn trang tại đây
+       ========================================================== */
+    :root {
+      --brand-red: #d51e32;
+      --brand-red-dark: #9b1426;
+      --brand-orange: #f58220;
+      --brand-cream: #fff5e8;
+      --brand-yellow: #ffda99;
+      --ink: #2b2021;
+      --muted: #74696b;
+      --line: #eeded9;
+      --white: #fff;
+      --bg: #fffdf9;
+      --font-heading: "Arial", "Helvetica Neue", sans-serif;
+      --font-body: "Arial", "Helvetica Neue", sans-serif;
+      --container: 1160px;
+      --page-gutter: clamp(20px, 4vw, 56px);
+      --section-space: clamp(76px, 9vw, 126px);
+      --radius-card: 24px;
+      --shadow: 0 22px 65px rgba(112, 29, 23, .10);
+      --transition: 220ms ease;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); line-height: 1.66; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    img, svg { max-width: 100%; }
+    img { display: block; }
+    h1, h2, h3, p { margin: 0; }
+    h1, h2, h3 { line-height: 1.1; letter-spacing: -.035em; }
+    .container { width: min(calc(100% - 2 * var(--page-gutter)), var(--container)); margin-inline: auto; }
+    .section { padding: var(--section-space) 0; }
+    .eyebrow { display: inline-block; color: var(--brand-red); letter-spacing: .16em; text-transform: uppercase; font-weight: 800; font-size: .78rem; }
+    .section-heading { font-size: clamp(2.15rem, 4.65vw, 4.4rem); font-weight: 900; max-width: 950px; margin: 16px 0 22px; }
+    .section-lead { font-size: clamp(1.02rem, 1.45vw, 1.18rem); color: var(--muted); max-width: 760px; }
+    .accent { color: var(--brand-red); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 24px; background: var(--brand-red); color: white; font-weight: 800; border-radius: 100px; border: 2px solid var(--brand-red); transition: var(--transition); cursor: pointer; text-align: center; }
+    .btn:hover { background: var(--brand-red-dark); border-color: var(--brand-red-dark); transform: translateY(-2px); }
+    .btn-light { background: white; border-color: white; color: var(--brand-red); }
+    .btn-light:hover { background: var(--brand-cream); border-color: var(--brand-cream); }
+    .tag { display: inline-flex; border-radius: 100px; padding: 6px 12px; font-size: .72rem; font-weight: 800; background: #ffe7dc; color: var(--brand-red); letter-spacing: .055em; text-transform: uppercase; }
+    .zoomable { cursor: zoom-in; }
+    .image-frame { overflow: hidden; border-radius: 30px; box-shadow: var(--shadow); background: var(--brand-cream); }
+    .image-frame img { width: 100%; height: auto; }
+    .muted { color: var(--muted); }
+    .section-note { margin-top: 20px; font-size: .82rem; color: var(--muted); }
+
+    /* ==========================================================
+       01 — HEADER | chỉ quản lý visual header
+       ========================================================== */
+    .site-header { position: sticky; top: 0; z-index: 100; background: rgba(255,253,249,.96); border-bottom: 1px solid var(--line); backdrop-filter: blur(16px); }
+    .header-inner { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 26px; }
+    .header-brand { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    .header-brand img { width: 108px; height: 57px; object-fit: contain; object-position: left center; }
+    .header-brand span { border-left: 1px solid #e8d0ce; padding-left: 14px; color: var(--muted); font-size: .76rem; font-weight: 800; letter-spacing: .08em; white-space: nowrap; }
+    .nav { display: flex; align-items: center; gap: 23px; }
+    .nav a { font-size: .85rem; font-weight: 750; transition: color var(--transition); white-space: nowrap; }
+    .nav a:hover { color: var(--brand-red); }
+    .nav .nav-cta { color: var(--brand-red); }
+
+    /* ==========================================================
+       02 — HERO | visual độc lập
+       ========================================================== */
+    .hero { padding: 20px var(--page-gutter) 0; }
+    .hero-stage { isolation: isolate; position: relative; overflow: hidden; min-height: min(750px, 84vh); border-radius: 36px; background: radial-gradient(circle at 83% 30%, #ffcc78 0, #f68e32 24%, transparent 48%), linear-gradient(125deg, #aa1025, #dd2837 55%, #f36a30); }
+    .hero-stage::after { content: ""; position: absolute; width: 650px; height: 650px; right: -180px; bottom: -400px; border: 90px solid rgba(255,255,255,.12); border-radius: 50%; }
+    .hero-inner { position: relative; z-index: 2; width: min(calc(100% - 2 * clamp(24px, 5vw, 74px)), 1290px); min-height: min(750px, 84vh); margin: auto; display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 20px; }
+    .hero-copy { padding-block: 90px; color: white; }
+    .hero-kicker { color: #ffe3c4; font-size: .79rem; letter-spacing: .17em; text-transform: uppercase; font-weight: 900; }
+    .hero h1 { margin-top: 24px; font-size: clamp(3.3rem, 6.3vw, 6.7rem); max-width: 790px; font-weight: 900; letter-spacing: -.065em; line-height: .98; }
+    .hero h1 span { color: #ffe5a9; }
+    .hero-copy > p { margin-top: 26px; font-size: clamp(1rem, 1.55vw, 1.27rem); max-width: 590px; color: #fff0e9; }
+    .hero-actions { margin-top: 30px; display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+    .hero-version { font-size: .75rem; font-weight: 800; color: #ffdabf; letter-spacing: .07em; }
+    .hero-art { align-self: center; position: relative; }
+    .hero-art::before { position: absolute; content: ""; inset: 13% -5% 1% 5%; background: rgba(255,255,255,.14); filter: blur(55px); border-radius: 50%; }
+    .hero-art img { position: relative; width: 100%; filter: drop-shadow(0 35px 32px rgba(95,15,26,.2)); }
+    .hero-art-label { position: absolute; bottom: 1%; left: 3%; background: rgba(255,255,255,.9); color: #a52a2c; font-weight: 800; font-size: .74rem; padding: 8px 12px; border-radius: 90px; }
+
+    /* ==========================================================
+       03 — CONTEXT | khoảng trống dữ liệu
+       ========================================================== */
+    .context-section .split { display: grid; grid-template-columns: 1.02fr .98fr; gap: clamp(28px, 6vw, 90px); align-items: center; margin-top: 48px; }
+    .context-quote { background: #fff0e3; padding: clamp(28px, 4.5vw, 58px); border-radius: 30px; border-left: 8px solid var(--brand-red); }
+    .context-quote strong { display: block; font-size: clamp(1.7rem, 3.3vw, 3rem); line-height: 1.2; letter-spacing: -.04em; }
+    .context-quote p { margin-top: 18px; color: var(--muted); }
+    .context-quote strong { margin-top: 20px; }
+    .context-list { display: grid; gap: 16px; }
+    .context-item { padding: 24px 27px; border: 1px solid var(--line); border-radius: 20px; background: white; display: flex; gap: 16px; align-items: flex-start; }
+    .context-item b { color: var(--brand-orange); font-size: 1.4rem; line-height: 1; }
+    .context-item h3 { font-size: 1.08rem; margin-bottom: 6px; }
+    .context-item p { color: var(--muted); font-size: .92rem; }
+
+    /* ==========================================================
+       04 — OPPORTUNITY | 3 trụ cột B2C
+       ========================================================== */
+    .opportunity-section { background: var(--brand-cream); }
+    .opportunity-grid { margin-top: 42px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+    .opportunity-card { min-width: 0; border-radius: var(--radius-card); padding: clamp(26px, 3vw, 38px); background: white; border: 1px solid #f1dfd1; box-shadow: 0 12px 34px rgba(140,50,21,.045); }
+    .opportunity-number { color: var(--brand-orange); font-size: 3.65rem; line-height: 1; font-weight: 900; letter-spacing: -.07em; }
+    .opportunity-card h3 { font-size: 1.42rem; margin: 25px 0 13px; }
+    .opportunity-card p { color: var(--muted); }
+    .opportunity-card .tag { margin-top: 27px; }
+
+    /* ==========================================================
+       05 — QR JOURNEY | hành trình minh họa
+       ========================================================== */
+    .journey-section .journey-layout { display: grid; grid-template-columns: .96fr 1.04fr; align-items: center; gap: clamp(32px, 5vw, 80px); margin-top: 48px; }
+    .journey-steps { display: grid; gap: 21px; }
+    .journey-step { display: grid; grid-template-columns: 44px 1fr; gap: 18px; align-items: start; }
+    .journey-step-num { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font-weight: 900; color: white; background: var(--brand-red); }
+    .journey-step h3 { font-size: 1.1rem; margin-bottom: 7px; }
+    .journey-step p { font-size: .96rem; color: var(--muted); }
+    .journey-caption { margin-top: 14px; font-size: .8rem; color: var(--muted); }
+
+    /* ==========================================================
+       06 — ENGAGEMENT | mini game, khảo sát, quà tặng
+       ========================================================== */
+    .engagement-section { background: #fef0df; }
+    .engagement-section .engagement-layout { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 6vw, 85px); align-items: center; }
+    .engagement-features { margin-top: 30px; display: grid; gap: 16px; }
+    .engagement-feature { display: flex; align-items: flex-start; gap: 15px; }
+    .engagement-feature .dot { flex: 0 0 auto; margin-top: 7px; width: 13px; height: 13px; background: var(--brand-orange); border-radius: 50%; box-shadow: 0 0 0 6px #ffdfc1; }
+    .engagement-feature h3 { font-size: 1.06rem; margin-bottom: 5px; }
+    .engagement-feature p { color: var(--muted); font-size: .93rem; }
+
+    /* ==========================================================
+       07 — CDP & AUTOMATION | data visual
+       ========================================================== */
+    .automation-section .automation-layout { display: grid; grid-template-columns: .92fr 1.08fr; align-items: center; gap: clamp(25px, 6vw, 80px); margin-top: 47px; }
+    .automation-list { margin-top: 30px; display: grid; gap: 14px; }
+    .automation-list div { padding: 17px 20px; background: white; border: 1px solid var(--line); border-radius: 14px; font-weight: 750; }
+    .automation-list span { color: var(--brand-red); margin-right: 10px; }
+    .automation-note { margin-top: 20px; color: var(--muted); font-size: .86rem; }
+
+    /* ==========================================================
+       08 — PILOT | phạm vi đề xuất thử nghiệm
+       ========================================================== */
+    .pilot-section { background: #2f2024; color: white; }
+    .pilot-section .eyebrow { color: #ffb565; }
+    .pilot-section .section-lead { color: #d4c3c5; }
+    .pilot-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 46px; }
+    .pilot-card { padding: 27px 23px; border: 1px solid rgba(255,255,255,.17); border-radius: 20px; background: rgba(255,255,255,.045); }
+    .pilot-card .pilot-index { display: block; color: #ffad60; font-weight: 900; font-size: 1.7rem; margin-bottom: 26px; }
+    .pilot-card h3 { font-size: 1.12rem; margin-bottom: 10px; }
+    .pilot-card p { color: #cfbfc3; font-size: .91rem; }
+    .pilot-kpis { margin-top: 25px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.13); padding: 23px 29px; border-radius: 18px; }
+    .pilot-kpis strong { display: block; color: #ffd3a7; margin-bottom: 7px; }
+    .pilot-kpis p { color: #eee0df; }
+
+    /* ==========================================================
+       09 — NEXT STEPS | CTA / chưa có báo giá
+       ========================================================== */
+    .next-section { padding-bottom: clamp(90px, 10vw, 140px); }
+    .next-panel { background: linear-gradient(125deg, #d22037, #ed672c); border-radius: 34px; padding: clamp(34px, 6vw, 75px); color: white; position: relative; overflow: hidden; }
+    .next-panel::after { content: ""; position: absolute; border: 66px solid rgba(255,255,255,.1); width: 340px; height: 340px; border-radius: 50%; right: -150px; bottom: -170px; }
+    .next-panel > * { position: relative; z-index: 1; }
+    .next-panel .eyebrow { color: #ffe6b7; }
+    .next-panel h2 { max-width: 830px; font-size: clamp(2.3rem, 5.2vw, 4.8rem); margin: 19px 0 20px; }
+    .next-panel p { max-width: 740px; color: #fff0e5; font-size: 1.05rem; }
+    .next-actions { margin-top: 28px; display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* ==========================================================
+       10 — FOOTER | consultant information
+       ========================================================== */
+    .site-footer { padding: 56px 0 38px; background: #211a1d; color: white; }
+    .footer-inner { display: flex; align-items: end; justify-content: space-between; gap: 25px; }
+    .footer-company { font-size: 1.12rem; font-weight: 900; }
+    .footer-company span { color: #ffad63; }
+    .footer-inner p { color: #c1b1b3; margin-top: 11px; font-size: .91rem; }
+    .footer-thanks { text-align: right; font-weight: 900; font-size: clamp(1.3rem, 3vw, 2.4rem); letter-spacing: -.03em; }
+    .footer-bottom { border-top: 1px solid #45383c; margin-top: 39px; padding-top: 21px; font-size: .78rem; color: #a99a9e; }
+
+    /* ==========================================================
+       11 — GLOBAL LIGHTBOX | dùng chung mọi ảnh .zoomable
+       ========================================================== */
+    .lightbox { position: fixed; inset: 0; z-index: 999; background: rgba(24,11,13,.94); display: none; align-items: center; justify-content: center; padding: 55px 22px 22px; }
+    .lightbox.is-open { display: flex; }
+    .lightbox img { max-width: 95vw; max-height: 88vh; width: auto; height: auto; object-fit: contain; border-radius: 12px; background: white; }
+    .lightbox-close { position: absolute; right: 22px; top: 17px; width: 42px; height: 42px; border: 0; cursor: pointer; border-radius: 50%; color: #20181a; background: white; font-size: 27px; line-height: 1; }
+
+    /* ==========================================================
+       12 — RESPONSIVE | global breakpoints, không inline overrides
+       ========================================================== */
+    @media (max-width: 1060px) {
+      .nav { gap: 14px; }
+      .nav a { font-size: .77rem; }
+      .header-brand span { display: none; }
+      .pilot-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 860px) {
+      .nav { display: none; }
+      .hero-stage, .hero-inner { min-height: 0; }
+      .hero-inner { grid-template-columns: 1fr; gap: 0; }
+      .hero-copy { padding: 72px 0 0; }
+      .hero-art { width: min(490px, 88%); margin-inline: auto; }
+      .hero h1 { font-size: clamp(3.2rem, 9vw, 5.6rem); }
+      .context-section .split, .journey-section .journey-layout, .engagement-section .engagement-layout, .automation-section .automation-layout { grid-template-columns: 1fr; }
+      .opportunity-grid { grid-template-columns: 1fr; }
+      .engagement-section .engagement-layout .image-frame { order: 2; }
+    }
+    @media (max-width: 560px) {
+      :root { --page-gutter: 18px; --section-space: 68px; }
+      .header-inner { min-height: 67px; }
+      .header-brand img { width: 94px; height: 52px; }
+      .hero { padding: 9px 9px 0; }
+      .hero-stage { border-radius: 22px; }
+      .hero-inner { width: calc(100% - 42px); }
+      .hero-copy { padding-top: 56px; }
+      .hero h1 { font-size: clamp(2.75rem, 12.5vw, 4.6rem); }
+      .hero-actions .btn, .next-actions .btn { width: 100%; }
+      .hero-art { width: 100%; }
+      .hero-art-label { font-size: .65rem; }
+      .section-heading { font-size: 2.13rem; }
+      .context-quote { padding: 30px 24px; }
+      .pilot-grid { grid-template-columns: 1fr; }
+      .footer-inner { align-items: start; flex-direction: column; }
+      .footer-thanks { text-align: left; }
+      .next-panel { border-radius: 24px; padding: 34px 25px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ========================================================
+       SECTION 01 — HEADER
+       ======================================================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="header-brand" href="#top" aria-label="Biscafun — về đầu trang">
+        <img src="assets/biscafun-logo.png" alt="Logo Biscafun" width="300" height="192">
+        <span>CNV CDP · CONSUMER PROPOSAL</span>
+      </a>
+      <nav class="nav" aria-label="Điều hướng proposal">
+        <a href="#context">Bối cảnh</a>
+        <a href="#opportunity">Cơ hội</a>
+        <a href="#journey">Hành trình</a>
+        <a href="#automation">Giải pháp</a>
+        <a href="#pilot">Thử nghiệm</a>
+        <a class="nav-cta" href="#next">Trao đổi →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ========================================================
+         SECTION 02 — HERO | visual hero riêng
+         ======================================================== -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-stage">
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <div class="hero-kicker">Biscafun × CNV CDP · Proposal V0</div>
+            <h1 id="hero-title">Mỗi chiếc bánh.<br><span>Một kết nối.</span></h1>
+            <p>Đề xuất hệ sinh thái kết nối người tiêu dùng: từ bao bì sản phẩm đến dữ liệu B2C, trải nghiệm thương hiệu và chăm sóc khách hàng.</p>
+            <div class="hero-actions">
+              <a class="btn btn-light" href="#context">Khám phá đề xuất <span aria-hidden="true">↗</span></a>
+              <span class="hero-version">BẢN ĐỊNH HƯỚNG · CHƯA PHẢI BÁO GIÁ</span>
+            </div>
+          </div>
+          <div class="hero-art">
+            <img src="assets/consumer-journey.svg" alt="Minh họa concept bao bì Biscafun kết nối Zalo Mini App" width="900" height="550">
+            <span class="hero-art-label">Concept visual — không phải bao bì thực tế</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 03 — BỐI CẢNH | insight B2C
+         ======================================================== -->
+    <section class="section context-section" id="context" aria-labelledby="context-title">
+      <div class="container">
+        <span class="eyebrow">01 / Bối cảnh kinh doanh</span>
+        <h2 class="section-heading" id="context-title">Hàng hóa có thể đi rất xa.<br><span class="accent">Dữ liệu khách hàng thì sao?</span></h2>
+        <p class="section-lead">Với mô hình FMCG phân phối qua nhiều điểm bán, doanh nghiệp có thể tiếp cận đông đảo người mua nhưng không mặc nhiên sở hữu dữ liệu và kênh giao tiếp trực tiếp với họ.</p>
+        <div class="split">
+          <div class="context-quote">
+            <span class="tag">Giả thuyết cần xác minh</span>
+            <strong>Sản phẩm đến tay người tiêu dùng, nhưng thông tin về người mua có thể chưa quay trở lại thương hiệu.</strong>
+            <p>Đây là insight phổ biến ở ngành hàng tiêu dùng, không phải kết luận Biscafun đang thiếu CRM hay dữ liệu khách hàng.</p>
+          </div>
+          <div class="context-list">
+            <article class="context-item"><b>01</b><div><h3>Ai đang mua Biscafun?</h3><p>Người mua quan tâm đến loại sản phẩm, khẩu vị và nhu cầu nào?</p></div></article>
+            <article class="context-item"><b>02</b><div><h3>Họ tương tác ở đâu?</h3><p>Điểm chạm bao bì, social, website hay chương trình tại điểm bán.</p></div></article>
+            <article class="context-item"><b>03</b><div><h3>Làm sao kết nối trở lại?</h3><p>Tạo lý do quay lại tương tác bằng nội dung, trải nghiệm và quyền lợi phù hợp.</p></div></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 04 — CƠ HỘI | 3 trụ cột
+         ======================================================== -->
+    <section class="section opportunity-section" id="opportunity" aria-labelledby="opportunity-title">
+      <div class="container">
+        <span class="eyebrow">02 / Cơ hội tăng trưởng B2C</span>
+        <h2 class="section-heading" id="opportunity-title">Không chỉ bán sản phẩm.<br><span class="accent">Xây dựng mối quan hệ.</span></h2>
+        <p class="section-lead">Ba năng lực có thể được phát triển trên cùng một nền tảng dữ liệu, tùy vào nguồn lực và các điểm chạm hiện có của Biscafun.</p>
+        <div class="opportunity-grid">
+          <article class="opportunity-card"><div class="opportunity-number">01</div><h3>Consumer Data Acquisition</h3><p>Thu thập dữ liệu khách hàng có sự đồng ý qua QR, Mini App, chiến dịch số và các hoạt động thương hiệu.</p><span class="tag">Biết khách hàng là ai</span></article>
+          <article class="opportunity-card"><div class="opportunity-number">02</div><h3>Consumer Engagement</h3><p>Tạo trải nghiệm vui, khảo sát sở thích và các chương trình tương tác giúp khách có lý do trở lại.</p><span class="tag">Tạo kết nối chủ động</span></article>
+          <article class="opportunity-card"><div class="opportunity-number">03</div><h3>CRM & Automation</h3><p>Phân nhóm theo sở thích, tương tác và giai đoạn tham gia để phục vụ chiến dịch tiếp theo.</p><span class="tag">Nuôi dưỡng quan hệ lâu dài</span></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 05 — HÀNH TRÌNH QR | minh họa cơ chế kết nối
+         ======================================================== -->
+    <section class="section journey-section" id="journey" aria-labelledby="journey-title">
+      <div class="container">
+        <span class="eyebrow">03 / Điểm chạm từ bao bì</span>
+        <h2 class="section-heading" id="journey-title">Từ một mã QR.<br><span class="accent">Mở ra một hành trình.</span></h2>
+        <p class="section-lead">Đề xuất thử nghiệm QR trên một nhóm sản phẩm hoặc chiến dịch phù hợp, kết nối người tiêu dùng với trải nghiệm số của Biscafun.</p>
+        <div class="journey-layout">
+          <div>
+            <div class="journey-steps">
+              <article class="journey-step"><div class="journey-step-num">1</div><div><h3>Mua sản phẩm Biscafun</h3><p>Người tiêu dùng mua tại các kênh phân phối hiện có.</p></div></article>
+              <article class="journey-step"><div class="journey-step-num">2</div><div><h3>Quét QR chiến dịch</h3><p>Truy cập trang đích hoặc Zalo Mini App từ bao bì, POSM hay nội dung quảng bá.</p></div></article>
+              <article class="journey-step"><div class="journey-step-num">3</div><div><h3>Đăng ký và tham gia</h3><p>Cung cấp thông tin cần thiết, chấp thuận mục đích sử dụng dữ liệu và tham gia trải nghiệm.</p></div></article>
+              <article class="journey-step"><div class="journey-step-num">4</div><div><h3>Ghi nhận & chăm sóc</h3><p>CDP lưu dữ liệu được phép, phục vụ phân nhóm và tương tác phù hợp về sau.</p></div></article>
+            </div>
+            <p class="section-note"><strong>Lưu ý:</strong> QR chung không chứng minh một lượt mua hàng thực tế. Nếu cần xác minh mua hàng/đổi thưởng, phải thiết kế mã định danh và quy tắc chống gian lận riêng.</p>
+          </div>
+          <div>
+            <div class="image-frame"><img class="zoomable" src="assets/consumer-journey.svg" alt="Sơ đồ concept từ bao bì Biscafun tới Mini App" width="900" height="550" tabindex="0"></div>
+            <p class="journey-caption">Minh họa concept bao bì và Mini App, chưa phải giao diện sản phẩm được Biscafun phê duyệt.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 06 — CONSUMER ENGAGEMENT | mini game & survey
+         ======================================================== -->
+    <section class="section engagement-section" id="engagement" aria-labelledby="engagement-title">
+      <div class="container engagement-layout">
+        <div>
+          <span class="eyebrow">04 / Consumer Engagement</span>
+          <h2 class="section-heading" id="engagement-title">Để mỗi tương tác là <span class="accent">một niềm vui.</span></h2>
+          <p class="section-lead">Một trải nghiệm thử nghiệm: “Quét Biscafun – Mở niềm vui”. Chủ đề chiến dịch chỉ là ý tưởng đề xuất, chưa phải chương trình chính thức của thương hiệu.</p>
+          <div class="engagement-features">
+            <article class="engagement-feature"><span class="dot"></span><div><h3>Mini game theo chiến dịch</h3><p>Khuyến khích người tiêu dùng khám phá và tương tác với thương hiệu.</p></div></article>
+            <article class="engagement-feature"><span class="dot"></span><div><h3>Khảo sát khẩu vị & sở thích</h3><p>Thu thập zero-party data khi khách chủ động chia sẻ thông tin.</p></div></article>
+            <article class="engagement-feature"><span class="dot"></span><div><h3>Quà tặng & quyền lợi</h3><p>Tạo động lực tham gia theo ngân sách và thể lệ được duyệt.</p></div></article>
+          </div>
+        </div>
+        <div>
+          <div class="image-frame"><img class="zoomable" src="assets/engagement.svg" alt="Minh họa màn hình minigame Biscafun concept" width="880" height="590" tabindex="0"></div>
+          <p class="journey-caption">UI minh họa — không đại diện cho tính năng đã triển khai.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 07 — CDP + AUTOMATION | chiến dịch sau tương tác
+         ======================================================== -->
+    <section class="section automation-section" id="automation" aria-labelledby="automation-title">
+      <div class="container">
+        <span class="eyebrow">05 / CNV CDP & Marketing Automation</span>
+        <h2 class="section-heading" id="automation-title">Dữ liệu không nằm yên.<br><span class="accent">Dữ liệu giúp hành động.</span></h2>
+        <p class="section-lead">Các tương tác được phép ghi nhận có thể trở thành căn cứ xây dựng phân khúc và chiến dịch tiếp theo, thay vì chỉ dừng lại ở một lượt tham gia sự kiện.</p>
+        <div class="automation-layout">
+          <div>
+            <div class="automation-list">
+              <div><span>01</span> Hồ sơ khách hàng và lịch sử tương tác</div>
+              <div><span>02</span> Phân nhóm theo sở thích sản phẩm</div>
+              <div><span>03</span> Phân nhóm theo chiến dịch đã tham gia</div>
+              <div><span>04</span> Gửi thông tin phù hợp khi được phép</div>
+              <div><span>05</span> Theo dõi đăng ký, tương tác và chuyển đổi</div>
+            </div>
+            <p class="automation-note">Không suy diễn “đã mua lại” từ hành vi quét QR. Đo doanh thu hoặc tần suất mua thực tế cần thêm dữ liệu giao dịch hay cơ chế xác minh độc lập.</p>
+          </div>
+          <div>
+            <div class="image-frame"><img class="zoomable" src="assets/data-activation.svg" alt="Minh họa dashboard CDP và phân nhóm khách Biscafun" width="960" height="600" tabindex="0"></div>
+            <p class="journey-caption">Dashboard minh họa dữ liệu, không phải báo cáo vận hành thực tế của Biscafun.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 08 — PILOT | kế hoạch xác thực giải pháp
+         ======================================================== -->
+    <section class="section pilot-section" id="pilot" aria-labelledby="pilot-title">
+      <div class="container">
+        <span class="eyebrow">06 / Đề xuất thử nghiệm</span>
+        <h2 class="section-heading" id="pilot-title">Bắt đầu nhỏ.<br>Đo lường rõ. Mở rộng có cơ sở.</h2>
+        <p class="section-lead">Không đề xuất triển khai toàn bộ danh mục sản phẩm ngay từ đầu. Thử nghiệm trên một dòng sản phẩm hoặc chiến dịch với phạm vi được thống nhất.</p>
+        <div class="pilot-grid">
+          <article class="pilot-card"><span class="pilot-index">01</span><h3>Discovery</h3><p>Xác minh nguồn dữ liệu hiện có, mục tiêu Marketing và kênh triển khai khả thi.</p></article>
+          <article class="pilot-card"><span class="pilot-index">02</span><h3>Thiết kế pilot</h3><p>Chọn sản phẩm, điểm chạm QR, quyền lợi, hành trình và tiêu chí thành công.</p></article>
+          <article class="pilot-card"><span class="pilot-index">03</span><h3>Vận hành chiến dịch</h3><p>Triển khai luồng đăng ký, Mini App, dữ liệu và truyền thông theo phạm vi được duyệt.</p></article>
+          <article class="pilot-card"><span class="pilot-index">04</span><h3>Đánh giá & mở rộng</h3><p>Đối chiếu KPI và phản hồi để quyết định cải tiến hay nhân rộng.</p></article>
+        </div>
+        <div class="pilot-kpis"><strong>Chỉ số đề xuất theo dõi</strong><p>Lượt quét QR · Tỷ lệ mở trải nghiệm · Tỷ lệ đăng ký hợp lệ · Tỷ lệ hoàn thành tương tác · Sự đồng ý nhận thông tin · Tỷ lệ quay lại tương tác. Chốt mục tiêu số sau khi có baseline.</p></div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 09 — NEXT STEPS | CTA
+         ======================================================== -->
+    <section class="section next-section" id="next" aria-labelledby="next-title">
+      <div class="container">
+        <div class="next-panel">
+          <span class="eyebrow">07 / Bước tiếp theo</span>
+          <h2 id="next-title">Cùng Biscafun tạo thêm những kết nối <em>hơn cả niềm vui.</em></h2>
+          <p>Đề xuất một buổi làm việc để xác nhận hiện trạng dữ liệu B2C, các mục tiêu chiến dịch và khả năng triển khai thử nghiệm. Phạm vi chức năng, tiến độ và ngân sách sẽ được xây dựng sau discovery.</p>
+          <div class="next-actions"><a class="btn btn-light" href="tel:0943452098">Trao đổi với Consultant ↗</a><a class="btn btn-light" href="https://biscafun.com.vn" target="_blank" rel="noopener noreferrer">Website Biscafun ↗</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================
+       SECTION 10 — FOOTER
+       ======================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div><div class="footer-company">CNV <span>CDP</span> × BISCAFUN</div><p>Consultant: Nguyễn Phi · 094.3452.098<br>Proposal concept V0 · 16/11/2026</p></div>
+        <div class="footer-thanks">TRÂN TRỌNG CẢM ƠN<br>QUÝ KHÁCH.</div>
+      </div>
+      <div class="footer-bottom">Tài liệu đề xuất minh họa. Không đại diện cho dữ liệu thực tế, chương trình chính thức, báo giá hoặc cam kết kết quả của Biscafun.</div>
+    </div>
+  </footer>
+
+  <!-- ========================================================
+       GLOBAL LIGHTBOX + JAVASCRIPT
+       ======================================================== -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Phóng to hình minh họa" aria-hidden="true">
+    <button class="lightbox-close" type="button" aria-label="Đóng ảnh">×</button>
+    <img id="lightbox-image" alt="">
+  </div>
+  <script>
+    (() => {
+      "use strict";
+      const modal = document.getElementById("lightbox");
+      const preview = document.getElementById("lightbox-image");
+      const closeButton = modal.querySelector(".lightbox-close");
+      let lastFocused = null;
+      function openImage(el) {
+        lastFocused = document.activeElement;
+        preview.src = el.currentSrc || el.src;
+        preview.alt = el.alt || "Hình minh họa";
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        closeButton.focus();
+      }
+      function closeImage() {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        preview.removeAttribute("src");
+        document.body.style.overflow = "";
+        if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
+      }
+      document.querySelectorAll("img.zoomable").forEach(el => {
+        el.addEventListener("click", () => openImage(el));
+        el.addEventListener("keydown", event => {
+          if (event.key === "Enter" || event.key === " ") { event.preventDefault(); openImage(el); }
+        });
+      });
+      closeButton.addEventListener("click", closeImage);
+      modal.addEventListener("click", event => { if (event.target === modal) closeImage(); });
+      document.addEventListener("keydown", event => { if (event.key === "Escape" && modal.classList.contains("is-open")) closeImage(); });
+    })();
+  </script>
+</body>
+</html>
