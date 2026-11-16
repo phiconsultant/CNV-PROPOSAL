@@ -21,3 +21,28 @@
 - Section báo giá: bỏ App nhân viên (Loyalty Hub); tổng các hạng mục tính phí năm đầu **490.400.000đ** và gia hạn **465.400.000đ** vẫn giữ theo báo giá; không còn dòng giảm giá App nhân viên trong phần tổng kết.
 - Điều chỉnh kích thước chữ tổng gia hạn để không xuống hàng bất thường.
 - Làm nổi bật giá vận hành tháng đầu **15.000.000đ** và tháng sau **10.500.000đ/tháng**.
+
+
+## V9 — Cập nhật ngân sách (chỉ Section 08)
+- Gói nền tảng gồm đúng 4 hạng mục: Loyalty & Ecom / Mini App; CNV CDP; Hạ tầng hệ thống; Kết nối API bên thứ ba.
+- Tổng gói nền tảng: 158.400.000đ năm đầu; 133.400.000đ gia hạn.
+- Nhóm add-on 6 hạng mục: 332.000.000đ năm đầu và gia hạn.
+- Tổng giữ nguyên: 490.400.000đ năm đầu; 465.400.000đ gia hạn; vận hành 15.000.000đ tháng đầu, 10.500.000đ/tháng từ tháng 2.
+- Thiết kế mới chỉ scope `.pricing`; 7 section khác được giữ nguyên.
+
+## Hero V9
+- Hero theo visual reference Biscafun, text/CTA/benefit cards là HTML có thể chỉnh sửa.
+- Background được trích riêng từ ảnh tham khảo người dùng cung cấp và lưu ở `assets/biscafun-hero-products.webp`.
+- Các section 02–08 giữ nguyên so với V7.
+
+## V9 — Hero image alignment
+- Fixed desktop and tablet hero product-image gap at top by changing the background fitting from `contain` to `cover` and anchoring to `right top`.
+- All other sections and assets remain unchanged.
+
+## V10 updates
+- Hero uses `assets/biscafun-hero-products-v10.webp` from user-provided HERO IMAGE.png.
+- Section 02: Mini App overview.
+- Section 03: ecommerce QR journey before cases; removed the OHAR overview only.
+- Section 04: QR Unique game journey before O’Food case.
+- Section 05: offline sampling check-in journey before cases.
+- All illustration images are separate relative WebP assets; use the existing global lightbox.

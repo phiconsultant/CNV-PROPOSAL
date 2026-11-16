@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#c82132">
   <meta name="description" content="Biscafun × CNV CDP — Proposal chiến dịch thu thập dữ liệu người tiêu dùng đa điểm chạm.">
-  <title>Biscafun × CNV CDP | Proposal V7</title>
+  <title>Biscafun × CNV CDP | Proposal V8</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap&subset=vietnamese" rel="stylesheet">
@@ -58,25 +58,80 @@
     .header .nav a:hover { color: var(--red); }
 
     /* ================================================================
-       02. HERO — VISUAL SCOPE: .hero
+       02. HERO — VISUAL SCOPE: .hero (BISCAFUN PRODUCT COMPOSITION)
+       Background art: assets/biscafun-hero-products-v10.webp
        ================================================================ */
-    .hero { padding: 18px var(--gutter) 0; }
-    .hero .stage { min-height: 680px; border-radius: 35px; overflow: hidden; background: radial-gradient(circle at 87% 18%, #ffc77b 0%, transparent 32%), linear-gradient(125deg, #961b29 0%, #d52c37 56%, #f58226 100%); position: relative; isolation: isolate; }
-    .hero .stage::after { content: ""; position: absolute; width: 540px; height: 540px; border: 80px solid rgba(255,255,255,.10); border-radius: 50%; right: -150px; bottom: -360px; }
-    .hero .inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px; align-items: center; min-height: 680px; padding: clamp(28px, 6vw, 85px); }
-    .hero .kicker { color: #ffe5c4; text-transform: uppercase; letter-spacing: .15em; font-weight: 900; font-size: .79rem; }
-    .hero h1 { font-size: clamp(3.3rem, 6.4vw, 6.7rem); color: white; margin: 23px 0; font-weight: 900; line-height: 1.02; }
-    .hero h1 em { color: #ffe1a4; font-style: normal; }
-    .hero .intro { color: #fff1ea; font-size: clamp(1.08rem, 1.5vw, 1.32rem); max-width: 590px; }
-    .hero .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 31px; }
-    .hero .actions .btn { background: white; color: var(--red-dark); }
-    .hero .version { font-size: .79rem; font-weight: 800; color: #ffe3d7; }
-    .hero .graphic { display: grid; gap: 15px; transform: rotate(-4deg); }
-    .hero .graphic .floating { background: rgba(255,255,255,.95); box-shadow: 0 30px 80px rgba(92,19,24,.22); border-radius: 22px; padding: 22px; }
-    .hero .graphic .floating:nth-child(2) { transform: translateX(28px); }
-    .hero .graphic strong { display: block; font-size: 1.25rem; color: var(--red-dark); }
-    .hero .graphic small { display: block; color: #746c6e; margin-top: 4px; }
-    .hero .graphic .count { display: inline-grid; place-items: center; background: var(--orange); color: white; border-radius: 50%; width: 38px; height: 38px; margin-bottom: 9px; font-weight: 900; }
+    .hero { padding: 16px var(--gutter) 0; }
+    .hero .stage {
+      position: relative; isolation: isolate; overflow: hidden;
+      max-width: 1530px; margin-inline: auto; min-height: 718px;
+      border-radius: 30px;
+      background: radial-gradient(ellipse at 90% 75%, #ffda4a 0%, #ffa62b 42%, transparent 70%),
+                  linear-gradient(112deg, #b80e29 0%, #d71932 45%, #f66c29 74%, #ffcb43 100%);
+    }
+    .hero .stage::before {
+      content: ""; position: absolute; z-index: 0; pointer-events: none;
+      inset: 0 0 0 38%;
+      background: url("assets/biscafun-hero-products-v10.webp") right top / cover no-repeat;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 19%, #000 100%);
+      mask-image: linear-gradient(to right, transparent 0%, #000 19%, #000 100%);
+    }
+    .hero .stage::after {
+      content: ""; position: absolute; z-index: 0; pointer-events: none;
+      bottom: -175px; left: -15%; width: 130%; height: 285px;
+      border-radius: 50%; background: #ffbc3f;
+      transform: rotate(-5deg);
+    }
+    .hero .inner { position: relative; z-index: 1; padding: clamp(36px, 4.5vw, 70px); padding-bottom: 205px; min-height: 718px; }
+    .hero .copy { position: relative; z-index: 2; width: min(58%, 710px); }
+    .hero .kicker { font-size: clamp(.66rem, .9vw, .82rem); font-weight: 900; text-transform: uppercase; letter-spacing: .15em; color: #fff4dc; }
+    .hero h1 { color: #fff; font-size: clamp(3.15rem, 6.2vw, 6.8rem); font-weight: 900; letter-spacing: -.065em; line-height: 1.035; margin: 28px 0 24px; }
+    .hero h1 em { color: #ffe09a; font-style: normal; }
+    .hero .intro { color: #fff7ef; max-width: 625px; font-size: clamp(1.03rem, 1.48vw, 1.35rem); line-height: 1.54; text-wrap: pretty; }
+    .hero .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; margin-top: 30px; }
+    .hero .actions .btn { color: #a71427; background: white; box-shadow: 0 10px 26px rgba(118,13,23,.16); }
+    .hero .actions .btn:hover { background: #fff2de; }
+    .hero .version { color: #fff3e5; font-weight: 800; font-size: .78rem; border-left: 1px solid rgba(255,255,255,.6); padding-left: 20px; }
+    .hero .benefits { position: absolute; z-index: 3; left: clamp(24px, 4.5vw, 70px); right: clamp(24px, 4.5vw, 70px); bottom: 30px; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; }
+    .hero .benefit { display: flex; align-items: flex-start; gap: 14px; min-width: 0; padding: 21px 22px; background: rgba(255,254,250,.96); border: 1px solid rgba(255,255,255,.85); border-radius: 24px; box-shadow: 0 18px 35px rgba(98,31,18,.17); }
+    .hero .benefit-num { display: inline-grid; flex: 0 0 45px; width: 45px; height: 45px; place-items: center; border-radius: 50%; background: #fb8b0b; color: white; font-size: 1.15rem; font-weight: 900; }
+    .hero .benefit h3 { color: #a5152b; font-size: clamp(1rem, 1.4vw, 1.28rem); font-weight: 900; line-height: 1.15; margin: 0 0 6px; }
+    .hero .benefit p { color: #494045; font-size: .9rem; line-height: 1.45; }
+    @media (max-width: 1100px) {
+      .hero .copy { width: 62%; }
+      .hero .benefit { padding: 18px 15px; gap: 9px; }
+      .hero .benefit-num { flex-basis: 37px; width: 37px; height: 37px; }
+    }
+    @media (max-width: 950px) {
+      .hero .stage { min-height: 760px; }
+      .hero .stage::before { inset: 0 0 21% 33%; background-position: right top; opacity: .85; }
+      .hero .copy { width: 72%; }
+      .hero .inner { min-height: 760px; padding-bottom: 230px; }
+      .hero h1 { font-size: clamp(3rem, 6.8vw, 5.4rem); }
+      .hero .benefits { gap: 10px; }
+    }
+    @media (max-width: 680px) {
+      .hero { padding: 8px 8px 0; }
+      .hero .stage { min-height: 910px; border-radius: 22px; }
+      .hero .inner { min-height: 910px; padding: 34px 24px 430px; }
+      .hero .stage::before { inset: 205px 0 250px 12%; background-size: contain; background-position: right center; opacity: .96; }
+      .hero .stage::after { bottom: 0; left: -20%; width: 140%; height: 315px; transform: rotate(-4deg); }
+      .hero .copy { width: 100%; }
+      .hero .kicker { font-size: .65rem; letter-spacing: .1em; }
+      .hero h1 { font-size: clamp(2.7rem, 11vw, 4.5rem); margin: 18px 0; }
+      .hero .intro { font-size: .98rem; max-width: 90%; }
+      .hero .actions { margin-top: 18px; gap: 12px; }
+      .hero .version { border: 0; padding-left: 0; font-size: .68rem; }
+      .hero .benefits { left: 18px; right: 18px; bottom: 18px; grid-template-columns: 1fr; gap: 9px; }
+      .hero .benefit { padding: 12px 14px; border-radius: 15px; gap: 12px; }
+      .hero .benefit h3 { font-size: 1rem; margin-bottom: 2px; }
+      .hero .benefit p { font-size: .79rem; }
+      .hero .benefit-num { flex-basis: 32px; width: 32px; height: 32px; font-size: .92rem; }
+    }
+    @media (max-width: 390px) {
+      .hero .stage, .hero .inner { min-height: 940px; }
+      .hero .stage::before { inset: 250px 0 275px 4%; }
+    }
 
     /* ================================================================
        SECTION 02 — CONTEXT — VISUAL SCOPE: .context
@@ -288,8 +343,6 @@
        ================================================================ */
     @media (max-width: 950px) {
       .header .nav { display: none; }
-      .hero .inner { grid-template-columns: 1fr; gap: 0; padding-block: 64px; }
-      .hero .graphic { display: none; }
       .context .panel, .campaign-ecom .overview { grid-template-columns: 1fr; }
     }
     @media (max-width: 680px) {
@@ -297,10 +350,6 @@
       .header .inner { min-height: 68px; }
       .header .brand img { width: 85px; height: 52px; }
       .header .brand span { font-size: .67rem; }
-      .hero { padding: 8px 8px 0; }
-      .hero .stage { min-height: 590px; border-radius: 21px; }
-      .hero .inner { min-height: 590px; padding: 42px 25px; }
-      .hero h1 { font-size: clamp(2.75rem, 12vw, 4.8rem); }
       .campaign-unique .unique-steps, .campaign-offline .benefits, .campaign-affiliate .affiliate-grid, .other-cases .case-grid, .pricing .pricing-summary { grid-template-columns: 1fr; }
       .pricing .pricing-top { align-items: flex-start; flex-direction: column; }
       .pricing .pricing-table { table-layout: auto; }
@@ -433,6 +482,50 @@
     @media(max-width:950px) { .pricing .pricing-summary { grid-template-columns:1fr; } .pricing .renew-card .total-amount { font-size:clamp(1.9rem,5vw,3rem); } }
     @media(max-width:680px) { .pricing .operations-heading { padding:22px 18px 12px; align-items:flex-start; flex-direction:column; gap:10px; } .pricing .operations > p { padding:0 18px 18px; } .pricing .operations-grid { padding:0 18px 18px; } .pricing .operations-grid > div { padding:20px 17px; } .pricing .operations-grid strong { font-size:clamp(1.5rem,7.3vw,2.1rem); } .pricing .operations-note { padding:0 18px 20px; } .pricing .renew-card .total-amount { font-size:clamp(1.55rem,7.4vw,2.3rem); } }
 
+  
+    /* ================================================================
+       V10 — IMAGE PROPOSALS: VISUAL OWNERSHIP BY SECTION
+       ================================================================ */
+    .context .biscafun-miniapp-visual { margin-top: clamp(35px, 5vw, 70px); }
+    .campaign-ecom .biscafun-proposal-visual { margin-top: 34px; margin-bottom: 54px; }
+    .campaign-unique .biscafun-proposal-visual { margin-top: 34px; margin-bottom: 54px; }
+    .campaign-offline .biscafun-proposal-visual { margin-top: 34px; margin-bottom: 54px; }
+    .context .biscafun-miniapp-visual h3,
+    .campaign-ecom .biscafun-proposal-visual h3,
+    .campaign-unique .biscafun-proposal-visual h3,
+    .campaign-offline .biscafun-proposal-visual h3 {
+      font-size: clamp(1.3rem, 2.6vw, 2rem); line-height: 1.2;
+      letter-spacing: -.03em; margin: 0 0 10px;
+    }
+    .context .biscafun-miniapp-visual p,
+    .campaign-ecom .biscafun-proposal-visual p,
+    .campaign-unique .biscafun-proposal-visual p,
+    .campaign-offline .biscafun-proposal-visual p { color: var(--muted); margin: 0 0 18px; }
+    .context .biscafun-miniapp-visual figure,
+    .campaign-ecom .biscafun-proposal-visual figure,
+    .campaign-unique .biscafun-proposal-visual figure,
+    .campaign-offline .biscafun-proposal-visual figure {
+      margin: 0; padding: clamp(8px, 1.1vw, 14px); background: #fff;
+      border: 1px solid var(--border); border-radius: clamp(13px,2vw,24px);
+      box-shadow: 0 18px 38px rgba(80,30,10,.055);
+    }
+    .context .biscafun-miniapp-visual img,
+    .campaign-ecom .biscafun-proposal-visual img,
+    .campaign-unique .biscafun-proposal-visual img,
+    .campaign-offline .biscafun-proposal-visual img {
+      display: block; width: 100%; height: auto; border-radius: clamp(7px,1.1vw,14px);
+    }
+    .context .biscafun-miniapp-visual figcaption,
+    .campaign-ecom .biscafun-proposal-visual figcaption,
+    .campaign-unique .biscafun-proposal-visual figcaption,
+    .campaign-offline .biscafun-proposal-visual figcaption { margin: 10px 5px 3px; font-size: .8rem; color: var(--muted); }
+    @media(max-width:680px) {
+      .context .biscafun-miniapp-visual,
+      .campaign-ecom .biscafun-proposal-visual,
+      .campaign-unique .biscafun-proposal-visual,
+      .campaign-offline .biscafun-proposal-visual { margin-top: 30px; margin-bottom: 35px; }
+    }
+
   </style>
 </head>
 <body>
@@ -464,16 +557,28 @@
     <section class="hero" aria-label="Giới thiệu proposal">
       <div class="stage">
         <div class="inner">
-          <div>
+          <div class="copy">
             <div class="kicker">Biscafun × CNV CDP / Consumer Data Acquisition</div>
             <h1>Mỗi điểm chạm.<br><em>Một kết nối.</em></h1>
             <p class="intro">Giải pháp thu thập dữ liệu người tiêu dùng từ TMĐT, kênh MT/GT, QR Unique trong bao bì, sự kiện offline và chương trình Affiliate.</p>
-            <div class="actions"><a class="btn" href="#ecommerce">Khám phá giải pháp ↓</a><span class="version">PROPOSAL V5 · CASE STUDIES</span></div>
+            <div class="actions">
+              <a class="btn" href="#ecommerce">Khám phá giải pháp →</a>
+              <span class="version">PROPOSAL V10 · CASE STUDIES</span>
+            </div>
           </div>
-          <div class="graphic" aria-hidden="true">
-            <div class="floating"><span class="count">01</span><strong>Chạm đúng thời điểm</strong><small>Khách nhận hàng, nhìn thấy kệ, mở bánh hoặc dùng thử</small></div>
-            <div class="floating"><span class="count">02</span><strong>Tương tác có quyền lợi</strong><small>Đăng ký · Tích điểm · Chơi game · Nhận quà</small></div>
-            <div class="floating"><span class="count">03</span><strong>Kết nối dữ liệu</strong><small>Ghi nhận hồ sơ và nguồn chiến dịch</small></div>
+          <div class="benefits" aria-label="Ba giá trị của giải pháp">
+            <article class="benefit">
+              <span class="benefit-num">01</span>
+              <div><h3>Chạm đúng thời điểm</h3><p>Kích hoạt nhận hàng, trưng bày, mở bánh hoặc dùng thử</p></div>
+            </article>
+            <article class="benefit">
+              <span class="benefit-num">02</span>
+              <div><h3>Tương tác có quyền lợi</h3><p>Đăng ký · Tích điểm · Chơi game · Nhận quà</p></div>
+            </article>
+            <article class="benefit">
+              <span class="benefit-num">03</span>
+              <div><h3>Kết nối dữ liệu</h3><p>Ghi nhận hồ sơ và nguồn chiến dịch</p></div>
+            </article>
           </div>
         </div>
       </div>
@@ -495,6 +600,15 @@
             <div class="goal"><b>03</b> Ghi nhận nguồn đăng ký và quyền đồng ý nhận thông tin.</div>
           </div>
         </div>
+<!-- V10 / biscafun-miniapp-visual: Biscafun proposal illustration, before case studies -->
+<div class="biscafun-miniapp-visual" aria-label="Giao diện Zalo Mini App Biscafun">
+  <h3>Giao diện Zalo Mini App Biscafun</h3>
+  <p>Minh họa năm màn hình: Trang chủ, Danh mục sản phẩm, Chi tiết sản phẩm, Giỏ hàng và Tài khoản khách hàng.</p>
+  <figure>
+    <img class="zoomable" tabindex="0" loading="lazy" decoding="async" src="assets/biscafun-miniapp-overview.webp" alt="Giao diện mẫu Zalo Mini App Biscafun gồm 5 màn hình">
+    <figcaption>Giao diện minh họa đề xuất cho Biscafun · Nhấn vào ảnh để xem lớn</figcaption>
+  </figure>
+</div>
       </div>
     </section>
 
@@ -524,9 +638,18 @@
 </ul>
 </div>
 </div>
+
+<!-- V10 / biscafun-proposal-visual: Biscafun proposal illustration, before case studies -->
+<div class="biscafun-proposal-visual" aria-label="Giải pháp Biscafun — QR trong kiện hàng TMĐT">
+  <h3>Giải pháp Biscafun — QR trong kiện hàng TMĐT</h3>
+  <p>Hành trình 6 bước: quét QR từ thẻ cảm ơn, kích hoạt thành viên, đăng ký, nhận voucher, truy cập Mini App và dùng voucher ở lần mua tiếp theo.</p>
+  <figure>
+    <img class="zoomable" tabindex="0" loading="lazy" decoding="async" src="assets/biscafun-ecommerce-journey.webp" alt="Hành trình sáu bước thu thập dữ liệu khách hàng từ kiện hàng TMĐT Biscafun">
+    <figcaption>Giao diện minh họa đề xuất cho Biscafun · Nhấn vào ảnh để xem lớn</figcaption>
+  </figure>
+</div>
 <div class="real-case" id="case-ohar">
 <div class="case-header"><div><span class="case-tag">CASE STUDY THỰC TẾ</span><h3>01. OHAR Healthy Life — QR trong hộp hàng</h3><p>Từ QR trong hộp sản phẩm, khách được kết nối với Mini App và tiếp nhận quyền lợi. Sau đó khách có thể chọn chuyển thưởng để quyên góp hoặc đổi quà.</p></div></div>
-<div class="case-overview"><figure class="media-frame overview"><img alt="Ảnh tổng quan hành trình quét QR hộp hàng OHAR" class="zoomable" decoding="async" height="940" loading="lazy" src="assets/case-studies/ohar-01.webp" tabindex="0" width="1573"/><figcaption>Tổng quan hành trình · Click để xem lớn</figcaption></figure></div>
 <h4 class="subcase-heading">Hành trình chi tiết</h4>
 <div class="case-flow"><div class="flow-card"><span class="step-label">01</span><figure class="media-frame phone"><img alt="OHAR — QR trong hộp sản phẩm" class="zoomable" decoding="async" height="710" loading="lazy" src="assets/case-studies/ohar-02.webp" tabindex="0" width="511"/><figcaption>QR trong hộp sản phẩm</figcaption></figure></div><div class="flow-card"><span class="step-label">02</span><figure class="media-frame phone"><img alt="OHAR — Tin nhắn thông báo ghi nhận quyền lợi" class="zoomable" decoding="async" height="499" loading="lazy" src="assets/case-studies/ohar-03.webp" tabindex="0" width="242"/><figcaption>Tin nhắn thông báo ghi nhận quyền lợi</figcaption></figure></div><div class="flow-card"><span class="step-label">03</span><figure class="media-frame phone"><img alt="OHAR — Giao diện Zalo Mini App" class="zoomable" decoding="async" height="606" loading="lazy" src="assets/case-studies/ohar-04.webp" tabindex="0" width="294"/><figcaption>Giao diện Zalo Mini App</figcaption></figure></div><div class="flow-card"><span class="step-label">04</span><figure class="media-frame phone"><img alt="OHAR — Chuyển thưởng vào quỹ từ thiện" class="zoomable" decoding="async" height="808" loading="lazy" src="assets/case-studies/ohar-05.webp" tabindex="0" width="392"/><figcaption>Chuyển thưởng vào quỹ từ thiện</figcaption></figure></div><div class="flow-card"><span class="step-label">05</span><figure class="media-frame phone"><img alt="OHAR — Tra cứu phần thưởng và quyền lợi" class="zoomable" decoding="async" height="816" loading="lazy" src="assets/case-studies/ohar-06.webp" tabindex="0" width="396"/><figcaption>Tra cứu phần thưởng và quyền lợi</figcaption></figure></div><div class="flow-card"><span class="step-label">06</span><figure class="media-frame phone"><img alt="OHAR — Đổi thẻ cào điện thoại" class="zoomable" decoding="async" height="816" loading="lazy" src="assets/case-studies/ohar-07.webp" tabindex="0" width="396"/><figcaption>Đổi thẻ cào điện thoại</figcaption></figure></div></div>
 <p class="flow-hint">← Kéo ngang để xem đủ các bước · Chạm ảnh để phóng lớn</p></div>
@@ -551,6 +674,16 @@
 <div class="step"><b>02</b><strong>Quét mã duy nhất</strong><p>Đăng ký và xác nhận mã hợp lệ, giới hạn lượt sử dụng.</p></div>
 <div class="step"><b>03</b><strong>Chơi game nhận quà</strong><p>Nhận quyền lợi dành cho người sở hữu sản phẩm.</p></div>
 </div>
+
+<!-- V10 / biscafun-proposal-visual: Biscafun proposal illustration, before case studies -->
+<div class="biscafun-proposal-visual" aria-label="Giải pháp Biscafun — QR Unique trong hộp bánh">
+  <h3>Giải pháp Biscafun — QR Unique trong hộp bánh</h3>
+  <p>Hành trình 6 bước: mở hộp, quét mã, đăng ký thông tin, nhận lượt chơi, quay may mắn và lưu voucher vào tài khoản.</p>
+  <figure>
+    <img class="zoomable" tabindex="0" loading="lazy" decoding="async" src="assets/biscafun-unique-qr-journey.webp" alt="Hành trình sáu bước QR Unique và vòng quay may mắn Biscafun">
+    <figcaption>Giao diện minh họa đề xuất cho Biscafun · Nhấn vào ảnh để xem lớn</figcaption>
+  </figure>
+</div>
 <div class="real-case" id="case-ofood"><div class="case-header"><div><span class="case-tag">CASE STUDY THỰC TẾ</span><h3>01. O’Food Vietnam — Xé rong biển, Bay vút đến Hàn</h3><p>Minh họa thực tế cách thương hiệu kết hợp truyền thông chương trình, mã dự thưởng trên thẻ trong sản phẩm, đăng ký thông tin và game nhận quà.</p></div></div>
 <h4 class="subcase-heading">Truyền thông chiến dịch · 3 hình ảnh</h4><div class="social-gallery"><figure class="media-frame social"><img alt="OFood — Truyền thông &amp; giải đáp chương trình" class="zoomable" decoding="async" height="668" loading="lazy" src="assets/case-studies/ofood-01.webp" tabindex="0" width="582"/><figcaption>Truyền thông &amp; giải đáp chương trình</figcaption></figure><figure class="media-frame social"><img alt="OFood — Công bố người trúng giải" class="zoomable" decoding="async" height="668" loading="lazy" src="assets/case-studies/ofood-02.webp" tabindex="0" width="594"/><figcaption>Công bố người trúng giải</figcaption></figure><figure class="media-frame social"><img alt="OFood — Hướng dẫn tham gia và quét QR" class="zoomable" decoding="async" height="668" loading="lazy" src="assets/case-studies/ofood-03.webp" tabindex="0" width="599"/><figcaption>Hướng dẫn tham gia và quét QR</figcaption></figure></div>
 <h4 class="subcase-heading">Hành trình người dùng · 6 bước</h4><div class="case-flow"><div class="flow-card"><span class="step-label">01</span><figure class="media-frame phone"><img alt="OFood — Lấy thẻ dự thưởng và quét QR" class="zoomable" decoding="async" height="853" loading="lazy" src="assets/case-studies/ofood-04.webp" tabindex="0" width="672"/><figcaption>Lấy thẻ dự thưởng và quét QR</figcaption></figure></div><div class="flow-card"><span class="step-label">02</span><figure class="media-frame phone"><img alt="OFood — Nhập mã dự thưởng và thông tin đăng ký" class="zoomable" decoding="async" height="755" loading="lazy" src="assets/case-studies/ofood-05.webp" tabindex="0" width="374"/><figcaption>Nhập mã dự thưởng và thông tin đăng ký</figcaption></figure></div><div class="flow-card"><span class="step-label">03</span><figure class="media-frame phone"><img alt="OFood — Xác nhận mã dự thưởng hợp lệ" class="zoomable" decoding="async" height="754" loading="lazy" src="assets/case-studies/ofood-06.webp" tabindex="0" width="406"/><figcaption>Xác nhận mã dự thưởng hợp lệ</figcaption></figure></div><div class="flow-card"><span class="step-label">04</span><figure class="media-frame phone"><img alt="OFood — Truy cập Mini App chương trình" class="zoomable" decoding="async" height="896" loading="lazy" src="assets/case-studies/ofood-07.webp" tabindex="0" width="446"/><figcaption>Truy cập Mini App chương trình</figcaption></figure></div><div class="flow-card"><span class="step-label">05</span><figure class="media-frame phone"><img alt="OFood — Tham gia vòng quay may mắn" class="zoomable" decoding="async" height="896" loading="lazy" src="assets/case-studies/ofood-08.webp" tabindex="0" width="533"/><figcaption>Tham gia vòng quay may mắn</figcaption></figure></div><div class="flow-card"><span class="step-label">06</span><figure class="media-frame phone"><img alt="OFood — Nhận kết quả và phần thưởng" class="zoomable" decoding="async" height="893" loading="lazy" src="assets/case-studies/ofood-09.webp" tabindex="0" width="450"/><figcaption>Nhận kết quả và phần thưởng</figcaption></figure></div></div>
@@ -572,6 +705,16 @@
 <div class="benefit"><b>01</b><strong>Trải nghiệm sản phẩm</strong><p>Khách dùng thử hoặc tương tác tại khu vực sự kiện.</p></div>
 <div class="benefit"><b>02</b><strong>Đăng ký &amp; chơi game</strong><p>Quét QR, điền thông tin cần thiết, nhận lượt chơi và quyền lợi.</p></div>
 <div class="benefit"><b>03</b><strong>Ghi nhận dữ liệu</strong><p>Phân biệt khách đăng ký theo sự kiện và nguồn tiếp cận.</p></div>
+</div>
+
+<!-- V10 / biscafun-proposal-visual: Biscafun proposal illustration, before case studies -->
+<div class="biscafun-proposal-visual" aria-label="Giải pháp Biscafun — QR Check-in tại quầy Sampling">
+  <h3>Giải pháp Biscafun — QR Check-in tại quầy Sampling</h3>
+  <p>Hành trình 6 bước: check-in qua QR, cho phép kết nối Zalo, quan tâm OA, trả lời Mini Quiz, nhận lượt quay và trải nghiệm bánh tại quầy.</p>
+  <figure>
+    <img class="zoomable" tabindex="0" loading="lazy" decoding="async" src="assets/biscafun-offline-checkin-journey.webp" alt="Hành trình sáu bước check in tại sự kiện sampling Biscafun">
+    <figcaption>Giao diện minh họa đề xuất cho Biscafun · Nhấn vào ảnh để xem lớn</figcaption>
+  </figure>
 </div>
 <div class="real-case" id="case-adolph"><div class="case-header"><div><span class="case-tag">CASE STUDY THỰC TẾ</span><h3>01. ADOLPH — Quét QR trước khi trải nghiệm sản phẩm</h3><p>Khách tham dự quét QR tại booth, cung cấp thông tin theo chương trình rồi mới tiếp tục trải nghiệm sản phẩm. Hình ảnh minh họa từ sự kiện thực tế.</p></div></div>
 <div class="photo-pair"><figure class="media-frame photo"><img alt="ADOLPH — Khách quét QR tại khu vực booth" class="zoomable" decoding="async" height="1184" loading="lazy" src="assets/case-studies/adolph-01.webp" tabindex="0" width="1776"/><figcaption>Khách quét QR tại khu vực booth</figcaption></figure><figure class="media-frame photo"><img alt="ADOLPH — Khu vực trải nghiệm sản phẩm thực tế" class="zoomable" decoding="async" height="1184" loading="lazy" src="assets/case-studies/adolph-02.webp" tabindex="0" width="1776"/><figcaption>Khu vực trải nghiệm sản phẩm thực tế</figcaption></figure></div></div>
